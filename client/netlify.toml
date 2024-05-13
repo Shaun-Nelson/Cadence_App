@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://cadence-79b16249daf1.herokuapp.com/:splat"
+  to = "https://cadence-79b16249daf1.herokuapp.com/api/:splat"
   status = 200
 
 [[redirects]]
