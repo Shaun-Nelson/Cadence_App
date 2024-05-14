@@ -31,6 +31,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 app.use(session(sess));
 app.use("/api", routes);
 
