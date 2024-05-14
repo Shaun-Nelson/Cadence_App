@@ -3,7 +3,9 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const connectionString =
-  process.env.MONGO_URI || "mongodb://localhost:27017/cadence_db";
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGO_URI
+    : "mongodb://localhost:27017/cadence_db";
 
 const connectDB = async () => {
   try {
