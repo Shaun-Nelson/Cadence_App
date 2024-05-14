@@ -23,8 +23,5 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-<<<<<<< HEAD
 *.sw?
-=======
-*.sw?
->>>>>>> b7ad64b (updated controller functions)
+>>>>>>> cd05c44 (updated controller functions)
