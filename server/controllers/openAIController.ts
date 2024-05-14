@@ -4,7 +4,7 @@ require("dotenv").config();
 
 module.exports = {
   async openAI(req: any, res: any) {
-    const MODEL = "gpt-4o";
+    const MODEL = "gpt-3.5-turbo";
     const TEMPERATURE = 0;
     const MAX_TOKENS = 3500;
 
