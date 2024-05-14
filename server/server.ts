@@ -1,12 +1,11 @@
 const express = require("express");
 const db = require("./config/connection");
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
 const routes = require("./routes");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -30,7 +29,11 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
+// app.use(
+//   cookieParser({
+//     secret: process.env.COOKIE_SECRET,
+//   })
+// );
 app.use(session(sess));
 app.use("/api", routes);
 
