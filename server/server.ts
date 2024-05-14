@@ -10,8 +10,6 @@ require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-
-//Set up express app to use sessions
 const sess = {
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -35,14 +33,6 @@ app.use(
 app.use(cookieParser());
 app.use(session(sess));
 app.use("/api", routes);
-
-// if (process.env.NODE_ENV === "production") {
-//   app.set("trust proxy", 1); // trust first proxy for secure cookies
-//   app.use(express.static(path.join(__dirname, "../client/build")));
-//   app.get("*", (req: Request, res: any) => {
-//     res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-//   });
-// }
 
 db.once("open", () => {
   app.listen(PORT, () => {
