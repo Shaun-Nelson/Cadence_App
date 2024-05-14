@@ -77,19 +77,13 @@ const getSongsMetadata = async (songs: any, spotifyApi: any) => {
       songs[song].title + " " + songs[song].artist
     );
 
-    songs[song].previewUrl =
-      searchResults.body.tracks.items?.length > 0
-        ? searchResults.body.tracks.items[0].preview_url
-        : "";
-    songs[song].image =
-      searchResults.body.tracks.items?.length > 0
-        ? searchResults.body.tracks.items[0].album.images[0].url
-        : "";
-    songs[song].uri =
-      searchResults.body.tracks.items?.length > 0
-        ? searchResults.body.tracks.items[0].uri
-        : "";
-    songs[song].artists = songs[song].artist.split(", ");
+    songs[song].previewUrl = searchResults.body.tracks.items[0].preview_url;
+
+    songs[song].image = searchResults.body.tracks.items[0].album.images[0].url;
+
+    songs[song].uri = searchResults.body.tracks.items[0].uri;
+
+    songs[song].artists = songs[song].artist.split(",");
   }
 };
 
