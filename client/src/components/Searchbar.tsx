@@ -5,13 +5,29 @@ import { useGetAiDataMutation } from "../slices/thirdPartyApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
-
 //Components
 import SearchResults from "./SearchResults";
 
+const MIN = 10;
+const MAX = 50;
+const STEP = 10;
+
+const genertateOptions = () => {
+  const options = [];
+  for (let i = MIN; i <= MAX; i += STEP) {
+    options.push(
+      <option key={i} value={i}>
+        {i}
+      </option>
+    );
+  }
+  return options;
+};
+
 const Searchbar = () => {
-  const [search, setSearch] = useState("");
-  const [playlistLength, setPlaylistLength] = useState(10);
+  const [search, setSearch] = useState<string>("");
+  const [playlistLength, setPlaylistLength] = useState<number>(MIN);
+  const [options] = useState<JSX.Element[]>(genertateOptions());
 
   const dispatch = useDispatch();
 
@@ -38,21 +54,12 @@ const Searchbar = () => {
         length: playlistLength,
       }).unwrap();
       dispatch(setResults(res));
-      console.log("res", res);
     } catch (error) {
       console.error(error);
       toast.error("Error generating playlist: AI Service Unavailable", {
         position: "top-center",
       });
     }
-  };
-
-  const genertateOptions = () => {
-    const options = [];
-    for (let i = 10; i <= 50; i += 10) {
-      options.push(<option value={i}>{i}</option>);
-    }
-    return options;
   };
 
   return (
@@ -81,7 +88,7 @@ const Searchbar = () => {
               value={playlistLength}
               onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
             >
-              {genertateOptions().map((option) => option)}
+              {options.map((option) => option)}
             </select>
           </label>
         </form>
