@@ -38,6 +38,7 @@ const Searchbar = () => {
         length: playlistLength,
       }).unwrap();
       dispatch(setResults(res));
+      console.log("res", res);
     } catch (error) {
       console.error(error);
       toast.error(
