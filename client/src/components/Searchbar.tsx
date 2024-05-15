@@ -40,13 +40,9 @@ const Searchbar = () => {
       dispatch(setResults(res));
     } catch (error) {
       console.error(error);
-      toast.error(
-        "Error generating playlist: OpenAI Service Unavailable" +
-          (error as Error).name,
-        {
-          position: "top-center",
-        }
-      );
+      toast.error("Error generating playlist: OpenAI Service Unavailable", {
+        position: "top-center",
+      });
     }
   };
 
