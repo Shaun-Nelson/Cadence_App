@@ -1,7 +1,6 @@
 const express = require("express");
 const db = require("./config/connection");
 const session = require("express-session");
-// const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
 const routes = require("./routes");
@@ -32,11 +31,6 @@ app.use(
     credentials: true,
   })
 );
-// app.use(
-//   cookieParser({
-//     secret: process.env.COOKIE_SECRET,
-//   })
-// );
 app.use(session(sess));
 app.use("/api", routes);
 
