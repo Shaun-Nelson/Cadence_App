@@ -41,24 +41,16 @@ const Searchbar = () => {
       console.log("res", res);
     } catch (error) {
       console.error(error);
-      toast.error(
-        "Error generating playlist: OpenAI Service Unavailable" +
-          (error as Error).name,
-        {
-          position: "top-center",
-        }
-      );
+      toast.error("Error generating playlist: AI Service Unavailable", {
+        position: "top-center",
+      });
     }
   };
 
   const genertateOptions = () => {
     const options = [];
-    for (let i = 1; i <= 20; i++) {
-      options.push(
-        <option key={i} value={i}>
-          {i}
-        </option>
-      );
+    for (let i = 10; i <= 50; i += 10) {
+      options.push(<option value={i}>{i}</option>);
     }
     return options;
   };
