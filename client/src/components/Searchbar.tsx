@@ -40,14 +40,18 @@ const Searchbar = () => {
       dispatch(setResults(res));
     } catch (error) {
       console.error(error);
-      toast.error(
-        "Error generating playlist: OpenAI Service Unavailable" +
-          (error as Error).name,
-        {
-          position: "top-center",
-        }
-      );
+      toast.error("Error generating playlist: OpenAI Service Unavailable", {
+        position: "top-center",
+      });
     }
+  };
+
+  const genertateOptions = () => {
+    const options = [];
+    for (let i = 10; i <= 50; i += 10) {
+      options.push(<option value={i}>{i}</option>);
+    }
+    return options;
   };
 
   return (
@@ -76,11 +80,7 @@ const Searchbar = () => {
               value={playlistLength}
               onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
             >
-              <option value='10'>10</option>
-              <option value='20'>20</option>
-              <option value='30'>30</option>
-              <option value='40'>40</option>
-              <option value='50'>50</option>
+              {genertateOptions().map((option) => option)}
             </select>
           </label>
         </form>
