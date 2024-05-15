@@ -49,8 +49,12 @@ const Searchbar = () => {
 
   const genertateOptions = () => {
     const options = [];
-    for (let i = 10; i <= 50; i += 10) {
-      options.push(<option value={i}>{i}</option>);
+    for (let i = 1; i <= 20; i++) {
+      options.push(
+        <option key={i} value={i}>
+          {i}
+        </option>
+      );
     }
     return options;
   };
