@@ -4,6 +4,7 @@ import { setResults } from "../slices/resultsSlice";
 import { useGetAiDataMutation } from "../slices/thirdPartyApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 //Components
 import SearchResults from "./SearchResults";
@@ -23,26 +24,26 @@ const Searchbar = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const res = await getAiData({
-        input: search,
-        length: playlistLength,
-      }).unwrap();
-      dispatch(setResults(res));
-    } catch (error) {
-      console.error(error);
-    }
+    getAndSetResults();
   };
 
   const handleClick = async () => {
+    getAndSetResults();
+  };
+
+  const getAndSetResults = async () => {
     try {
       const res = await getAiData({
         input: search,
         length: playlistLength,
       }).unwrap();
       dispatch(setResults(res));
+      console.log("res", res);
     } catch (error) {
       console.error(error);
+      toast.error("Error generating playlist: OpenAI Service Unavailable", {
+        position: "top-center",
+      });
     }
   };
 
