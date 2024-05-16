@@ -18,7 +18,7 @@ const sess = {
   store: MongoStore.create({
     mongoUrl:
       process.env.NODE_ENV === "production"
-        ? process.env.MONGODB_URI
+        ? process.env.MONGO_URI
         : "mongodb://localhost:27017/cadence_db",
   }),
 };
