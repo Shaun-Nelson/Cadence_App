@@ -1,13 +1,9 @@
 const express = require("express");
-const db = require(process.env.NODE_ENV === "production"
-  ? "/app/server/config/connection"
-  : "./config/connection");
+const db = require("./config/connection");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
-const routes = require(process.env.NODE_ENV === "production"
-  ? "/app/server/routes"
-  : "./routes");
+const routes = require("./routes");
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
