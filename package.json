@@ -13,9 +13,6 @@
   },
   "author": "",
   "license": "ISC",
-  "engines": {
-    "node": "20.x"
-  },
   "dependencies": {
     "typescript": "^5.4.5"
   },
