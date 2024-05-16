@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node dist/server/server.js",
     "build": "tsc",
     "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\"",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "deploy-server": "git add . && git commit -m \"deploying to Heroku\" && git push heroku main",
+    "postinstall": "tsc"
   },
   "author": "",
   "license": "ISC",
