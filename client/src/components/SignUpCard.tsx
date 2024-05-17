@@ -14,6 +14,7 @@ const SignUpCard = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     try {
       if (password !== confirmPassword) {
         toast.error("Passwords do not match");
@@ -24,6 +25,7 @@ const SignUpCard = () => {
       }
     } catch (error) {
       console.error(error);
+      toast.error("Failed to sign up");
     }
   };
 

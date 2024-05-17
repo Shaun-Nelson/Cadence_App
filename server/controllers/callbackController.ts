@@ -1,5 +1,3 @@
-import { set } from "mongoose";
-
 const spotifyWebApi = require("spotify-web-api-node");
 const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../.env") });

@@ -45,7 +45,7 @@ module.exports = {
 
       await getSpotifyAccessToken(spotifyApi);
 
-      await getSongsMetadata(songs, spotifyApi);
+      await appendSongsMetadata(songs, spotifyApi);
 
       res.status(200).send(getTracks(songs));
     } catch (error) {
@@ -71,19 +71,28 @@ const getSpotifyAccessToken = async (spotifyApi: any) => {
   spotifyApi.setAccessToken(accessToken);
 };
 
-const getSongsMetadata = async (songs: any, spotifyApi: any) => {
+const appendSongsMetadata = async (songs: any, spotifyApi: any) => {
   for (let song in songs) {
-    const searchResults = await spotifyApi.searchTracks(
-      songs[song].title + " " + songs[song].artist
+    let searchResults = await spotifyApi.searchTracks(
+      `${songs[song].title} ${songs[song].artist}`
     );
 
-    songs[song].previewUrl = searchResults.body.tracks.items[0].preview_url;
+    if (searchResults.body.tracks.items?.length === 0) {
+      searchResults = await spotifyApi.searchTracks(`${songs[song].title}`);
+    }
 
-    songs[song].image = searchResults.body.tracks.items[0].album.images[0].url;
-
-    songs[song].uri = searchResults.body.tracks.items[0].uri;
-
-    songs[song].artists = songs[song].artist.split(",");
+    if (searchResults.body.tracks.items?.length > 0) {
+      songs[song].previewUrl = searchResults.body.tracks.items[0].preview_url;
+      songs[song].image =
+        searchResults.body.tracks.items[0].album.images[0].url;
+      songs[song].uri = searchResults.body.tracks.items[0].uri;
+      songs[song].artists = songs[song].artist.split(", ");
+    } else {
+      songs[song].previewUrl = "";
+      songs[song].image = "";
+      songs[song].uri = "";
+      songs[song].artists = [];
+    }
   }
 };
 
