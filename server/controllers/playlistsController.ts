@@ -15,13 +15,12 @@ module.exports = {
   },
   createPlaylist: async function (req: any, res: any) {
     try {
-      const tracks = JSON.parse(req.body.tracks);
       const playlistConfig = {
         name: req.body.name,
         description: req.body.playlistDescription
           ? req.body.playlistDescription
           : "",
-        tracks,
+        tracks: JSON.parse(req.body.tracks),
         username: req.user.username,
       };
       const playlist = await Playlist.create(playlistConfig);
@@ -45,11 +44,7 @@ module.exports = {
     }
   },
   createSpotifyPlaylist: async function (req: any, res: any) {
-    if (!req.session.refresh_token) {
-      return res.status(401).json({
-        message: "Unauthorized. Please connect to Spotify first.",
-      });
-    }
+    checkSpotifyIsLoggedIn(req, res);
 
     const { name, description } = req.body;
     const tracks = req.body.tracks ? JSON.parse(req.body.tracks) : [];
@@ -119,5 +114,13 @@ const createSpotifyPlaylist = async (
   } catch (error) {
     console.error("Error creating Spotify playlist", error);
     return { message: "Error creating Spotify playlist" };
+  }
+};
+
+const checkSpotifyIsLoggedIn = (req: any, res: any) => {
+  if (!req.cookies.access_token || !req.cookies.refresh_token) {
+    return res.status(401).json({
+      message: "Unauthorized. Please connect to Spotify first.",
+    });
   }
 };

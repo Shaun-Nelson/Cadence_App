@@ -201,10 +201,6 @@ td {
 /* DESKTOP VIEW */
 
 @media screen and (min-width: 768px) {
-  body {
-    background-color: #f0f0f0;
-  }
-
   .form-container {
     width: 30vw;
   }
