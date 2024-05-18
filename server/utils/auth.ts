@@ -68,6 +68,7 @@ module.exports = {
     return req;
   },
   protect: async function (req: Request, res: Response, next: NextFunction) {
+    console.log("PROTECT FNC HIT. Cookies:", req.cookies);
     let token = req.cookies.jwt;
     console.log("Token:", token);
 
