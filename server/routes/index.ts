@@ -8,6 +8,7 @@ const logoutRoutes = require("./logout");
 const userRoutes = require("./user");
 const playlistsRoutes = require("./playlists");
 
+// base URL: /api
 router.use("/callback", callbackRoutes);
 router.use("/login", loginRoutes);
 router.use("/openai", openAIRoutes);
