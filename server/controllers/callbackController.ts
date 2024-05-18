@@ -3,7 +3,7 @@ require("dotenv").config();
 
 module.exports = {
   async callback(req: any, res: any) {
-    console.log("Callback route hit. CookiesL", req.cookies);
+    console.log("Callback route hit. Cookies:", req.cookies);
     const code = req.query.code;
     const state = req.query.state;
 
@@ -26,8 +26,7 @@ module.exports = {
         code,
         spotifyApi
       );
-      setSpotifyTokens(accessToken, refreshToken, spotifyApi);
-      setTokensCookies(accessToken, refreshToken, res);
+      setSpotifyTokens(accessToken, refreshToken, spotifyApi, res);
 
       req.session.save((err: any) => {
         if (err) {
@@ -63,27 +62,18 @@ const getSpotifyTokens = async (code: string, spotifyApi: any) => {
 const setSpotifyTokens = (
   accessToken: string,
   refreshToken: string,
-  spotifyApi: any
+  spotifyApi: any,
+  res: any
 ) => {
   try {
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.setRefreshToken(refreshToken);
+    console.log("Setting cookies");
+    res.cookie("access_token", accessToken, { httpOnly: true, secure: true });
+    res.cookie("refresh_token", refreshToken, { httpOnly: true, secure: true });
+    console.log("Cookies set");
   } catch (error) {
     console.error("Error setting Spotify tokens:", error);
     throw new Error("Error setting Spotify tokens");
-  }
-};
-
-const setTokensCookies = (
-  accessToken: string,
-  refreshToken: string,
-  res: any
-) => {
-  try {
-    res.cookie("access_token", accessToken, { httpOnly: true, secure: true });
-    res.cookie("refresh_token", refreshToken, { httpOnly: true, secure: true });
-  } catch (error) {
-    console.error("Error setting cookies:", error);
-    throw new Error("Error setting cookies");
   }
 };
