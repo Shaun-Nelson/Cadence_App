@@ -23,6 +23,7 @@ const clearCookies = (res: any) => {
   res.clearCookie("connect.sid");
   res.clearCookie("access_token");
   res.clearCookie("refresh_token");
+  res.clearCookie("spotify_auth_state");
   res.cookie("jwt", "", {
     httpOnly: true,
     expires: new Date(0),

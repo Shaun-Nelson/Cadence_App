@@ -84,13 +84,28 @@ module.exports = {
         "playlist-read-private",
         "playlist-read-collaborative",
       ];
-      const state = "spotify" + Math.random().toString(36).substring(2);
+      const state = generateRandomString(16);
       const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
+      res.cookie("spotify_auth_state", state, {
+        maxAge: 3600000,
+        httpOnly: true,
+      });
       res.status(200).json({ url: authorizeURL });
     } catch (error) {
       console.error(error);
       res.status(500).send({ message: "Error logging in with Spotify" });
     }
   },
+};
+
+const generateRandomString = (length: number) => {
+  let text = "";
+  let possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (let i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
 };
