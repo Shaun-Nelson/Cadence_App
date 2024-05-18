@@ -69,6 +69,7 @@ module.exports = {
   },
   protect: async function (req: Request, res: Response, next: NextFunction) {
     let token = req.cookies.jwt;
+    console.log("Token:", token);
 
     if (token) {
       try {
