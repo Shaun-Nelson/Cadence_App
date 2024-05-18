@@ -1,8 +1,7 @@
 const User = require("../models/User");
 const SpotifyWebApi = require("spotify-web-api-node");
 const { signToken } = require("../utils/auth");
-const path = require("path");
-require("dotenv").config(path.resolve(__dirname, "../../.env"));
+require("dotenv").config();
 
 module.exports = {
   authUser: async (req: any, res: any) => {
@@ -85,7 +84,8 @@ module.exports = {
         "playlist-read-private",
         "playlist-read-collaborative",
       ];
-      const authorizeURL = spotifyApi.createAuthorizeURL(scopes);
+      const state = "spotify" + Math.random().toString(36).substring(2);
+      const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
       res.status(200).json({ url: authorizeURL });
     } catch (error) {

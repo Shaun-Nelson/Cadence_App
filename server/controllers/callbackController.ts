@@ -4,6 +4,7 @@ require("dotenv").config();
 module.exports = {
   async callback(req: any, res: any) {
     const code = req.query.code;
+    const state = req.query.state;
     if (!code) {
       return res.status(400).send({ message: "Authorization code is missing" });
     }
