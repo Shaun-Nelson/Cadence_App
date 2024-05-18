@@ -39,6 +39,7 @@ app.use(session(sess));
 app.use("/api", routes);
 
 app.set("trust proxy", 1);
+app.enable("trust proxy");
 
 db.once("open", () => {
   app.listen(PORT, () => {
