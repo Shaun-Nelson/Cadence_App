@@ -19,7 +19,7 @@ const sess = {
   store: MongoStore.create({
     mongoUrl:
       process.env.NODE_ENV === "production"
-        ? process.env.MONGODB_URI
+        ? process.env.MONGO_URI
         : "mongodb://localhost:27017/cadence_db",
   }),
 };
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "http://localhost:5137",
     credentials: true,
   })
 );

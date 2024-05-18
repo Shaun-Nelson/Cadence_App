@@ -15,7 +15,7 @@ module.exports = {
         {
           role: "system",
           content: `You are an assistant that only responds in JSON.
-      Create a list of ${req.body.length} unique songs based off the following
+      Create a list of ${req.body.length} unique songs, found in the Spotify library, based off the following
       statement: "${req.body.input}". Include "id", "title", "artist", "album", and "duration"
       in your response. An example response is: "
       [
@@ -86,11 +86,14 @@ const appendSongsMetadata = async (songs: any, spotifyApi: any) => {
       songs[song].image =
         searchResults.body.tracks.items[0].album.images[0].url;
       songs[song].uri = searchResults.body.tracks.items[0].uri;
+      songs[song].externalUrl =
+        searchResults.body.tracks.items[0].external_urls.spotify;
       songs[song].artists = songs[song].artist.split(", ");
     } else {
       songs[song].previewUrl = "";
       songs[song].image = "";
       songs[song].uri = "";
+      songs[song].externalUrl = "";
       songs[song].artists = [];
     }
   }
@@ -106,6 +109,7 @@ const getTracks = (songs: any) => {
       duration: songs[song].duration,
       previewUrl: songs[song].previewUrl,
       link: songs[song].uri,
+      externalUrl: songs[song].externalUrl,
       image: songs[song].image,
     });
   }

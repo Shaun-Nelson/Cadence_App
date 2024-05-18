@@ -1,17 +1,27 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const path = require("path");
+import { Request, Response, NextFunction } from "express";
+import { ObjectId } from "mongodb";
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const secret = process.env.JWT_SECRET;
 const expiration = "14d";
 
+declare module "express-session" {
+  interface SessionData {
+    logged_in: boolean;
+  }
+}
+
+interface CustomRequest extends Request {
+  user?: any;
+}
+
 module.exports = {
-  // This function will be used to sign a token
-  signToken: function (res: any, userId: any) {
+  signToken: function (res: Response, userId: ObjectId) {
     try {
       const payload = { _id: userId };
-
       const token = jwt.sign(payload, secret, {
         expiresIn: expiration,
       });
@@ -26,7 +36,6 @@ module.exports = {
       return res.status(500).send("Error signing token");
     }
   },
-  // This function will be used to verify a token
   getUser: function (token: string) {
     try {
       if (!token) {
@@ -38,48 +47,39 @@ module.exports = {
       return null;
     }
   },
-  // This middleware function will be used to check if the user is logged in
-  isLoggedIn: function (req: any, res: any, next: any) {
-    if (req.session.logged_in) {
+  isLoggedIn: function (req: Request, res: Response, next: NextFunction) {
+    if (req.session?.logged_in) {
       next();
     }
-    res.status(401).send("Unauthorized");
+    return res.status(401).send("Unauthorized");
   },
-  // This middleware function will be used to authenticate users and grant access to the application.
-  authMiddleware: function ({ req }: { req: any }) {
+  authMiddleware: function (req: Request, res: Response, next: NextFunction) {
     let token = req.body.token || req.query.token || req.headers.authorization;
-
-    if (req.headers.authorization) {
-      token = token.split(" ").pop().trim();
-    }
-
-    if (!token) {
-      return req;
-    }
 
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      (req as CustomRequest).user = data;
+      next();
     } catch {
       console.log("Invalid token");
+      return res.status(401).json("Invalid token");
     }
 
     return req;
   },
-  protect: async function (req: any, res: any, next: any) {
+  protect: async function (req: Request, res: Response, next: NextFunction) {
     let token = req.cookies.jwt;
 
     if (token) {
       try {
         const decoded = jwt.verify(token, secret);
-
         const user = await User.findById(decoded._id);
 
         if (!user) {
           return res.status(401).send("Unauthorized. Invalid token.");
         } else {
-          req.user = user;
-          return next();
+          (req as CustomRequest).user = user;
+          next();
         }
       } catch (error) {
         console.error(error);
@@ -87,6 +87,15 @@ module.exports = {
       }
     } else {
       return res.status(401).send("Unauthorized. No token provided.");
+    }
+  },
+  checkSpotifyIsLoggedIn: (req: Request, res: Response, next: NextFunction) => {
+    if (!req.cookies.access_token || !req.cookies.refresh_token) {
+      return res.status(401).json({
+        message: "Unauthorized. Please connect to Spotify first.",
+      });
+    } else {
+      next();
     }
   },
 };

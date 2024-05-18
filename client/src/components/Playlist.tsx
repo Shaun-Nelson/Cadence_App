@@ -1,57 +1,35 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// USE A MODAL TO CONFIRM DELETION
+// TODO: Use a modal to confirm delete
 
-interface PlaylistProps {
-  playlist: {
-    name: string;
-    description: string;
-    tracks: {
-      title: string;
-      image: string;
-      link: string;
-      artists: [];
-      duration: string;
-      previewUrl: string;
-    }[];
-    link: string;
-    username: string;
-  };
-}
-
-type TrackType = {
+type Track = {
   title: string;
   image: string;
   link: string;
   artists: [];
   duration: string;
   previewUrl: string;
+  externalUrl: string;
+};
+
+type Playlist = {
+  name: string;
+  description: string;
+  link: string;
+  tracks: Track[];
 };
 
 interface PlaylistProps {
-  playlist: {
-    name: string;
-    description: string;
-    tracks: {
-      title: string;
-      image: string;
-      link: string;
-      artists: [];
-      duration: string;
-      previewUrl: string;
-    }[];
-    link: string;
-    username: string;
-  };
-  handlePlaylistDelete: (name: string) => void;
+  playlist: Playlist;
+  handlePlaylistDelete?: (name: string) => void;
 }
 
 const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
   return (
-    <div className='playlist'>
-      {playlist.name && (
-        <>
+    <>
+      {handlePlaylistDelete && (
+        <div className='playlist-metainfo'>
           <h2>{playlist.name}</h2>
           <p>{playlist.description}</p>
           <a href={playlist.link} target='_blank' rel='noreferrer'>
@@ -61,8 +39,9 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             onClick={() => handlePlaylistDelete(playlist.name)}
             icon={faTrash}
           />
-        </>
+        </div>
       )}
+
       <table id='table-playlist-results'>
         <tbody>
           <tr>
@@ -72,14 +51,14 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             <th>Duration</th>
             <th>Preview</th>
           </tr>
-          {playlist.tracks.map((track: TrackType, index: number) => {
+          {playlist.tracks.map((track: Track, index: number) => {
             return (
               <tr key={index}>
                 <td>
                   <img src={track.image} alt='album cover' height={"50px"} />
                 </td>
                 <td>
-                  <a href={track.link} target='_blank' rel='noreferrer'>
+                  <a href={track.externalUrl} target='_blank' rel='noreferrer'>
                     {track.title}
                   </a>
                 </td>
@@ -99,8 +78,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
           })}
         </tbody>
       </table>
-      <hr />
-    </div>
+    </>
   );
 };
 

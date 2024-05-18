@@ -4,12 +4,11 @@ import { useSignupMutation } from "../slices/usersApiSlice";
 import { toast } from "react-toastify";
 
 const SignUpCard = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-  const Navigate = useNavigate();
-
+  const navigate = useNavigate();
   const [signup] = useSignupMutation();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -17,11 +16,11 @@ const SignUpCard = () => {
 
     try {
       if (password !== confirmPassword) {
-        toast.error("Passwords do not match");
+        toast.error("Passwords don't match");
       } else {
         await signup({ username, password }).unwrap();
 
-        Navigate("/login");
+        navigate("/login");
       }
     } catch (error) {
       console.error(error);

@@ -3,12 +3,13 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
+import { toast } from "react-toastify";
 
 // Components
 import NavItem from "./NavItem";
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const [logoutUser] = useLogoutMutation();
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const NavBar = () => {
       setIsLoggedIn(false);
     } catch (error) {
       console.error(error);
+      toast.error("Failed to logout");
     }
   };
 
@@ -38,7 +40,6 @@ const NavBar = () => {
       <ul className='navbar'>
         <NavItem linkTo='/' bodyText='Home' />
         <NavItem linkTo='/signup' bodyText='Sign-Up' />
-        {/* If user is logged in, display Logout, else display Login */}
         {isLoggedIn ? (
           <>
             <NavItem linkTo='/playlists' bodyText='My Playlists' />

@@ -1,6 +1,15 @@
 const Playlist = require("../models/Playlist");
 const spotifyWebApi = require("spotify-web-api-node");
 
+type Track = {
+  title: string;
+  image: string;
+  link: string;
+  artists: [];
+  duration: string;
+  previewUrl: string;
+};
+
 module.exports = {
   getPlaylists: async function (req: any, res: any) {
     try {
@@ -44,8 +53,6 @@ module.exports = {
     }
   },
   createSpotifyPlaylist: async function (req: any, res: any) {
-    checkSpotifyIsLoggedIn(req, res);
-
     const { name, description } = req.body;
     const tracks = req.body.tracks ? JSON.parse(req.body.tracks) : [];
 
@@ -95,11 +102,11 @@ const refreshSpotifyTokens = async (spotifyApi: any) => {
 
 const createSpotifyPlaylist = async (
   spotifyApi: any,
-  tracks: any,
+  tracks: Track[],
   name: string,
   description: string
 ) => {
-  const tracksToAdd = tracks.map((track: any) => track.link);
+  const tracksToAdd = tracks.map((track: Track) => track.link);
 
   try {
     const playlist = await spotifyApi.createPlaylist(name, {
@@ -114,13 +121,5 @@ const createSpotifyPlaylist = async (
   } catch (error) {
     console.error("Error creating Spotify playlist", error);
     return { message: "Error creating Spotify playlist" };
-  }
-};
-
-const checkSpotifyIsLoggedIn = (req: any, res: any) => {
-  if (!req.cookies.access_token || !req.cookies.refresh_token) {
-    return res.status(401).json({
-      message: "Unauthorized. Please connect to Spotify first.",
-    });
   }
 };

@@ -11,10 +11,10 @@ import { RootState } from "../store";
 import { toast } from "react-toastify";
 
 const PlaylistButtons = () => {
-  const [playlistName, setPlaylistName] = useState("");
-  const [playlistDescription, setPlaylistDescription] = useState("");
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
+  const [playlistName, setPlaylistName] = useState<string>("");
+  const [playlistDescription, setPlaylistDescription] = useState<string>("");
+  const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
 
   const { results } = useSelector((state: RootState) => state.results);
   const [createPlaylist, { isError }] = useCreatePlaylistMutation();
@@ -37,6 +37,7 @@ const PlaylistButtons = () => {
       }
     } catch (error) {
       console.error(error);
+      toast.error("Cannot save playlist. Please log in.");
     }
   };
 

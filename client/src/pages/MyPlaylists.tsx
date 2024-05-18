@@ -3,27 +3,31 @@ import { useGetPlaylistsMutation } from "../slices/playlistApiSlice";
 import { useDeletePlaylistMutation } from "../slices/playlistApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 //Components
 import Playlist from "../components/Playlist";
 
+type Track = {
+  title: string;
+  image: string;
+  link: string;
+  artists: [];
+  duration: string;
+  previewUrl: string;
+  externalUrl: string;
+};
+
+type PlaylistType = {
+  name: string;
+  description: string;
+  link: string;
+  tracks: Track[];
+  username: string;
+};
+
 const MyPlaylists = () => {
-  const [playlists, setPlaylists] = useState<
-    {
-      name: string;
-      description: string;
-      tracks: {
-        title: string;
-        image: string;
-        link: string;
-        artists: [];
-        duration: string;
-        previewUrl: string;
-      }[];
-      link: string;
-      username: string;
-    }[]
-  >([]);
+  const [playlists, setPlaylists] = useState<PlaylistType[]>([]);
 
   const [getPlaylists, { isLoading }] = useGetPlaylistsMutation();
 
@@ -35,6 +39,7 @@ const MyPlaylists = () => {
       setPlaylists(data);
     } catch (error) {
       console.error(error);
+      toast.error("Failed to get playlists");
     }
   };
 
@@ -44,6 +49,7 @@ const MyPlaylists = () => {
       await getData();
     } catch (error) {
       console.error(error);
+      toast.error("Failed to delete playlist");
     }
   };
 

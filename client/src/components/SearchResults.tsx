@@ -5,11 +5,11 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import PlaylistResults from "./PlaylistResults";
 import PlaylistButtons from "./PlaylistButtons";
 
-interface SearchResult {
+interface SearchResultsProps {
   loading: boolean;
 }
 
-const SearchResults = ({ loading }: SearchResult) => {
+const SearchResults = ({ loading }: SearchResultsProps) => {
   return (
     <div className='search-results'>
       {!loading ? (

@@ -1,5 +1,3 @@
-import { link } from "fs";
-
 const { Schema, model } = require("mongoose");
 
 const trackSchema = new Schema({
@@ -17,6 +15,9 @@ const trackSchema = new Schema({
     type: String,
   },
   link: {
+    type: String,
+  },
+  externalUrl: {
     type: String,
   },
   image: {

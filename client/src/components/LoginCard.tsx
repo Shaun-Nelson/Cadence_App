@@ -22,6 +22,7 @@ const LoginCard = () => {
       dispatch(setCredentials({ ...res }));
       navigate("/");
     } catch (error) {
+      console.error(error);
       toast.error("Invalid username or password");
     }
   };

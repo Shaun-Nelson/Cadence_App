@@ -1,67 +1,35 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
-import { Key } from "react";
+// Components
+import Playlist from "./Playlist";
 
-interface ResultType {
-  image: string;
+type Track = {
   title: string;
+  image: string;
   link: string;
-  artists: string[];
+  artists: [];
   duration: string;
   previewUrl: string;
-}
+  externalUrl: string;
+};
+
+type PlaylistType = {
+  name: string;
+  description: string;
+  link: string;
+  tracks: Track[];
+};
 
 const PlaylistResults = () => {
   const { results } = useSelector((state: RootState) => state.results);
+  const playlist: PlaylistType = {
+    name: "",
+    description: "",
+    link: "",
+    tracks: results,
+  };
 
-  return (
-    <>
-      {results.length > 0 && (
-        <table id='table-playlist-results'>
-          <tbody>
-            <tr>
-              <th>Album</th>
-              <th>Title</th>
-              <th>Artists</th>
-              <th>Duration</th>
-              <th>Preview</th>
-            </tr>
-            {results.map(
-              (result: ResultType, index: Key | null | undefined) => {
-                return (
-                  <tr key={index}>
-                    <td>
-                      <img
-                        src={result.image}
-                        alt='album cover'
-                        height={"50px"}
-                      />
-                    </td>
-                    <td>
-                      <a href={result.link} target='_blank' rel='noreferrer'>
-                        {result.title}
-                      </a>
-                    </td>
-                    <td>
-                      <p>{result.artists.join(", ")}</p>
-                    </td>
-                    <td>
-                      <p>{result.duration}</p>
-                    </td>
-                    <td>
-                      <audio controls>
-                        <source src={result.previewUrl} type='audio/mpeg' />
-                      </audio>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
-          </tbody>
-        </table>
-      )}
-    </>
-  );
+  return <>{results?.length > 0 && <Playlist playlist={playlist} />}</>;
 };
 
 export default PlaylistResults;

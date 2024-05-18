@@ -3,6 +3,7 @@ import { useLoginSpotifyMutation } from "../slices/thirdPartyApiSlice";
 import { RootState } from "../store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
   const { userInfo } = useSelector((state: RootState) => state.auth);
@@ -16,6 +17,7 @@ const UserProfile = () => {
       window.location.href = res.url;
     } catch (error) {
       console.error(error);
+      toast.error("Failed to connect to Spotify");
     }
   };
 

@@ -8,13 +8,22 @@ import { toast } from "react-toastify";
 //Components
 import SearchResults from "./SearchResults";
 
-const MIN = 10;
-const MAX = 50;
-const STEP = 10;
+const generateOptionsConfig = {
+  MIN_LENGTH: 10,
+  MAX_LENGTH: 50,
+  STEP: 10,
+};
 
-const genertateOptions = () => {
-  const options = [];
-  for (let i = MIN; i <= MAX; i += STEP) {
+interface GenerateOptionsConfig {
+  MIN_LENGTH: number;
+  MAX_LENGTH: number;
+  STEP: number;
+}
+
+const genertateOptions = (config: GenerateOptionsConfig): JSX.Element[] => {
+  const { MIN_LENGTH, MAX_LENGTH, STEP } = config;
+  const options: JSX.Element[] = [];
+  for (let i = MIN_LENGTH; i <= MAX_LENGTH; i += STEP) {
     options.push(
       <option key={i} value={i}>
         {i}
@@ -26,8 +35,12 @@ const genertateOptions = () => {
 
 const Searchbar = () => {
   const [search, setSearch] = useState<string>("");
-  const [playlistLength, setPlaylistLength] = useState<number>(MIN);
-  const [options] = useState<JSX.Element[]>(genertateOptions());
+  const [playlistLength, setPlaylistLength] = useState<number>(
+    generateOptionsConfig.MIN_LENGTH
+  );
+  const [options] = useState<JSX.Element[]>(
+    genertateOptions(generateOptionsConfig)
+  );
 
   const dispatch = useDispatch();
 
