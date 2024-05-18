@@ -3,6 +3,7 @@ require("dotenv").config();
 
 module.exports = {
   async callback(req: any, res: any) {
+    console.log("Callback route hit. CookiesL", req.cookies);
     const code = req.query.code;
     const state = req.query.state;
 
@@ -28,15 +29,15 @@ module.exports = {
       setSpotifyTokens(accessToken, refreshToken, spotifyApi);
       setTokensCookies(accessToken, refreshToken, res);
 
-      req.session.access_token = accessToken;
-      req.session.refresh_token = refreshToken;
-      req.session.spotifyApi = spotifyApi;
-
       req.session.save((err: any) => {
         if (err) {
           console.error("Session save error:", err);
           return res.status(500).send({ message: "Session save error" });
         }
+        req.session.access_token = accessToken;
+        req.session.refresh_token = refreshToken;
+        req.session.spotifyApi = spotifyApi;
+
         res.status(200).redirect(process.env.CLIENT_URL);
       });
     } catch (error) {
