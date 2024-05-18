@@ -28,7 +28,7 @@ module.exports = {
       res.cookie("jwt", token, {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 14,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
       });
     } catch (error) {
       console.error(error);
