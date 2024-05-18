@@ -3,6 +3,7 @@ const User = require("../models/User");
 module.exports = {
   logout: async function (req: any, res: any) {
     try {
+      console.log("Logging out user. user_id:", req.session.user_id);
       const user = await User.findOne({ _id: req.session.user_id });
 
       if (user) {

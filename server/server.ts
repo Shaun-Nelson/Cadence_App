@@ -15,6 +15,8 @@ const sess = {
   saveUninitialized: true,
   cookie: {
     secure: process.env.NODE_ENV === "production", //secure is true in production
+    httpOnly: true,
+    sameSite: "none",
   },
   store: MongoStore.create({
     mongoUrl:
