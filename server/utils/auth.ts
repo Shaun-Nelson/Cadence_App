@@ -1,9 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
-const path = require("path");
 import { Request, Response, NextFunction } from "express";
 import { ObjectId } from "mongodb";
-require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
+require("dotenv").config();
 
 const secret = process.env.JWT_SECRET;
 const expiration = "14d";
@@ -88,7 +87,7 @@ module.exports = {
         return res.status(401).send("Unauthorized. Invalid token.");
       }
     } else {
-      return res.status(401).send("Unauthorized. No JWT provided.");
+      return res.status(401).send("Unauthorized. No token provided.");
     }
   },
   checkSpotifyIsLoggedIn: (req: Request, res: Response, next: NextFunction) => {
