@@ -87,7 +87,7 @@ module.exports = {
         return res.status(401).send("Unauthorized. Invalid token.");
       }
     } else {
-      return res.status(401).send("Unauthorized. No token provided.");
+      return res.status(401).send("Unauthorized. No JWT provided.");
     }
   },
   checkSpotifyIsLoggedIn: (req: Request, res: Response, next: NextFunction) => {
