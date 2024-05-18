@@ -36,11 +36,16 @@ module.exports = {
 };
 
 const getSpotifyTokens = async (code: string, spotifyApi: any) => {
-  const data = await spotifyApi.authorizationCodeGrant(code);
-  const accessToken = data.body["access_token"];
-  const refreshToken = data.body["refresh_token"];
+  try {
+    const data = await spotifyApi.authorizationCodeGrant(code);
+    const accessToken = data.body["access_token"];
+    const refreshToken = data.body["refresh_token"];
 
-  return { accessToken, refreshToken };
+    return { accessToken, refreshToken };
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error getting Spotify tokens");
+  }
 };
 
 const setSpotifyTokens = (
@@ -48,8 +53,13 @@ const setSpotifyTokens = (
   refreshToken: string,
   spotifyApi: any
 ) => {
-  spotifyApi.setAccessToken(accessToken);
-  spotifyApi.setRefreshToken(refreshToken);
+  try {
+    spotifyApi.setAccessToken(accessToken);
+    spotifyApi.setRefreshToken(refreshToken);
+  } catch (error) {
+    console.error(error);
+    throw new Error("Error setting Spotify tokens");
+  }
 };
 
 const setTokensCookies = (
