@@ -1,6 +1,5 @@
 const spotifyWebApi = require("spotify-web-api-node");
-const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, "../.env") });
+require("dotenv").config();
 
 module.exports = {
   async callback(req: any, res: any) {
