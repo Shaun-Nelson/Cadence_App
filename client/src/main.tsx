@@ -14,7 +14,6 @@ import "./index.css";
 //Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
 import SignUp from "./pages/SignUp";
 import MyPlaylists from "./pages/MyPlaylists";
 import Page404 from "./pages/404.tsx";
@@ -25,7 +24,7 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route index path='/' element={<Home />} />,
       <Route path='/login' element={<Login />} />,
-      <Route path='/logout' element={<Logout />} />,
+      <Route path='/logout' element={<Home />} />,
       <Route path='/signup' element={<SignUp />} />,
       <Route path='/playlists' element={<MyPlaylists />} />
       <Route path='/profile' element={<UserProfile />} />
