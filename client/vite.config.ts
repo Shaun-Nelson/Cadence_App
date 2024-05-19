@@ -14,14 +14,5 @@ export default defineConfig({
   },
   build: {
     outDir: "build",
-    rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react-router-dom",
-        "react/jsx-runtime",
-        "react-dom/client",
-      ],
-    },
   },
 });
