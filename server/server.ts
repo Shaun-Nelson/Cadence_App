@@ -16,6 +16,7 @@ const sessionConfig = {
   cookie: {
     secure: process.env.NODE_ENV === "production",
     httpOnly: false,
+    sameSite: "none",
   },
   store: MongoStore.create({
     mongoUrl:
@@ -23,6 +24,7 @@ const sessionConfig = {
         ? process.env.MONGO_URI
         : "mongodb://localhost:27017/cadence_db",
   }),
+  proxy: process.env.NODE_ENV === "production",
 };
 const corsConfig = {
   origin: process.env.CLIENT_URL || "http://localhost:5137",
@@ -30,6 +32,7 @@ const corsConfig = {
 };
 
 app.set("trust proxy", 1);
+app.enable("trust proxy");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
