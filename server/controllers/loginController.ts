@@ -93,9 +93,8 @@ module.exports = {
           console.error("Session save error:", err);
           return res.status(500).send({ message: "Session save error" });
         }
+        return res.status(200).json({ url: authorizeURL });
       });
-
-      res.status(200).json({ url: authorizeURL });
     } catch (error) {
       console.error(error);
       res.status(500).send({ message: "Error logging in with Spotify" });
