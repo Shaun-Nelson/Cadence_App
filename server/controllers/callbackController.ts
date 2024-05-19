@@ -34,16 +34,16 @@ module.exports = {
 
       setSpotifyTokens(accessToken, refreshToken, spotifyApi);
 
-      // res.cookie("access_token", accessToken, {
-      //   secure: true,
-      //   httpOnly: false,
-      //   sameSite: "none",
-      // });
-      // res.cookie("refresh_token", refreshToken, {
-      //   secure: true,
-      //   httpOnly: false,
-      //   sameSite: "none",
-      // });
+      res.cookie("access_token", accessToken, {
+        secure: true,
+        httpOnly: false,
+        sameSite: "none",
+      });
+      res.cookie("refresh_token", refreshToken, {
+        secure: true,
+        httpOnly: false,
+        sameSite: "none",
+      });
 
       req.session.access_token = accessToken;
       req.session.refresh_token = refreshToken;
