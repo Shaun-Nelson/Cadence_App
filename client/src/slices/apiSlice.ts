@@ -29,7 +29,11 @@ export const apiSlice = createApi({
       }),
     }),
     getPlaylists: builder.mutation({
-      query: () => "/playlists",
+      query: () => ({
+        url: "/playlists",
+        method: "GET",
+        withCredentials: true,
+      }),
     }),
     createPlaylist: builder.mutation({
       query: (body) => ({
@@ -50,7 +54,11 @@ export const apiSlice = createApi({
       invalidatesTags: ["Playlist"],
     }),
     loginSpotify: builder.mutation({
-      query: () => "/login/spotify",
+      query: () => ({
+        url: "/login/spotify",
+        method: "GET",
+        withCredentials: true,
+      }),
     }),
     saveSpotifyPlaylist: builder.mutation({
       query: (body) => ({
