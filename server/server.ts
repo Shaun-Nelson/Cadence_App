@@ -14,7 +14,7 @@ const sessionConfig = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    secure: process.env.NODE_ENV === "production", //secure is true in production
+    secure: true,
     sameSite: "none",
   },
   store: MongoStore.create({

@@ -27,7 +27,18 @@ module.exports = {
         spotifyApi
       );
 
-      setSpotifyTokens(accessToken, refreshToken, spotifyApi, res);
+      setSpotifyTokens(accessToken, refreshToken, spotifyApi);
+
+      res.cookie("access_token", accessToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
+      res.cookie("refresh_token", refreshToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      });
 
       req.session.access_token = accessToken;
       req.session.refresh_token = refreshToken;
@@ -64,25 +75,11 @@ const getSpotifyTokens = async (code: string, spotifyApi: any) => {
 const setSpotifyTokens = (
   accessToken: string,
   refreshToken: string,
-  spotifyApi: any,
-  res: any
+  spotifyApi: any
 ) => {
   try {
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.setRefreshToken(refreshToken);
-    console.log("Setting cookies");
-    res.cookie("access_token", accessToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      domain: process.env.CLIENT_URL,
-    });
-    res.cookie("refresh_token", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      domain: process.env.CLIENT_URL,
-    });
   } catch (error) {
     console.error("Error setting Spotify tokens:", error);
     throw new Error("Error setting Spotify tokens");
