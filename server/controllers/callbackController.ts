@@ -9,7 +9,7 @@ module.exports = {
 
     console.log("Session:", req.session);
 
-    if (state !== req.session.state) {
+    if (state !== req.cookies["spotify_auth_state"]) {
       return res.status(400).send({ message: "Invalid state" });
     }
 

@@ -40,8 +40,6 @@ app.use(cors(corsConfig));
 app.use(session(sessionConfig));
 app.use("/api", routes);
 
-// app.enable("trust proxy");
-
 db.once("open", () => {
   app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

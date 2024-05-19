@@ -7,7 +7,14 @@ module.exports = {
       const user = await User.findOne({ _id: req.session.user_id });
 
       if (user) {
-        clearCookies(res);
+        for (const key in req.cookies) {
+          res.clearCookie(key);
+        }
+
+        res.cookie("jwt", "", {
+          httpOnly: true,
+          expires: new Date(0),
+        });
         req.session.destroy();
 
         res.status(200).json({ message: "User logged out" });
@@ -21,13 +28,4 @@ module.exports = {
   },
 };
 
-const clearCookies = (res: any) => {
-  for (const key in res.cookies) {
-    res.clearCookie(key);
-  }
-
-  res.cookie("jwt", "", {
-    httpOnly: true,
-    expires: new Date(0),
-  });
-};
+const clearCookies = (req: any) => {};
