@@ -24,7 +24,6 @@ const sessionConfig = {
         : "mongodb://localhost:27017/cadence_db",
   }),
   proxy: process.env.NODE_ENV === "production",
-  name: "cadence",
 };
 const corsConfig = {
   origin: process.env.CLIENT_URL || "http://localhost:5137",
