@@ -15,8 +15,7 @@ const sessionConfig = {
   saveUninitialized: true,
   cookie: {
     secure: process.env.NODE_ENV === "production",
-    httpOnly: false,
-    sameSite: "none",
+    httpOnly: true,
   },
   store: MongoStore.create({
     mongoUrl:
@@ -25,6 +24,7 @@ const sessionConfig = {
         : "mongodb://localhost:27017/cadence_db",
   }),
   proxy: process.env.NODE_ENV === "production",
+  name: "cadence",
 };
 const corsConfig = {
   origin: process.env.CLIENT_URL || "http://localhost:5137",
