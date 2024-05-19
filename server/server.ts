@@ -4,6 +4,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
+const path = require("path");
 const routes = require("./routes");
 require("dotenv").config();
 
@@ -31,8 +32,10 @@ const corsConfig = {
   credentials: true,
 };
 
-app.set("trust proxy", 1);
-app.enable("trust proxy");
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
