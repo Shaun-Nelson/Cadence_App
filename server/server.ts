@@ -33,7 +33,6 @@ const corsConfig = {
 };
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("/", (req: any, res: any) => {
     res.sendFile(path.join(__dirname, "../client/build/index.html"));
   });
