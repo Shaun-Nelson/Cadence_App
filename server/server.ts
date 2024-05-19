@@ -23,21 +23,21 @@ const sessionConfig = {
         : "mongodb://localhost:27017/cadence_db",
   }),
 };
+const corsConfig = {
+  origin: process.env.CLIENT_URL || "http://localhost:5137",
+  credentials: true,
+};
+
+app.set("trust proxy", 1);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5137",
-    credentials: true,
-  })
-);
+app.use(cors(corsConfig));
 app.use(session(sessionConfig));
 app.use("/api", routes);
 
-app.enable("trust proxy");
-app.set("trust proxy", 1);
+// app.enable("trust proxy");
 
 db.once("open", () => {
   app.listen(PORT, () => {
