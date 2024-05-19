@@ -12,7 +12,7 @@ module.exports = {
 
     console.log("Session:", req.session);
 
-    if (state !== req.cookies["spotify_auth_state"]) {
+    if (state !== req.session.state) {
       return res.status(400).send({ message: "Invalid state" });
     }
 
@@ -34,16 +34,16 @@ module.exports = {
 
       setSpotifyTokens(accessToken, refreshToken, spotifyApi);
 
-      res.cookie("access_token", accessToken, {
-        secure: true,
-        httpOnly: false,
-        sameSite: "none",
-      });
-      res.cookie("refresh_token", refreshToken, {
-        secure: true,
-        httpOnly: false,
-        sameSite: "none",
-      });
+      // res.cookie("access_token", accessToken, {
+      //   secure: true,
+      //   httpOnly: false,
+      //   sameSite: "none",
+      // });
+      // res.cookie("refresh_token", refreshToken, {
+      //   secure: true,
+      //   httpOnly: false,
+      //   sameSite: "none",
+      // });
 
       req.session.access_token = accessToken;
       req.session.refresh_token = refreshToken;

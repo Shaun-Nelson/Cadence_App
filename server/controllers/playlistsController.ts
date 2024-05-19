@@ -1,3 +1,5 @@
+import { access } from "fs";
+
 const Playlist = require("../models/Playlist");
 const spotifyWebApi = require("spotify-web-api-node");
 
@@ -66,8 +68,8 @@ module.exports = {
       clientId: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
       redirectUri: process.env.REDIRECT_URI,
-      refreshToken: req.cookies.refresh_token,
-      accessToken: req.cookies.access_token,
+      accessToken: req.session.access_token,
+      refreshToken: req.session.refresh_token,
     });
 
     refreshSpotifyTokens(spotifyApi);

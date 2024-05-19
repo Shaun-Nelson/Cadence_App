@@ -87,11 +87,11 @@ module.exports = {
       const state = generateRandomString(16);
       const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
-      res.cookie("spotify_auth_state", state, {
-        secure: true,
-        httpOnly: false,
-        sameSite: "none",
-      });
+      // res.cookie("spotify_auth_state", state, {
+      //   secure: true,
+      //   httpOnly: false,
+      //   sameSite: "none",
+      // });
 
       req.session.state = state;
       req.session.save((err: any) => {
