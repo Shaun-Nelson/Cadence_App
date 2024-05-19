@@ -8,13 +8,13 @@ module.exports = {
   async callback(req: any, res: any) {
     console.log("Callback route hit. Cookies:", req.cookies);
     const code = req.query.code;
-    // const state = req.query.state;
+    const state = req.query.state;
 
-    // console.log("Session:", req.session);
+    console.log("Session:", req.session);
 
-    // if (state !== req.cookies["spotify_auth_state"]) {
-    //   return res.status(400).send({ message: "Invalid state" });
-    // }
+    if (state !== req.cookies["spotify_auth_state"]) {
+      return res.status(400).send({ message: "Invalid state" });
+    }
 
     if (!code) {
       return res.status(400).send({ message: "Authorization code is missing" });
@@ -37,10 +37,12 @@ module.exports = {
       res.cookie("access_token", accessToken, {
         secure: true,
         httpOnly: false,
+        sameSite: "none",
       });
       res.cookie("refresh_token", refreshToken, {
         secure: true,
         httpOnly: false,
+        sameSite: "none",
       });
 
       req.session.access_token = accessToken;

@@ -90,6 +90,7 @@ module.exports = {
       res.cookie("spotify_auth_state", state, {
         secure: true,
         httpOnly: false,
+        sameSite: "none",
       });
 
       req.session.state = state;
