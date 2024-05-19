@@ -10,6 +10,8 @@ const expiration = "14d";
 declare module "express-session" {
   interface SessionData {
     logged_in: boolean;
+    access_token: string;
+    refresh_token: string;
   }
 }
 
@@ -29,6 +31,7 @@ module.exports = {
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         secure: true,
+        sameSite: "none",
       });
     } catch (error) {
       console.error(error);
