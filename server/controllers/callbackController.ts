@@ -1,6 +1,9 @@
 const spotifyWebApi = require("spotify-web-api-node");
 require("dotenv").config();
 
+const LOCAL_DOMAIN = "localhost";
+const PRODUCTION_DOMAIN = "cadenceapp.netlify.app";
+
 module.exports = {
   async callback(req: any, res: any) {
     console.log("Callback route hit. Cookies:", req.cookies);
@@ -31,8 +34,22 @@ module.exports = {
 
       setSpotifyTokens(accessToken, refreshToken, spotifyApi);
 
-      res.cookie("access_token", accessToken);
-      res.cookie("refresh_token", refreshToken);
+      res.cookie("access_token", accessToken, {
+        domain:
+          process.env.NODE_ENV === "production"
+            ? PRODUCTION_DOMAIN
+            : LOCAL_DOMAIN,
+        secure: true,
+        sameSite: "none",
+      });
+      res.cookie("refresh_token", refreshToken, {
+        domain:
+          process.env.NODE_ENV === "production"
+            ? PRODUCTION_DOMAIN
+            : LOCAL_DOMAIN,
+        secure: true,
+        sameSite: "none",
+      });
 
       req.session.access_token = accessToken;
       req.session.refresh_token = refreshToken;
