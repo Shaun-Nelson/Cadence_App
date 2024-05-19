@@ -87,7 +87,13 @@ module.exports = {
       const state = generateRandomString(16);
       const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
-      res.cookie("spotify_auth_state", state);
+      req.session.state = state;
+      req.session.save((err: any) => {
+        if (err) {
+          console.error("Session save error:", err);
+          return res.status(500).send({ message: "Session save error" });
+        }
+      });
 
       res.status(200).json({ url: authorizeURL });
     } catch (error) {

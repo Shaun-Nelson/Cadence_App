@@ -94,7 +94,7 @@ module.exports = {
     }
   },
   checkSpotifyIsLoggedIn: (req: Request, res: Response, next: NextFunction) => {
-    if (!req.cookies.access_token || !req.cookies.refresh_token) {
+    if (!req.session.access_token || !req.session.refresh_token) {
       return res.status(401).json({
         message: "Unauthorized. Please connect to Spotify first.",
       });
