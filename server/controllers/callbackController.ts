@@ -26,16 +26,18 @@ module.exports = {
         code,
         spotifyApi
       );
+
       setSpotifyTokens(accessToken, refreshToken, spotifyApi, res);
+
+      req.session.access_token = accessToken;
+      req.session.refresh_token = refreshToken;
+      req.session.spotifyApi = spotifyApi;
 
       req.session.save((err: any) => {
         if (err) {
           console.error("Session save error:", err);
           return res.status(500).send({ message: "Session save error" });
         }
-        req.session.access_token = accessToken;
-        req.session.refresh_token = refreshToken;
-        req.session.spotifyApi = spotifyApi;
 
         res.status(200).redirect(process.env.CLIENT_URL);
       });
@@ -68,10 +70,10 @@ const setSpotifyTokens = (
   try {
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.setRefreshToken(refreshToken);
-    console.log("Setting cookies");
-    res.cookie("access_token", accessToken, { httpOnly: true, secure: true });
-    res.cookie("refresh_token", refreshToken, { httpOnly: true, secure: true });
-    console.log("Cookies set");
+    // console.log("Setting cookies");
+    // res.cookie("access_token", accessToken, { httpOnly: true, secure: true });
+    // res.cookie("refresh_token", refreshToken, { httpOnly: true, secure: true });
+    // console.log("Cookies set");
   } catch (error) {
     console.error("Error setting Spotify tokens:", error);
     throw new Error("Error setting Spotify tokens");

@@ -9,12 +9,13 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 3001;
 const app = express();
-const sess = {
+const sessionConfig = {
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
     secure: process.env.NODE_ENV === "production", //secure is true in production
+    sameSite: "none",
   },
   store: MongoStore.create({
     mongoUrl:
@@ -33,11 +34,11 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(session(sess));
+app.use(session(sessionConfig));
 app.use("/api", routes);
 
-app.set("trust proxy", 1);
 app.enable("trust proxy");
+app.set("trust proxy", 1);
 
 db.once("open", () => {
   app.listen(PORT, () => {
