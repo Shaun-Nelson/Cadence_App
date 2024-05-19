@@ -35,20 +35,12 @@ module.exports = {
       setSpotifyTokens(accessToken, refreshToken, spotifyApi);
 
       res.cookie("access_token", accessToken, {
-        domain:
-          process.env.NODE_ENV === "production"
-            ? PRODUCTION_DOMAIN
-            : LOCAL_DOMAIN,
         secure: true,
-        sameSite: "none",
+        httpOnly: false,
       });
       res.cookie("refresh_token", refreshToken, {
-        domain:
-          process.env.NODE_ENV === "production"
-            ? PRODUCTION_DOMAIN
-            : LOCAL_DOMAIN,
         secure: true,
-        sameSite: "none",
+        httpOnly: false,
       });
 
       req.session.access_token = accessToken;
