@@ -87,9 +87,7 @@ module.exports = {
       const state = generateRandomString(16);
       const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
-      res.cookie("spotify_auth_state", state, {
-        maxAge: 3600000,
-      });
+      res.cookie("spotify_auth_state", state);
 
       res.status(200).json({ url: authorizeURL });
     } catch (error) {
