@@ -89,9 +89,6 @@ module.exports = {
 
       res.cookie("spotify_auth_state", state, {
         maxAge: 3600000,
-        secure: true,
-        sameSite: "none",
-        httpOnly: true,
       });
 
       res.status(200).json({ url: authorizeURL });
