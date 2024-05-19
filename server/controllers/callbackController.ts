@@ -75,11 +75,13 @@ const setSpotifyTokens = (
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      domain: process.env.CLIENT_URL,
     });
     res.cookie("refresh_token", refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      domain: process.env.CLIENT_URL,
     });
   } catch (error) {
     console.error("Error setting Spotify tokens:", error);
