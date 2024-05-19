@@ -88,7 +88,6 @@ module.exports = {
       const authorizeURL = spotifyApi.createAuthorizeURL(scopes, state);
 
       res.cookie("spotify_auth_state", state, {
-        sameSite: "none",
         secure: true,
         httpOnly: false,
       });
