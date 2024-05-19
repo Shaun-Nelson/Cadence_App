@@ -7,6 +7,8 @@ module.exports = {
     const code = req.query.code;
     const state = req.query.state;
 
+    console.log("Session:", req.session);
+
     if (state !== req.session.state) {
       return res.status(400).send({ message: "Invalid state" });
     }
