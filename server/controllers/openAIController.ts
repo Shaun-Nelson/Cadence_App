@@ -79,6 +79,11 @@ const appendSongsMetadata = async (songs: any, spotifyApi: any) => {
 
     if (searchResults.body.tracks.items?.length === 0) {
       searchResults = await spotifyApi.searchTracks(`${songs[song].title}`);
+      songs[song].previewUrl = "";
+      songs[song].image = "";
+      songs[song].uri = "";
+      songs[song].externalUrl = "";
+      songs[song].artists = [];
     }
 
     if (searchResults.body.tracks.items?.length > 0) {
@@ -89,12 +94,6 @@ const appendSongsMetadata = async (songs: any, spotifyApi: any) => {
       songs[song].externalUrl =
         searchResults.body.tracks.items[0].external_urls.spotify;
       songs[song].artists = songs[song].artist.split(", ");
-    } else {
-      songs[song].previewUrl = "";
-      songs[song].image = "";
-      songs[song].uri = "";
-      songs[song].externalUrl = "";
-      songs[song].artists = [];
     }
   }
 };

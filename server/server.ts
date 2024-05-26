@@ -32,6 +32,13 @@ const corsConfig = {
   credentials: true,
 };
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(cors(corsConfig));
+app.use(session(sessionConfig));
+app.use("/api", routes);
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("/", (req: any, res: any) => {
@@ -39,13 +46,6 @@ if (process.env.NODE_ENV === "production") {
   });
   app.set("trust proxy", 1);
 }
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(cors(corsConfig));
-app.use(session(sessionConfig));
-app.use("/api", routes);
 
 db.once("open", () => {
   app.listen(PORT, () => {

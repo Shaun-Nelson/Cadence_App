@@ -1,9 +1,6 @@
 const spotifyWebApi = require("spotify-web-api-node");
 require("dotenv").config();
 
-const LOCAL_DOMAIN = "localhost";
-const PRODUCTION_DOMAIN = "cadenceapp.netlify.app";
-
 module.exports = {
   async callback(req: any, res: any) {
     console.log("Callback route hit. Cookies:", req.cookies);
@@ -32,28 +29,16 @@ module.exports = {
         spotifyApi
       );
 
-      setSpotifyTokens(accessToken, refreshToken, spotifyApi);
-
-      res.cookie("access_token", accessToken, {
-        secure: true,
-        httpOnly: false,
-        sameSite: "none",
-      });
-      res.cookie("refresh_token", refreshToken, {
-        secure: true,
-        httpOnly: false,
-        sameSite: "none",
-      });
-
-      req.session.access_token = accessToken;
-      req.session.refresh_token = refreshToken;
-      req.session.spotifyApi = spotifyApi;
+      setSpotifyTokens(accessToken, refreshToken, spotifyApi, res);
 
       req.session.save((err: any) => {
         if (err) {
           console.error("Session save error:", err);
           return res.status(500).send({ message: "Session save error" });
         }
+        req.session.access_token = accessToken;
+        req.session.refresh_token = refreshToken;
+        req.session.spotifyApi = spotifyApi;
 
         return res.status(200).redirect(process.env.CLIENT_URL);
       });
@@ -80,11 +65,22 @@ const getSpotifyTokens = async (code: string, spotifyApi: any) => {
 const setSpotifyTokens = (
   accessToken: string,
   refreshToken: string,
-  spotifyApi: any
+  spotifyApi: any,
+  res: any
 ) => {
   try {
     spotifyApi.setAccessToken(accessToken);
     spotifyApi.setRefreshToken(refreshToken);
+    res.cookie("access_token", accessToken, {
+      secure: true,
+      httpOnly: false,
+      sameSite: "none",
+    });
+    res.cookie("refresh_token", refreshToken, {
+      secure: true,
+      httpOnly: false,
+      sameSite: "none",
+    });
   } catch (error) {
     console.error("Error setting Spotify tokens:", error);
     throw new Error("Error setting Spotify tokens");

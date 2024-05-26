@@ -1,5 +1,3 @@
-import { access } from "fs";
-
 const Playlist = require("../models/Playlist");
 const spotifyWebApi = require("spotify-web-api-node");
 
@@ -21,7 +19,7 @@ module.exports = {
 
       res.status(200).json(playlists);
     } catch (error) {
-      res.status(500).json({ message: "Error getting playlists" });
+      res.status(500).json({ message: `Error getting playlists: ${error}` });
     }
   },
   createPlaylist: async function (req: any, res: any) {
@@ -51,7 +49,7 @@ module.exports = {
       });
       res.status(200).json({ message: "Playlist deleted", playlist });
     } catch (error) {
-      res.status(500).send({ message: "Error deleting playlist", error });
+      res.status(500).send({ message: `Error deleting playlist: ${error}` });
     }
   },
   createSpotifyPlaylist: async function (req: any, res: any) {
