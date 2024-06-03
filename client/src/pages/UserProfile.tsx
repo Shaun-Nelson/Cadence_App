@@ -13,9 +13,8 @@ const UserProfile = () => {
   const handleSpotfiyConnect = async () => {
     try {
       const res = await loginSpotify({}).unwrap();
-      console.log(res);
 
-      window.location.href = res.url;
+      window.location.href = res;
     } catch (error) {
       console.error(error);
       toast.error("Failed to connect to Spotify");

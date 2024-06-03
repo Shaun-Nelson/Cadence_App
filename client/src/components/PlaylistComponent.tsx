@@ -1,28 +1,12 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-// TODO: Use a modal to confirm delete
-
-type Track = {
-  title: string;
-  image: string;
-  link: string;
-  artists: [];
-  duration: string;
-  previewUrl: string;
-  externalUrl: string;
-};
-
-type Playlist = {
-  name: string;
-  description: string;
-  link: string;
-  tracks: Track[];
-};
+// Types
+import type { Playlist, Track } from "../types";
 
 interface PlaylistProps {
   playlist: Playlist;
-  handlePlaylistDelete?: (name: string) => void;
+  handlePlaylistDelete?: (id: string) => void;
 }
 
 const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
@@ -36,7 +20,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             Spotify Playlist
           </a>
           <FontAwesomeIcon
-            onClick={() => handlePlaylistDelete(playlist.name)}
+            onClick={() => handlePlaylistDelete(playlist.id)}
             icon={faTrash}
           />
         </div>
@@ -51,11 +35,11 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             <th>Duration</th>
             <th>Preview</th>
           </tr>
-          {playlist.tracks.map((track: Track, index: number) => {
+          {playlist.songs?.map((track: Track, index: number) => {
             return (
               <tr key={index}>
                 <td>
-                  <img src={track.image} alt='album cover' height={"50px"} />
+                  <img src={track.imageUrl} alt='album cover' height={"50px"} />
                 </td>
                 <td>
                   <a href={track.externalUrl} target='_blank' rel='noreferrer'>
@@ -63,7 +47,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
                   </a>
                 </td>
                 <td>
-                  <p>{track.artists.join(", ")}</p>
+                  <p>{track.artist}</p>
                 </td>
                 <td>
                   <p>{track.duration}</p>

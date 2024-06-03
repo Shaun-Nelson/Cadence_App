@@ -25,19 +25,21 @@ const PlaylistButtons = () => {
       await createPlaylist({
         name: playlistName,
         description: playlistDescription,
-        tracks: JSON.stringify(results),
+        songs: results,
       });
 
       if (isError) {
         setError("Please log in to save playlist.");
         setSuccess("");
+        toast.error(error);
       } else {
         setSuccess("Playlist saved!");
         setError("");
+        toast.success(success);
       }
-    } catch (error) {
-      console.error(error);
-      toast.error("Cannot save playlist. Please log in.");
+    } catch (err) {
+      console.error(err);
+      toast.error(error);
     }
   };
 
@@ -46,7 +48,7 @@ const PlaylistButtons = () => {
       await saveSpotifyPlaylist({
         name: playlistName,
         description: playlistDescription,
-        tracks: JSON.stringify(results),
+        songs: results,
       }).unwrap();
       toast.success("Playlist saved to Spotify!");
     } catch (error) {

@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { setResults } from "../slices/resultsSlice";
 import { useGetAiDataMutation } from "../slices/thirdPartyApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import { RootState } from "../store";
+
 //Components
 import SearchResults from "./SearchResults";
 
@@ -43,7 +45,7 @@ const Searchbar = () => {
   );
 
   const dispatch = useDispatch();
-
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   const [getAiData, { isLoading }] = useGetAiDataMutation();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,6 +76,10 @@ const Searchbar = () => {
       });
     }
   };
+
+  useEffect(() => {
+    setResults(userInfo ? userInfo.results : []);
+  }, [userInfo]);
 
   return (
     <>

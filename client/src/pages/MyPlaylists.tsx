@@ -6,28 +6,13 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 
 //Components
-import Playlist from "../components/Playlist";
+import PlaylistComponent from "../components/PlaylistComponent";
 
-type Track = {
-  title: string;
-  image: string;
-  link: string;
-  artists: [];
-  duration: string;
-  previewUrl: string;
-  externalUrl: string;
-};
-
-type PlaylistType = {
-  name: string;
-  description: string;
-  link: string;
-  tracks: Track[];
-  username: string;
-};
+//Types
+import type { Playlist } from "../types";
 
 const MyPlaylists = () => {
-  const [playlists, setPlaylists] = useState<PlaylistType[]>([]);
+  const [playlists, setPlaylists] = useState<Playlist[]>([]);
 
   const [getPlaylists, { isLoading }] = useGetPlaylistsMutation();
 
@@ -36,6 +21,11 @@ const MyPlaylists = () => {
   const getData = async () => {
     try {
       const data = await getPlaylists({}).unwrap();
+
+      if (!data) {
+        setPlaylists([]);
+        return <h2>No playlists found</h2>;
+      }
       setPlaylists(data);
     } catch (error) {
       console.error(error);
@@ -43,9 +33,9 @@ const MyPlaylists = () => {
     }
   };
 
-  const handlePlaylistDelete = async (name: string) => {
+  const handlePlaylistDelete = async (id: string) => {
     try {
-      await deletePlaylist({ name }).unwrap();
+      await deletePlaylist({ id }).unwrap();
       await getData();
     } catch (error) {
       console.error(error);
@@ -71,7 +61,7 @@ const MyPlaylists = () => {
       ) : playlists.length > 0 ? (
         playlists.map((playlist, index) => {
           return (
-            <Playlist
+            <PlaylistComponent
               key={index}
               playlist={playlist}
               handlePlaylistDelete={handlePlaylistDelete}

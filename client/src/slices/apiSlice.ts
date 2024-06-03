@@ -8,14 +8,14 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (body) => ({
-        url: "/login",
+        url: "/users/login",
         method: "POST",
         body,
         withCredentials: true,
       }),
     }),
     isLoggedIn: builder.query({
-      query: () => "/login",
+      query: () => "/users/login",
       providesTags: ["User"],
     }),
     logout: builder.mutation({
@@ -23,7 +23,7 @@ export const apiSlice = createApi({
     }),
     signup: builder.mutation({
       query: (body) => ({
-        url: "/signup",
+        url: "/users/signup",
         method: "POST",
         body,
       }),
@@ -46,7 +46,7 @@ export const apiSlice = createApi({
     }),
     deletePlaylist: builder.mutation({
       query: (body) => ({
-        url: "/playlists",
+        url: `/playlists/${body.id}`,
         method: "DELETE",
         body,
         withCredentials: true,

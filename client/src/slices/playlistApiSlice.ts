@@ -21,7 +21,7 @@ export const playlistsApiSlice = apiSlice.injectEndpoints({
     }),
     deletePlaylist: builder.mutation({
       query: (data) => ({
-        url: `${API_URL}`,
+        url: `${API_URL}/${data.id}`,
         method: "DELETE",
         body: data,
         withCredentials: true,

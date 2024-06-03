@@ -1,35 +1,23 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 // Components
-import Playlist from "./Playlist";
-
-type Track = {
-  title: string;
-  image: string;
-  link: string;
-  artists: [];
-  duration: string;
-  previewUrl: string;
-  externalUrl: string;
-};
-
-type PlaylistType = {
-  name: string;
-  description: string;
-  link: string;
-  tracks: Track[];
-};
+import PlaylistComponent from "./PlaylistComponent";
+// Types
+import type { Playlist } from "../types";
 
 const PlaylistResults = () => {
   const { results } = useSelector((state: RootState) => state.results);
-  const playlist: PlaylistType = {
+  const playlist: Playlist = {
+    id: "",
     name: "",
     description: "",
     link: "",
-    tracks: results,
+    songs: results,
   };
 
-  return <>{results?.length > 0 && <Playlist playlist={playlist} />}</>;
+  return (
+    <>{results?.length > 0 && <PlaylistComponent playlist={playlist} />}</>
+  );
 };
 
 export default PlaylistResults;
