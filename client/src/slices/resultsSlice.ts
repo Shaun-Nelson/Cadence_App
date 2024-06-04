@@ -10,6 +10,7 @@ const resultsSlice = createSlice({
   reducers: {
     setResults: (state, action) => {
       state.results = action.payload;
+      localStorage.setItem("results", JSON.stringify(action.payload));
     },
   },
 });

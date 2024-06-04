@@ -45,7 +45,7 @@ const Searchbar = () => {
   );
 
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { results } = useSelector((state: RootState) => state.results);
   const [getAiData, { isLoading }] = useGetAiDataMutation();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,8 +78,8 @@ const Searchbar = () => {
   };
 
   useEffect(() => {
-    setResults(userInfo ? userInfo.results : []);
-  }, [userInfo]);
+    setResults(results ?? []);
+  }, [results]);
 
   return (
     <>

@@ -24,6 +24,7 @@ const authSlice = createSlice({
       state.userInfo = null;
       localStorage.removeItem("userInfo");
       localStorage.removeItem("token");
+      localStorage.removeItem("results");
     },
     loginSpotify: () => {
       fetch("/api/login/spotify", {

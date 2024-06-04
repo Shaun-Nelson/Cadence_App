@@ -14,7 +14,6 @@ const PlaylistButtons = () => {
   const [playlistName, setPlaylistName] = useState<string>("");
   const [playlistDescription, setPlaylistDescription] = useState<string>("");
   const [error, setError] = useState<string>("");
-  const [success, setSuccess] = useState<string>("");
 
   const { results } = useSelector((state: RootState) => state.results);
   const [createPlaylist, { isError }] = useCreatePlaylistMutation();
@@ -22,25 +21,23 @@ const PlaylistButtons = () => {
 
   const handleLocalSave = async () => {
     try {
-      const newPlaylist = await createPlaylist({
+      const response = await createPlaylist({
         name: playlistName,
         description: playlistDescription,
         songs: results,
       });
 
-      if (!newPlaylist) {
-        setError("Please log in to save playlist.");
-        toast.error("Please log in to save playlist.");
+      if (response.error) {
+        setError("Error saving playlist. Please try again.");
+        toast.error("Error saving playlist. Please try again.");
         return;
       }
 
       if (isError) {
         setError("Please log in to save playlist.");
-        setSuccess("");
         toast.error("Please log in to save playlist.");
         return;
       } else {
-        setSuccess("Playlist saved!");
         setError("");
         toast.success("Playlist saved!");
       }
@@ -70,8 +67,6 @@ const PlaylistButtons = () => {
     <>
       {results.length > 0 && (
         <div className='flex-container-column'>
-          {error && <span className='error-message'>{error}</span>}
-          {success && <span className='success-message'>{success}</span>}
           <div id='playlist-buttons'>
             <form className='playlist-form' style={{ paddingRight: "15px" }}>
               <input
