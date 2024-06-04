@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { useLoginMutation } from "../slices/usersApiSlice";
-import { setCredentials } from "../slices/authSlice";
+import { setCredentials, setJwt } from "../slices/authSlice";
 
 const LoginCard = () => {
   const [username, setUsername] = useState("");
@@ -19,11 +19,13 @@ const LoginCard = () => {
 
     try {
       const res = await login({ username, password }).unwrap();
+
       dispatch(setCredentials({ ...res }));
+      dispatch(setJwt(res.token));
       navigate("/");
     } catch (error) {
       console.error(error);
-      toast.error("Invalid username or password");
+      toast.error("Failed to login. Please try again.");
     }
   };
 

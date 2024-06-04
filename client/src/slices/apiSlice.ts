@@ -1,6 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { RootState } from "../store";
 
-const baseQuery = fetchBaseQuery({ baseUrl: "/api" });
+const baseQuery = fetchBaseQuery({
+  baseUrl: "/api",
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState).auth.token;
+
+    if (token) {
+      headers.set("Authorization", `Bearer ${token}`);
+    }
+
+    return headers;
+  },
+});
 
 export const apiSlice = createApi({
   baseQuery,
@@ -13,13 +25,18 @@ export const apiSlice = createApi({
         body,
         withCredentials: true,
       }),
+      invalidatesTags: ["User"],
     }),
     isLoggedIn: builder.query({
       query: () => "/users/login",
       providesTags: ["User"],
     }),
     logout: builder.mutation({
-      query: () => "/logout",
+      query: () => ({
+        url: "/users/logout",
+        method: "POST",
+        withCredentials: true,
+      }),
     }),
     signup: builder.mutation({
       query: (body) => ({

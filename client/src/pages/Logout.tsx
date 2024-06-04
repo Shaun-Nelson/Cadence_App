@@ -12,11 +12,13 @@ const Logout = () => {
           `${import.meta.env.VITE_API_URL}/api/users/logout`,
           {
             credentials: "include",
+            method: "POST",
           }
         );
 
         if (response.ok) {
           navigate("/");
+          toast.success("Logged out successfully");
         } else {
           console.error("Failed to log out", response.statusText);
           toast.error("Failed to log out");

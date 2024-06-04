@@ -7,6 +7,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     loginSpotify: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/login/spotify`,
+        method: "GET",
         withCredentials: true,
       }),
     }),

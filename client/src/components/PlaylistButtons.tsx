@@ -22,20 +22,27 @@ const PlaylistButtons = () => {
 
   const handleLocalSave = async () => {
     try {
-      await createPlaylist({
+      const newPlaylist = await createPlaylist({
         name: playlistName,
         description: playlistDescription,
         songs: results,
       });
 
+      if (!newPlaylist) {
+        setError("Please log in to save playlist.");
+        toast.error("Please log in to save playlist.");
+        return;
+      }
+
       if (isError) {
         setError("Please log in to save playlist.");
         setSuccess("");
-        toast.error(error);
+        toast.error("Please log in to save playlist.");
+        return;
       } else {
         setSuccess("Playlist saved!");
         setError("");
-        toast.success(success);
+        toast.success("Playlist saved!");
       }
     } catch (err) {
       console.error(err);

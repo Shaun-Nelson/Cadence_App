@@ -22,12 +22,14 @@ export const usersApiSlice = apiSlice.injectEndpoints({
     logout: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/users/logout`,
+        method: "POST",
         withCredentials: true,
       }),
     }),
     loginSpotify: builder.mutation({
       query: () => ({
         url: `${USERS_URL}/login/spotify`,
+        method: "GET",
         withCredentials: true,
       }),
     }),

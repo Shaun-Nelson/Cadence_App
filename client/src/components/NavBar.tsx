@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../store";
+import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
 
@@ -12,22 +13,18 @@ const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
+  const [userLogout] = useLogoutMutation();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      setIsLoggedIn(false);
-      await dispatch(logout());
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users/logout`,
-        {
-          credentials: "include",
-        }
-      );
+      const response = await userLogout({}).unwrap();
 
-      if (response.ok) {
+      if (response) {
+        setIsLoggedIn(false);
+        await dispatch(logout());
         toast.success("Logged out successfully");
         navigate("/");
       } else {
@@ -57,7 +54,7 @@ const NavBar = () => {
             <NavItem linkTo='/playlists' bodyText='My Playlists' />
             <NavItem linkTo='/profile' bodyText='User Profile' />
             <NavItem
-              linkTo='/api/users/logout'
+              linkTo='/'
               bodyText='Logout'
               onClickHandler={handleLogout}
             />

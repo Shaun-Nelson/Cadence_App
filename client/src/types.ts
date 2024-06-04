@@ -16,3 +16,8 @@ export type Playlist = {
   link: string;
   songs: Track[];
 };
+
+export type UserInfo = {
+  token: string;
+  results: [];
+};
