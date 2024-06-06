@@ -16,6 +16,7 @@ const baseQuery = fetchBaseQuery({
 
 export const apiSlice = createApi({
   baseQuery,
+
   tagTypes: ["User", "Playlist"],
   endpoints: (builder) => ({
     login: builder.mutation({
