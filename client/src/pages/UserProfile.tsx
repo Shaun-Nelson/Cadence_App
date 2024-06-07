@@ -23,7 +23,7 @@ const UserProfile = () => {
 
   return (
     <div className='flex-container-column'>
-      <h3>{userInfo.username}'s Profile</h3>
+      <h3>{userInfo}'s Profile</h3>
       <hr />
       <span>Log in to Spotify to save playlists to your Spotify account.</span>
       <FontAwesomeIcon

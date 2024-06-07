@@ -35,7 +35,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             <th>Duration</th>
             <th>Preview</th>
           </tr>
-          {playlist.songs.map((track: Track, index: number) => {
+          {playlist.songs?.map((track: Track, index: number) => {
             return (
               <tr key={index}>
                 <td>

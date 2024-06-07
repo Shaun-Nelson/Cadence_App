@@ -21,3 +21,8 @@ export type UserInfo = {
   token: string;
   results: [];
 };
+
+export interface RefreshTokenResponse {
+  accessToken: string;
+  refreshToken: string;
+}

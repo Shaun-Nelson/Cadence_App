@@ -1,22 +1,75 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type {
+  BaseQueryFn,
+  FetchArgs,
+  FetchBaseQueryError,
+} from "@reduxjs/toolkit/query";
+import { RefreshTokenResponse } from "../types";
+import { setRefreshToken, setJwt, logout } from "./authSlice";
 import { RootState } from "../store";
+import { Mutex } from "async-mutex";
+import { jwtDecode } from "jwt-decode";
 
+const mutex = new Mutex();
 const baseQuery = fetchBaseQuery({
   baseUrl: "/api",
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
-
-    if (token) {
-      headers.set("Authorization", `Bearer ${token}`);
+    const accessToken: string = (getState() as RootState).auth.accessToken;
+    if (accessToken) {
+      const accessTokenIsExpired =
+        (jwtDecode(accessToken).exp as number) * 1000 < Date.now();
+      if (!accessTokenIsExpired) {
+        headers.set("Authorization", `Bearer ${accessToken}`);
+      } else {
+        headers.delete("Authorization");
+      }
     }
-
     return headers;
   },
 });
+const baseQueryWithReauth: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
+  await mutex.waitForUnlock();
+  let result = await baseQuery(args, api, extraOptions);
+  if (result.error && result.error.status === 401) {
+    if (!mutex.isLocked()) {
+      const release = await mutex.acquire();
+      try {
+        const refreshResult = (await baseQuery(
+          {
+            url: "/auth/refresh",
+            method: "POST",
+            body: {
+              refreshToken: (api.getState() as RootState).auth.refreshToken,
+            },
+          },
+          api,
+          extraOptions
+        )) as { data: RefreshTokenResponse };
+        if (refreshResult.data) {
+          api.dispatch(setRefreshToken(refreshResult.data.refreshToken));
+          api.dispatch(setJwt(refreshResult.data.accessToken));
+          // retry the initial query
+          result = await baseQuery(args, api, extraOptions);
+        } else {
+          api.dispatch(logout());
+        }
+      } finally {
+        release();
+      }
+    } else {
+      await mutex.waitForUnlock();
+      result = await baseQuery(args, api, extraOptions);
+    }
+  }
+  return result;
+};
 
 export const apiSlice = createApi({
-  baseQuery,
-
+  baseQuery: baseQueryWithReauth,
   tagTypes: ["User", "Playlist"],
   endpoints: (builder) => ({
     login: builder.mutation({
