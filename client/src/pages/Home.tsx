@@ -1,10 +1,6 @@
 //Components
 import Searchbar from "../components/Searchbar";
 
-const Home = () => (
-  <section>
-    <Searchbar />
-  </section>
-);
+const Home = () => <Searchbar />;
 
 export default Home;

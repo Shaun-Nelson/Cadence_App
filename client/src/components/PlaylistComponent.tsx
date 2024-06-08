@@ -1,6 +1,9 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Components
+import PlaylistTrack from "./PlaylistTrackMobile";
+
 // Types
 import type { Playlist, Track } from "../types";
 
@@ -25,53 +28,18 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
           />
         </div>
       )}
-
-      <table id='table-playlist-results'>
-        <tbody>
-          <tr>
-            <th>Album</th>
-            <th>Title</th>
-            <th>Artists</th>
-            <th>Duration</th>
-            <th>Preview</th>
-          </tr>
-          {playlist.songs
-            ? playlist.songs.map((track: Track, index: number) => {
-                return (
-                  <tr key={index}>
-                    <td>
-                      <img
-                        src={track.imageUrl}
-                        alt='album cover'
-                        height={"50px"}
-                      />
-                    </td>
-                    <td>
-                      <a
-                        href={track.externalUrl}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        {track.title}
-                      </a>
-                    </td>
-                    <td>
-                      <p>{track.artist}</p>
-                    </td>
-                    <td>
-                      <p>{track.duration}</p>
-                    </td>
-                    <td>
-                      <audio controls>
-                        <source src={track.previewUrl} type='audio/mpeg' />
-                      </audio>
-                    </td>
-                  </tr>
-                );
-              })
-            : null}
-        </tbody>
-      </table>
+      <div className='container-sm mx-auto mt-6 p-3'>
+        {playlist.songs
+          ? playlist.songs.map((track: Track, index: number) => {
+              return (
+                <>
+                  <PlaylistTrack key={index} track={track} />
+                  <hr />
+                </>
+              );
+            })
+          : null}
+      </div>
     </>
   );
 };

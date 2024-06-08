@@ -51,12 +51,7 @@ const MyPlaylists = () => {
     <div className='flex-container-column '>
       {isLoading ? (
         <div className='flex-container-spinner'>
-          <FontAwesomeIcon
-            className='spinner'
-            icon={faSpinner}
-            spin
-            size='3x'
-          />
+          <FontAwesomeIcon className='spinner' icon={faSpinner} spin />
         </div>
       ) : playlists.length > 0 ? (
         playlists.map((playlist, index) => {
@@ -69,7 +64,7 @@ const MyPlaylists = () => {
           );
         })
       ) : (
-        <h2>No playlists found</h2>
+        <h2 className='font-bold mt-12'>No playlists found</h2>
       )}
     </div>
   );

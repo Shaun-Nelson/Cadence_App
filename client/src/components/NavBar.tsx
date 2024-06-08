@@ -48,9 +48,13 @@ const NavBar = () => {
   }, [userInfo]);
 
   return (
-    <nav>
+    <nav className='container mx-auto'>
       <ul className='flex justify-center content-center items-center mtb-10px'>
-        <img src={logo} alt='Cadence Logo' className='h-16' />
+        <img
+          src={logo}
+          alt='Cadence Logo'
+          className='h-16 transition hover:scale-125'
+        />
         <NavItem linkTo='/' bodyText='Home' />
         <NavItem linkTo='/signup' bodyText='Sign-Up' />
         {isLoggedIn ? (
