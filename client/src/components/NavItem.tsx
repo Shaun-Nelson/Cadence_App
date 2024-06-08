@@ -8,7 +8,7 @@ interface NavItemProps {
 
 const NavItem = ({ linkTo, bodyText, onClickHandler }: NavItemProps) => {
   return (
-    <li className='nav-item'>
+    <li className='mx-3 list-none'>
       <Link onClick={onClickHandler} to={linkTo}>
         {bodyText}
       </Link>

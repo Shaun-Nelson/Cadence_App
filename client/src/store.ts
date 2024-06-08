@@ -1,11 +1,7 @@
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import resultsReducer from "./slices/resultsSlice";
 import { apiSlice } from "./slices/apiSlice";
-
-const rootReducer = combineReducers({});
-
-export type RootState = ReturnType<typeof rootReducer>;
 
 const store = configureStore({
   reducer: {
@@ -18,4 +14,6 @@ const store = configureStore({
   devTools: import.meta.env.NODE_ENV !== "production",
 });
 
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
 export default store;

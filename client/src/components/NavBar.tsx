@@ -9,6 +9,9 @@ import { toast } from "react-toastify";
 // Components
 import NavItem from "./NavItem";
 
+// Images
+import logo from "../assets/cadence_logo.svg";
+
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
@@ -46,7 +49,8 @@ const NavBar = () => {
 
   return (
     <nav>
-      <ul className='navbar'>
+      <ul className='flex justify-center content-center items-center mtb-10px'>
+        <img src={logo} alt='Cadence Logo' className='h-16' />
         <NavItem linkTo='/' bodyText='Home' />
         <NavItem linkTo='/signup' bodyText='Sign-Up' />
         {isLoggedIn ? (

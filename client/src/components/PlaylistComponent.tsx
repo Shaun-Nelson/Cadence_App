@@ -35,31 +35,41 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             <th>Duration</th>
             <th>Preview</th>
           </tr>
-          {playlist.songs?.map((track: Track, index: number) => {
-            return (
-              <tr key={index}>
-                <td>
-                  <img src={track.imageUrl} alt='album cover' height={"50px"} />
-                </td>
-                <td>
-                  <a href={track.externalUrl} target='_blank' rel='noreferrer'>
-                    {track.title}
-                  </a>
-                </td>
-                <td>
-                  <p>{track.artist}</p>
-                </td>
-                <td>
-                  <p>{track.duration}</p>
-                </td>
-                <td>
-                  <audio controls>
-                    <source src={track.previewUrl} type='audio/mpeg' />
-                  </audio>
-                </td>
-              </tr>
-            );
-          })}
+          {playlist.songs
+            ? playlist.songs.map((track: Track, index: number) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      <img
+                        src={track.imageUrl}
+                        alt='album cover'
+                        height={"50px"}
+                      />
+                    </td>
+                    <td>
+                      <a
+                        href={track.externalUrl}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        {track.title}
+                      </a>
+                    </td>
+                    <td>
+                      <p>{track.artist}</p>
+                    </td>
+                    <td>
+                      <p>{track.duration}</p>
+                    </td>
+                    <td>
+                      <audio controls>
+                        <source src={track.previewUrl} type='audio/mpeg' />
+                      </audio>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
         </tbody>
       </table>
     </>

@@ -11,18 +11,18 @@ interface SearchResultsProps {
 
 const SearchResults = ({ loading }: SearchResultsProps) => {
   return (
-    <div className='search-results'>
+    <section className='mt-8'>
       {!loading ? (
-        <div className='flex-container-column'>
+        <div className='flex flex-col'>
           <PlaylistButtons />
           <PlaylistResults />
         </div>
       ) : (
-        <div className='flex-container-spinner'>
+        <div className='flex items-center justify-center mt-24'>
           <FontAwesomeIcon icon={faSpinner} spin size='3x' />
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

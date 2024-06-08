@@ -83,27 +83,30 @@ const Searchbar = () => {
 
   return (
     <>
-      <div className='flex-container-search'>
-        <form className='searchbar' onSubmit={handleSubmit}>
+      <main className='flex flex-col items-center mt-24 w-screen'>
+        <form
+          className='flex items-center justify-around p-2 mx-10 rounded border border-current border-opacity-50 shadow-md w-11/12 lg:w-1/2'
+          onSubmit={handleSubmit}
+        >
           <input
-            className='search-input'
+            className='w-11/12 p-2'
             type='text'
             value={search}
             onChange={handleSearch}
             placeholder='Generate a playlist based on your prompt.'
           />
           <FontAwesomeIcon
-            className='search-icon'
+            className='cursor-pointer hover:text-gray-500 transition active:scale-80'
             icon={faMagnifyingGlass}
             onClick={handleClick}
           />
         </form>
-        <form className='playlist-length-select'>
+        <form className='mt-6'>
           <label>
             Playlist Length:
             <select
               name='length'
-              className='playlist-length'
+              className='ml-2'
               value={playlistLength}
               onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
             >
@@ -111,8 +114,10 @@ const Searchbar = () => {
             </select>
           </label>
         </form>
-      </div>
-      <SearchResults loading={isLoading} />
+      </main>
+      <section>
+        <SearchResults loading={isLoading} />
+      </section>
     </>
   );
 };

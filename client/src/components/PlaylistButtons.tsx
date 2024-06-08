@@ -66,42 +66,42 @@ const PlaylistButtons = () => {
   return (
     <>
       {results.length > 0 && (
-        <div className='flex-container-column'>
-          <div id='playlist-buttons'>
-            <form className='playlist-form' style={{ paddingRight: "15px" }}>
-              <input
-                type='text'
-                placeholder='Playlist Name'
-                required
-                name={playlistName}
-                id='playlistName'
-                style={{ paddingRight: "5px" }}
-                onChange={(e) => setPlaylistName(e.target.value)}
-              />
-              <input
-                type='text'
-                placeholder='Playlist Description'
-                name={playlistDescription}
-                id='playlistDescription'
-                onChange={(e) => setPlaylistDescription(e.target.value)}
-              />
-            </form>
+        <div className='flex justify-center'>
+          <form className='flex lg:w-1/4'>
+            <input
+              className='w-2/5 lg:w-full ml-2 lg:mr-2 p-2 border border-current border-opacity-50 rounded'
+              type='text'
+              placeholder='Playlist Name'
+              required
+              name={playlistName}
+              id='playlistName'
+              onChange={(e) => setPlaylistName(e.target.value)}
+            />
+            <input
+              className='w-1/2 lg:w-full p-2 border border-current border-opacity-50 rounded'
+              type='text'
+              placeholder='Playlist Description'
+              name={playlistDescription}
+              id='playlistDescription'
+              onChange={(e) => setPlaylistDescription(e.target.value)}
+            />
+          </form>
+          <div className='flex items-center mr-4 lg:ml-8'>
             <FontAwesomeIcon
               className={
                 error
-                  ? "icon-save-playlist-local-error"
-                  : "icon-save-playlist-local"
+                  ? "h-8 text-red-600 hover:text-red-800 transition cursor-pointer"
+                  : "h-8 hover:text-green-600 transition cursor-pointer"
               }
               icon={faFloppyDisk}
-              style={{ paddingRight: "15px" }}
               onClick={handleLocalSave}
               title='Save playlist to local user account'
             />
             <FontAwesomeIcon
               className={
                 error
-                  ? "icon-save-playlist-spotify-error"
-                  : "icon-save-playlist-spotify"
+                  ? "h-8 mx-4 text-red-600 hover:text-red-800 transition cursor-pointer"
+                  : "h-8 mx-4 hover:text-green-600 transition cursor-pointer"
               }
               icon={faSpotify}
               onClick={handleSpotfiySave}
