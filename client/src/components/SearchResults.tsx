@@ -11,7 +11,7 @@ interface SearchResultsProps {
 
 const SearchResults = ({ loading }: SearchResultsProps) => {
   return (
-    <section className='mt-8'>
+    <section className='mt-16'>
       {!loading ? (
         <div className='flex flex-col'>
           <PlaylistButtons />

@@ -7,11 +7,13 @@ import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <>
+    <div className='outer-container'>
       <NavBar />
       <ToastContainer />
-      <Outlet />
-    </>
+      <div id='page-wrap'>
+        <Outlet />
+      </div>
+    </div>
   );
 }
 

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import {
   useCreatePlaylistMutation,
@@ -13,6 +13,9 @@ import { toast } from "react-toastify";
 const PlaylistButtons = () => {
   const [playlistName, setPlaylistName] = useState<string>("");
   const [playlistDescription, setPlaylistDescription] = useState<string>("");
+  const [namePlaceholder, setNamePlaceholder] = useState<string>("");
+  const [descriptionPlaceholder, setDescriptionPlaceholder] =
+    useState<string>("");
   const [error, setError] = useState<string>("");
 
   const { results } = useSelector((state: RootState) => state.results);
@@ -63,6 +66,16 @@ const PlaylistButtons = () => {
     }
   };
 
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setNamePlaceholder("Name");
+      setDescriptionPlaceholder("Description");
+    } else {
+      setNamePlaceholder("Playlist Name");
+      setDescriptionPlaceholder("Playlist Description");
+    }
+  }, []);
+
   return (
     <>
       {results.length > 0 && (
@@ -71,7 +84,7 @@ const PlaylistButtons = () => {
             <input
               className='w-2/5 lg:w-full ml-2 lg:mr-2 p-2 border border-current border-opacity-50 rounded'
               type='text'
-              placeholder='Playlist Name'
+              placeholder={namePlaceholder}
               required
               name={playlistName}
               id='playlistName'
@@ -80,7 +93,7 @@ const PlaylistButtons = () => {
             <input
               className='w-1/2 lg:w-full p-2 border border-current border-opacity-50 rounded'
               type='text'
-              placeholder='Playlist Description'
+              placeholder={descriptionPlaceholder}
               name={playlistDescription}
               id='playlistDescription'
               onChange={(e) => setPlaylistDescription(e.target.value)}

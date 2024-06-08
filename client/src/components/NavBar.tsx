@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 
 // Components
 import NavItem from "./NavItem";
+import NavMobileMenu from "./NavMobileMenu";
 
 // Images
 import logo from "../assets/cadence_logo.svg";
@@ -49,27 +50,34 @@ const NavBar = () => {
 
   return (
     <nav className='container mx-auto'>
-      <ul className='flex justify-center content-center items-center mtb-10px'>
-        <img
-          src={logo}
-          alt='Cadence Logo'
-          className='h-16 transition hover:scale-125'
-        />
-        <NavItem linkTo='/' bodyText='Home' />
-        <NavItem linkTo='/signup' bodyText='Sign-Up' />
-        {isLoggedIn ? (
-          <>
-            <NavItem linkTo='/playlists' bodyText='My Playlists' />
-            <NavItem linkTo='/profile' bodyText='User Profile' />
-            <NavItem
-              linkTo='/'
-              bodyText='Logout'
-              onClickHandler={handleLogout}
-            />
-          </>
-        ) : (
-          <NavItem linkTo='/login' bodyText='Login' />
-        )}
+      <ul className=''>
+        <li>
+          <img
+            src={logo}
+            alt='Cadence Logo'
+            className='h-16 ml-2 transition hover:scale-125'
+          />
+        </li>
+        <li className='md:hidden'>
+          <NavMobileMenu isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
+        </li>
+        <div className='max-sm:hidden flex items-center'>
+          <NavItem linkTo='/' bodyText='Home' />
+          <NavItem linkTo='/signup' bodyText='Sign-Up' />
+          {isLoggedIn ? (
+            <>
+              <NavItem linkTo='/playlists' bodyText='My Playlists' />
+              <NavItem linkTo='/profile' bodyText='User Profile' />
+              <NavItem
+                linkTo='/'
+                bodyText='Logout'
+                onClickHandler={handleLogout}
+              />
+            </>
+          ) : (
+            <NavItem linkTo='/login' bodyText='Login' />
+          )}
+        </div>
       </ul>
     </nav>
   );

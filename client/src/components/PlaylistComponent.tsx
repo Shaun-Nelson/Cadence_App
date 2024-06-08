@@ -16,7 +16,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
   return (
     <>
       {handlePlaylistDelete && (
-        <div className='playlist-metainfo'>
+        <div>
           <h2>{playlist.name}</h2>
           <p>{playlist.description}</p>
           <a href={playlist.link} target='_blank' rel='noreferrer'>
@@ -29,13 +29,13 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
         </div>
       )}
       <div className='container-sm mx-auto mt-6 p-3'>
-        {playlist.songs
+        {playlist.songs.length > 0
           ? playlist.songs.map((track: Track, index: number) => {
               return (
-                <>
+                <div>
                   <PlaylistTrack key={index} track={track} />
                   <hr />
-                </>
+                </div>
               );
             })
           : null}
