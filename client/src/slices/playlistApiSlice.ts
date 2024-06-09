@@ -11,6 +11,13 @@ export const playlistsApiSlice = apiSlice.injectEndpoints({
         withCredentials: true,
       }),
     }),
+    getPlaylist: builder.mutation({
+      query: (id) => ({
+        url: `/playlists/${id}`,
+        method: "GET",
+        withCredentials: true,
+      }),
+    }),
     createPlaylist: builder.mutation({
       query: (data) => ({
         url: `${API_URL}`,
@@ -40,6 +47,7 @@ export const playlistsApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useGetPlaylistsMutation,
+  useGetPlaylistMutation,
   useCreatePlaylistMutation,
   useDeletePlaylistMutation,
   useSaveSpotifyPlaylistMutation,

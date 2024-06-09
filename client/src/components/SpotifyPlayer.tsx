@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import SpotifyPlayer, { Props } from "react-spotify-web-playback";
-import refreshAccessToken from "../utils/refreshSpotifyAccessToken";
+import refreshAccessToken from "../utils/spotifyRefreshTokenRequest";
 
 interface PlayerWrapperProps {
   spotifyIds: string[];

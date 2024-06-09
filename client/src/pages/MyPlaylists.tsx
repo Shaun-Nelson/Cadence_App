@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   useGetPlaylistsMutation,
   useDeletePlaylistMutation,
@@ -80,9 +81,11 @@ const MyPlaylists = () => {
       ) : playlists.length > 0 ? (
         playlists.map((playlist, index) => {
           return (
-            <div className='container mt-8' key={index}>
+            <ol className='container mt-8 list-disc' key={index}>
               <div key={playlist.id}>
-                <h2 className='inline mr-4'>{playlist.name}</h2>
+                <Link to={`/playlists/${playlist.id}`} className='inline mr-4'>
+                  {playlist.name}
+                </Link>
                 <FontAwesomeIcon
                   className='h-6 mx-4 text-green-500 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer'
                   icon={faSpotify}
@@ -102,25 +105,7 @@ const MyPlaylists = () => {
                 />
                 <p>{playlist.description}</p>
               </div>
-              <div>
-                {playlist.songs.map((track) => {
-                  return (
-                    <div className='flex flex-col'>
-                      <a
-                        href={track.externalUrl}
-                        target='_blank'
-                        rel='noreferrer'
-                        className='text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90 '
-                      >
-                        {track.title}
-                      </a>
-                      <br />
-                    </div>
-                  );
-                })}
-              </div>
-              <hr className='mt-12' />
-            </div>
+            </ol>
           );
         })
       ) : (

@@ -34,7 +34,6 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
       <div className='container lg:w-1/3 mx-auto mt-6 p-3'>
         {cookies.refresh_token && playlist.songs.length > 0 ? (
           <div className='pt-4 pb-10'>
-            <hr className='mb-10' />
             <SpotifyPlayer
               spotifyIds={playlist.songs.map((song) => song.spotifyId)}
             />
