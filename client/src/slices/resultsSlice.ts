@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Track } from "../types";
 
 const initialState = {
-  results: [],
+  results: [] as Track[],
 };
 
 const resultsSlice = createSlice({

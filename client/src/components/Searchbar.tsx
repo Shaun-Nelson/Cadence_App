@@ -88,14 +88,14 @@ const Searchbar = () => {
           onSubmit={handleSubmit}
         >
           <input
-            className='w-11/12 p-2'
+            className='w-11/12 p-2 text-sm'
             type='text'
             value={search}
             onChange={handleSearch}
             placeholder='Generate a playlist based on your prompt.'
           />
           <FontAwesomeIcon
-            className='cursor-pointer hover:text-gray-500 transition active:scale-80'
+            className='cursor-pointer transition hover:text-gray-500 hover:scale-125 active:scale-50'
             icon={faMagnifyingGlass}
             onClick={handleClick}
           />

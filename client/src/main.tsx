@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import store from "./store";
 import { Provider } from "react-redux";
+import { CookiesProvider } from "react-cookie";
 import App from "./App.tsx";
 import "./index.css";
 
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
+      <CookiesProvider defaultSetOptions={{ path: "/" }} />
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

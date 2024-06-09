@@ -49,13 +49,13 @@ const NavBar = () => {
   }, [userInfo]);
 
   return (
-    <nav className='container mx-auto'>
-      <ul className=''>
+    <nav className='sticky top-0 w-full shadow bg-white z-50'>
+      <ul className='lg:flex lg:justify-center lg:items-center'>
         <li>
           <img
             src={logo}
             alt='Cadence Logo'
-            className='h-16 ml-2 transition hover:scale-125'
+            className='h-16 ml-2 transition hover:scale-125 active:animate-pulse cursor-pointer'
           />
         </li>
         <li className='md:hidden'>

@@ -13,7 +13,7 @@ const SearchResults = ({ loading }: SearchResultsProps) => {
   return (
     <section className='mt-16'>
       {!loading ? (
-        <div className='flex flex-col'>
+        <div className='flex flex-col items-center'>
           <PlaylistButtons />
           <PlaylistResults />
         </div>

@@ -12,12 +12,6 @@ interface NavMobileMenuProps {
 const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  //   const closeMenu = () => {
-  //     if (isOpen) {
-  //       setIsOpen(false);
-  //     }
-  //   };
-
   return (
     <Menu
       isOpen={isOpen}
@@ -26,7 +20,6 @@ const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
       width={200}
       pageWrapId='page-wrap'
       outerContainerId='outer-container'
-      className='w-1/2'
     >
       <NavItem linkTo='/' bodyText='Home' />
       <hr />

@@ -5,4 +5,10 @@ export default {
     extend: {},
   },
   plugins: [],
+  variants: {
+    extend: {
+      scale: ["active"],
+      animate: ["active"],
+    },
+  },
 };
