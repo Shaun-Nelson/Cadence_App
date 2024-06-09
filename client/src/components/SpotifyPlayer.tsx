@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { useCookies } from "react-cookie";
-import { useSelector } from "react-redux";
-import { RootState } from "../store";
 import SpotifyPlayer, { Props } from "react-spotify-web-playback";
+import refreshAccessToken from "../utils/refreshSpotifyAccessToken";
 
-import refreshAccessToken from "../utils/spotifyRefreshTokenRequest";
+interface PlayerWrapperProps {
+  spotifyIds: string[];
+}
 
-export default function PlayerWrapper() {
+export default function PlayerWrapper({ spotifyIds }: PlayerWrapperProps) {
   const [cookies] = useCookies(["access_token", "expires_in"]);
   const [accessToken, setAccessToken] = useState<string>(cookies.access_token);
   const [expiresAt, setExpiresAt] = useState<string>(cookies.expires_in);
-
-  const { results } = useSelector((state: RootState) => state.results);
-  const uris = results.map((result) => result.spotifyId);
 
   const getOAuthToken: Props["getOAuthToken"] = async (callback) => {
     if (parseInt(expiresAt) > Date.now()) {
@@ -33,7 +31,7 @@ export default function PlayerWrapper() {
     <SpotifyPlayer
       getOAuthToken={getOAuthToken}
       token={accessToken}
-      uris={uris}
+      uris={spotifyIds}
     />
   );
 }

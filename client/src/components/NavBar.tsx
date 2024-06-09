@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { RootState } from "../store";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
@@ -52,13 +52,15 @@ const NavBar = () => {
     <nav className='sticky top-0 w-full shadow bg-white z-50'>
       <ul className='lg:flex lg:justify-center lg:items-center'>
         <li>
-          <img
-            src={logo}
-            alt='Cadence Logo'
-            className='h-16 ml-2 transition hover:scale-125 active:animate-pulse cursor-pointer'
-          />
+          <Link to='/'>
+            <img
+              src={logo}
+              alt='Cadence Logo'
+              className='h-16 ml-2 transition hover:scale-125 active:scale-50 cursor-pointer'
+            />
+          </Link>
         </li>
-        <li className='md:hidden'>
+        <li className=''>
           <NavMobileMenu isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </li>
         <div className='max-sm:hidden flex items-center'>

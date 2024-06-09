@@ -1,21 +1,25 @@
 import { useState, useEffect } from "react";
-import { useGetPlaylistsMutation } from "../slices/playlistApiSlice";
-import { useDeletePlaylistMutation } from "../slices/playlistApiSlice";
+import {
+  useGetPlaylistsMutation,
+  useDeletePlaylistMutation,
+  useSaveSpotifyPlaylistMutation,
+} from "../slices/playlistApiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { toast } from "react-toastify";
 
-//Components
-import PlaylistComponent from "../components/PlaylistComponent";
+// //Components
+// import PlaylistTrack from "../components/PlaylistTrack";
 
 //Types
-import type { Playlist } from "../types";
+import type { Playlist, Track } from "../types";
 
 const MyPlaylists = () => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
 
   const [getPlaylists, { isLoading }] = useGetPlaylistsMutation();
-
+  const [saveSpotifyPlaylist] = useSaveSpotifyPlaylistMutation();
   const [deletePlaylist] = useDeletePlaylistMutation();
 
   const getData = async () => {
@@ -43,6 +47,26 @@ const MyPlaylists = () => {
     }
   };
 
+  const handleSpotfiySave = async (
+    playlistName: string,
+    playlistDescription: string,
+    results: Track[]
+  ) => {
+    try {
+      await saveSpotifyPlaylist({
+        name: playlistName,
+        description: playlistDescription,
+        songs: results,
+      }).unwrap();
+      toast.success("Playlist saved to Spotify!");
+    } catch (error) {
+      console.error(error);
+      toast.error(
+        "Error saving playlist to Spotify. Please connect via User Profile."
+      );
+    }
+  };
+
   useEffect(() => {
     getData();
   }, []);
@@ -56,15 +80,51 @@ const MyPlaylists = () => {
       ) : playlists.length > 0 ? (
         playlists.map((playlist, index) => {
           return (
-            <PlaylistComponent
-              key={index}
-              playlist={playlist}
-              handlePlaylistDelete={handlePlaylistDelete}
-            />
+            <div className='container mt-8' key={index}>
+              <div key={playlist.id}>
+                <h2 className='inline mr-4'>{playlist.name}</h2>
+                <FontAwesomeIcon
+                  className='h-6 mx-4 text-green-500 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer'
+                  icon={faSpotify}
+                  onClick={() =>
+                    handleSpotfiySave(
+                      playlist.name,
+                      playlist.description,
+                      playlist.songs
+                    )
+                  }
+                  title='Save playlist to Spotify account'
+                />
+                <FontAwesomeIcon
+                  onClick={() => handlePlaylistDelete(playlist.id)}
+                  icon={faTrash}
+                  className='h-6 mx-4 cursor-pointer text-red-600 hover:text-red-400 hover:scale-125 active:scale-50 transition'
+                />
+                <p>{playlist.description}</p>
+              </div>
+              <div>
+                {playlist.songs.map((track) => {
+                  return (
+                    <div className='flex flex-col'>
+                      <a
+                        href={track.externalUrl}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90 '
+                      >
+                        {track.title}
+                      </a>
+                      <br />
+                    </div>
+                  );
+                })}
+              </div>
+              <hr className='mt-12' />
+            </div>
           );
         })
       ) : (
-        <h2 className='font-bold mt-12'>No playlists found</h2>
+        <h2>No playlists found</h2>
       )}
     </div>
   );
