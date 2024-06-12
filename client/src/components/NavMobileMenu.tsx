@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { pushRotate as Menu } from "react-burger-menu";
+import { pushRotate as Menu, Props } from "react-burger-menu";
 import {
   faMagnifyingGlass,
   faUserPlus,
@@ -12,7 +12,7 @@ import {
 // Components
 import NavItem from "./NavItem";
 
-interface NavMobileMenuProps {
+interface NavMobileMenuProps extends Props {
   isLoggedIn: boolean;
   handleLogout?: () => void;
 }
@@ -25,7 +25,7 @@ const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
       isOpen={isOpen}
       onStateChange={(state) => setIsOpen(state.isOpen)}
       right
-      width={210}
+      width={220}
       pageWrapId='page-wrap'
       outerContainerId='outer-container'
     >

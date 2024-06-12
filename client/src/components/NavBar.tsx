@@ -64,14 +64,14 @@ const NavBar = () => {
             <img
               src={logo}
               alt='Cadence Logo'
-              className='h-16 ml-2 transition hover:scale-125 active:scale-50 cursor-pointer'
+              className='h-16 ml-2 transition hover:scale-125 active:scale-50 active:shadow-inner cursor-pointer'
             />
           </Link>
         </li>
         <li className='lg:hidden'>
           <NavMobileMenu isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </li>
-        <div className='max-sm:hidden flex items-center'>
+        <div className='hidden lg:flex items-center'>
           <NavItem linkTo='/' bodyText='Home' icon={faMagnifyingGlass} />
           <NavItem linkTo='/signup' bodyText='Sign-Up' icon={faUserPlus} />
           {isLoggedIn ? (

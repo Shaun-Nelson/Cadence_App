@@ -61,17 +61,14 @@ const SignUpCard = () => {
         />
         <button
           type='submit'
-          className='w-48 p-2 bg-gray-800 text-white rounded'
+          className='w-48 p-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition cursor-pointer active:scale-90 active:bg-gray-900 active:text-gray-200 active:shadow-inner'
         >
           Sign Up
         </button>
 
         <p className='mt-12 text-sm'>
           Already have an account?{" "}
-          <Link
-            to={"/login"}
-            className='text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90'
-          >
+          <Link to={"/login"} className='link'>
             Login
           </Link>
         </p>

@@ -10,7 +10,7 @@ function App() {
     <>
       <NavBar />
       <div id='outer-container'>
-        <ToastContainer />
+        <ToastContainer position='bottom-center' />
         <div id='page-wrap'>
           <Outlet />
         </div>

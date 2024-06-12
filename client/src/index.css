@@ -262,3 +262,11 @@ td {
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 10px;
 }
+
+.card {
+  @apply flex flex-col justify-center items-center mt-24 p-12 w-80 shadow-md rounded border border-opacity-50;
+}
+
+.link {
+  @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
+}
