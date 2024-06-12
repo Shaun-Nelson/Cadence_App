@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
-import { ReactEventHandler, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import {
   useCreatePlaylistMutation,
@@ -16,13 +16,22 @@ const PlaylistButtons = () => {
   const namePlaceholder = "Playlist Name";
   const descriptionPlaceholder = "Playlist Description";
   const [error, setError] = useState<string>("");
+  const [submitAction, setSubmitAction] = useState<string>("");
 
   const { results } = useSelector((state: RootState) => state.results);
   const [createPlaylist, { isError }] = useCreatePlaylistMutation();
   const [saveSpotifyPlaylist] = useSaveSpotifyPlaylistMutation();
 
-  const handleSubmit: ReactEventHandler = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submitAction === "localSave") {
+      await handleLocalSave();
+    } else if (submitAction === "spotifySave") {
+      await handleSpotifySave();
+    }
+  };
+
+  const handleLocalSave = async () => {
     try {
       const response = await createPlaylist({
         name: playlistName,
@@ -50,39 +59,7 @@ const PlaylistButtons = () => {
     }
   };
 
-  const handleLocalSave = async (e: React.FormEvent<SVGSVGElement>) => {
-    try {
-      e.preventDefault();
-
-      const response = await createPlaylist({
-        name: playlistName,
-        description: playlistDescription,
-        songs: results,
-      });
-
-      if (response.error) {
-        setError("Error saving playlist. Please try again.");
-        toast.error("Error saving playlist. Please try again.");
-        return;
-      }
-
-      if (isError) {
-        setError("Please log in to save playlist.");
-        toast.error("Please log in to save playlist.");
-        return;
-      } else {
-        setError("");
-        toast.success("Playlist saved!");
-      }
-    } catch (err) {
-      console.error(err);
-      toast.error(error);
-    }
-  };
-
-  const handleSpotfiySave = async (e: React.FormEvent<SVGSVGElement>) => {
-    e.preventDefault();
-
+  const handleSpotifySave = async () => {
     try {
       await saveSpotifyPlaylist({
         name: playlistName,
@@ -130,7 +107,11 @@ const PlaylistButtons = () => {
                 onChange={(e) => setPlaylistDescription(e.target.value)}
               />
               <div className='flex items-center ml-4'>
-                <button>
+                <button
+                  name='localSaveBtn'
+                  type='submit'
+                  onClick={() => setSubmitAction("localSave")}
+                >
                   <FontAwesomeIcon
                     className={
                       error
@@ -138,11 +119,14 @@ const PlaylistButtons = () => {
                         : "h-8 transition hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
                     }
                     icon={faFloppyDisk}
-                    onSubmit={(e) => handleLocalSave(e)}
                     title='Save playlist to local user account'
                   />
                 </button>
-                <button>
+                <button
+                  name='spotifySaveBtn'
+                  type='submit'
+                  onClick={() => setSubmitAction("spotifySave")}
+                >
                   <FontAwesomeIcon
                     className={
                       error
@@ -150,7 +134,6 @@ const PlaylistButtons = () => {
                         : "h-8 mx-4 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
                     }
                     icon={faSpotify}
-                    onSubmit={(e) => handleSpotfiySave(e)}
                     title='Save playlist to Spotify account'
                   />
                 </button>

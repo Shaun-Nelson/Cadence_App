@@ -30,7 +30,7 @@ const genertateOptions = (config: GenerateOptionsConfig): JSX.Element[] => {
   const options: JSX.Element[] = [];
   for (let i = MIN_LENGTH; i <= MAX_LENGTH; i += STEP) {
     options.push(
-      <option key={i} value={i}>
+      <option key={i} value={i} className='bg-transparent'>
         {i}
       </option>
     );
@@ -91,7 +91,7 @@ const Searchbar = () => {
           onSubmit={handleSubmit}
         >
           <input
-            className='w-11/12 p-2 text-sm'
+            className='w-11/12 p-2 text-sm bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent transition cursor-pointer'
             type='text'
             value={search}
             onChange={handleSearch}

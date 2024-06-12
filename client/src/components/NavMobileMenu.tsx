@@ -1,5 +1,13 @@
 import { useState } from "react";
 import { pushRotate as Menu } from "react-burger-menu";
+import {
+  faMagnifyingGlass,
+  faUserPlus,
+  faListUl,
+  faUser,
+  faArrowRightFromBracket,
+  faArrowRightToBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 // Components
 import NavItem from "./NavItem";
@@ -17,24 +25,37 @@ const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
       isOpen={isOpen}
       onStateChange={(state) => setIsOpen(state.isOpen)}
       right
-      width={200}
+      width={210}
       pageWrapId='page-wrap'
       outerContainerId='outer-container'
     >
-      <NavItem linkTo='/' bodyText='Home' />
+      <NavItem linkTo='/' bodyText='Home' icon={faMagnifyingGlass} />
       <hr />
-      <NavItem linkTo='/signup' bodyText='Sign-Up' />
+      <NavItem linkTo='/signup' bodyText='Sign-Up' icon={faUserPlus} />
       <hr />
       {isLoggedIn ? (
         <>
-          <NavItem linkTo='/playlists' bodyText='My Playlists' />
+          <NavItem
+            linkTo='/playlists'
+            bodyText='My Playlists'
+            icon={faListUl}
+          />
           <hr />
-          <NavItem linkTo='/profile' bodyText='User Profile' />
+          <NavItem linkTo='/profile' bodyText='User Profile' icon={faUser} />
           <hr />
-          <NavItem linkTo='/' bodyText='Logout' onClickHandler={handleLogout} />
+          <NavItem
+            linkTo='/'
+            bodyText='Logout'
+            onClickHandler={handleLogout}
+            icon={faArrowRightFromBracket}
+          />
         </>
       ) : (
-        <NavItem linkTo='/login' bodyText='Login' />
+        <NavItem
+          linkTo='/login'
+          bodyText='Login'
+          icon={faArrowRightToBracket}
+        />
       )}
     </Menu>
   );

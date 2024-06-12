@@ -12,6 +12,14 @@ import NavMobileMenu from "./NavMobileMenu";
 
 // Images
 import logo from "../assets/cadence_logo.svg";
+import {
+  faArrowRightFromBracket,
+  faArrowRightToBracket,
+  faListUl,
+  faMagnifyingGlass,
+  faUser,
+  faUserPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -64,20 +72,33 @@ const NavBar = () => {
           <NavMobileMenu isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </li>
         <div className='max-sm:hidden flex items-center'>
-          <NavItem linkTo='/' bodyText='Home' />
-          <NavItem linkTo='/signup' bodyText='Sign-Up' />
+          <NavItem linkTo='/' bodyText='Home' icon={faMagnifyingGlass} />
+          <NavItem linkTo='/signup' bodyText='Sign-Up' icon={faUserPlus} />
           {isLoggedIn ? (
             <>
-              <NavItem linkTo='/playlists' bodyText='My Playlists' />
-              <NavItem linkTo='/profile' bodyText='User Profile' />
+              <NavItem
+                linkTo='/playlists'
+                bodyText='My Playlists'
+                icon={faListUl}
+              />
+              <NavItem
+                linkTo='/profile'
+                bodyText='User Profile'
+                icon={faUser}
+              />
               <NavItem
                 linkTo='/'
                 bodyText='Logout'
                 onClickHandler={handleLogout}
+                icon={faArrowRightFromBracket}
               />
             </>
           ) : (
-            <NavItem linkTo='/login' bodyText='Login' />
+            <NavItem
+              linkTo='/login'
+              bodyText='Login'
+              icon={faArrowRightToBracket}
+            />
           )}
         </div>
       </ul>
