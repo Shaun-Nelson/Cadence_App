@@ -19,7 +19,18 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         withCredentials: true,
       }),
     }),
+    refreshSpotifyAccessToken: builder.mutation({
+      query: () => ({
+        url: `${USERS_URL}/spotify/refresh`,
+        method: "POST",
+        withCredentials: true,
+      }),
+    }),
   }),
 });
 
-export const { useLoginSpotifyMutation, useGetAiDataMutation } = usersApiSlice;
+export const {
+  useLoginSpotifyMutation,
+  useGetAiDataMutation,
+  useRefreshSpotifyAccessTokenMutation,
+} = usersApiSlice;

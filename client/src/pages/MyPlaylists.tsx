@@ -10,9 +10,6 @@ import { faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { toast } from "react-toastify";
 
-// //Components
-// import PlaylistTrack from "../components/PlaylistTrack";
-
 //Types
 import type { Playlist, Track } from "../types";
 

@@ -10,6 +10,9 @@ import { RootState } from "../store";
 //Components
 import SearchResults from "./SearchResults";
 
+//Types
+import type { Track } from "../types";
+
 const generateOptionsConfig = {
   MIN_LENGTH: 10,
   MAX_LENGTH: 50,
@@ -65,7 +68,7 @@ const Searchbar = () => {
   const getAndSetResults = async () => {
     if (isLoading) return;
     try {
-      const res = await getAiData({
+      const res: Track[] = await getAiData({
         input: search,
         length: playlistLength,
       }).unwrap();

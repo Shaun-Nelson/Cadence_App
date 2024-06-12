@@ -8,7 +8,7 @@ interface NavItemProps {
 
 const NavItem = ({ linkTo, bodyText, onClickHandler }: NavItemProps) => {
   return (
-    <li className='list-none p-2'>
+    <li className='list-none p-4'>
       <Link onClick={onClickHandler} to={linkTo}>
         {bodyText}
       </Link>

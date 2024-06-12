@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 
 // Components
 import PlaylistTrack from "./PlaylistTrack";
-import SpotifyPlayer from "./SpotifyPlayer";
+import SpotifyPlayer from "./SpotifyPlayerWrapper";
 
 // Types
 import type { Playlist, Track } from "../types";
@@ -35,7 +35,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
         {cookies.refresh_token && playlist.songs.length > 0 ? (
           <div className='pt-4 pb-10'>
             <SpotifyPlayer
-              spotifyIds={playlist.songs.map((song) => song.spotifyId)}
+              spotifyIds={playlist.songs?.map((song) => song.spotifyId)}
             />
             <hr className='mt-10' />
           </div>
@@ -46,12 +46,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
         )}
         {playlist.songs.length > 0
           ? playlist.songs.map((track: Track, index: number) => {
-              return (
-                <div>
-                  <PlaylistTrack key={index} track={track} />
-                  {index != playlist.songs.length - 1 && <hr />}
-                </div>
-              );
+              return <PlaylistTrack key={index} track={track} />;
             })
           : null}
       </div>

@@ -60,7 +60,7 @@ const NavBar = () => {
             />
           </Link>
         </li>
-        <li className=''>
+        <li className='lg:hidden'>
           <NavMobileMenu isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         </li>
         <div className='max-sm:hidden flex items-center'>

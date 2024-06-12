@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { scaleRotate as Menu } from "react-burger-menu";
+import { pushRotate as Menu } from "react-burger-menu";
 
 // Components
 import NavItem from "./NavItem";
