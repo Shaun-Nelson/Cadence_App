@@ -51,10 +51,7 @@ const LoginCard = () => {
           required
         />
 
-        <button
-          type='submit'
-          className='w-48 p-2 bg-gray-800 text-white rounded hover:bg-gray-700 transition cursor-pointer active:scale-90 active:bg-gray-900 active:text-gray-200 active:shadow-inner'
-        >
+        <button type='submit' className='btn-submit'>
           Login
         </button>
 

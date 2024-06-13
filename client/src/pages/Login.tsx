@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <>
       {userInfo ? (
-        <div className='flex justify-center items-center mt-24'>
+        <div className='flex justify-center items-center pt-24'>
           <div className='flex flex-col justify-center items-center mt-24 p-6 w-80 shadow-md rounded border border-opacity-50'>
             <div className='text-center'>
               <h1 className='text-xl font-semibold'>Already logged-in as:</h1>

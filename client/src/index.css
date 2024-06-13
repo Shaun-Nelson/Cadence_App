@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-light: #f9f9f9;
+  --primary-dark: #112d4e;
+  --secondary-light: #dbe2ef;
+  --secondary-dark: #3f72af;
+}
+
 /* Global */
 
 .flex-container {
@@ -64,12 +71,12 @@
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: var(--primary-dark);
 }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
-  background: #373a47d0;
+  background: var(--secondary-dark);
 }
 
 /* Position and sizing of clickable cross button */
@@ -80,7 +87,7 @@
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: var(--primary-light);
 }
 
 /*
@@ -94,7 +101,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: var(--primary-dark);
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -106,7 +113,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: var(--primary-light);
   /* padding: 0.8em; */
 }
 
@@ -269,4 +276,30 @@ td {
 
 .link {
   @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
+}
+
+.btn-submit {
+  @apply w-48 p-2 bg-gray-800 dark:bg-gray-200 text-gray-100 dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition cursor-pointer active:scale-90 active:bg-gray-900 active:text-gray-200 active:shadow-inner;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bm-burger-bars {
+    background: var(--primary-light);
+  }
+
+  .bm-burger-bars-hover {
+    background: var(--secondary-light);
+  }
+
+  .bm-cross {
+    background: var(--primary-dark);
+  }
+
+  .bm-menu {
+    background: var(--primary-light);
+  }
+
+  .bm-item-list {
+    color: var(--primary-light);
+  }
 }

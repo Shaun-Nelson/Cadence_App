@@ -22,17 +22,21 @@ const UserProfile = () => {
   };
 
   return (
-    <div className='flex-container-column'>
-      <h3>{userInfo}'s Profile</h3>
-      <hr />
-      <span>Log in to Spotify to save playlists to your Spotify account.</span>
-      <FontAwesomeIcon
-        className='icon-save-playlist-spotify'
-        style={{ paddingLeft: "15px" }}
-        icon={faSpotify}
-        onClick={handleSpotfiyConnect}
-        title='Save playlist to Spotify account'
-      />
+    <div className='container mx-auto'>
+      <div className='flex flex-col justify-start items-center h-screen pt-12'>
+        <h3>{userInfo}'s Profile</h3>
+        <hr />
+        <span>
+          Log in to Spotify to save playlists to your Spotify account.
+        </span>
+        <FontAwesomeIcon
+          className='icon-save-playlist-spotify'
+          style={{ paddingLeft: "15px" }}
+          icon={faSpotify}
+          onClick={handleSpotfiyConnect}
+          title='Save playlist to Spotify account'
+        />
+      </div>
     </div>
   );
 };

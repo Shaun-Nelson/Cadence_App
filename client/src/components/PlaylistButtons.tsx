@@ -85,7 +85,7 @@ const PlaylistButtons = () => {
                 Playlist Name
               </label>
               <input
-                className='w-2/5 lg:w-full ml-2 mr-1 lg:mr-2 p-2 text-sm border border-current border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition cursor-pointer'
+                className='w-2/5 lg:w-full ml-2 mr-1 lg:mr-2 p-2 text-sm border border-primaryDark dark:border-primaryLight border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-secondaryDark dark:focus:ring-secondaryLight focus:border-transparent transition cursor-pointer'
                 type='text'
                 placeholder={namePlaceholder}
                 required
@@ -98,7 +98,7 @@ const PlaylistButtons = () => {
                 Playlist Description
               </label>
               <input
-                className='w-1/2 lg:w-full p-2 text-sm border border-current border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent transition cursor-pointer'
+                className='w-1/2 lg:w-full p-2 text-sm border border-primaryDark dark:border-primaryLight border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-secondaryDark dark:focus:ring-secondaryLight focus:border-transparent transition cursor-pointer'
                 type='text'
                 placeholder={descriptionPlaceholder}
                 name={playlistDescription}
@@ -116,7 +116,7 @@ const PlaylistButtons = () => {
                     className={
                       error
                         ? "h-8 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                        : "h-8 transition hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
+                        : "h-8 transition text-primaryDark dark:text-secondaryLight hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
                     }
                     icon={faFloppyDisk}
                     title='Save playlist to local user account'
@@ -131,7 +131,7 @@ const PlaylistButtons = () => {
                     className={
                       error
                         ? "h-8 mx-4 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                        : "h-8 mx-4 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
+                        : "h-8 mx-4 text-primaryDark dark:text-secondaryLight hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
                     }
                     icon={faSpotify}
                     title='Save playlist to Spotify account'

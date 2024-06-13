@@ -21,7 +21,7 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
             to={track.externalUrl}
             rel='noreferrer'
             target='_blank'
-            className='text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90'
+            className='link'
           >
             {track.title}
           </Link>

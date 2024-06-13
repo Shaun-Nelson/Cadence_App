@@ -9,9 +9,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <div id='outer-container'>
+      <div id='outer-container' className='bg-primaryLight dark:bg-primaryDark'>
         <ToastContainer position='bottom-center' />
-        <div id='page-wrap'>
+        <div id='page-wrap' className='bg-primaryLight dark:bg-primaryDark'>
           <Outlet />
         </div>
       </div>

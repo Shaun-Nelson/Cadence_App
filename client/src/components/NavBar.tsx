@@ -57,7 +57,7 @@ const NavBar = () => {
   }, [userInfo]);
 
   return (
-    <nav className='sticky top-0 w-full shadow bg-white z-50'>
+    <nav className='sticky top-0 w-full shadow bg-primaryLight dark:bg-primaryDark z-50'>
       <ul className='lg:flex lg:justify-center lg:items-center'>
         <li>
           <Link to='/'>

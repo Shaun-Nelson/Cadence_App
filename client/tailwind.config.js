@@ -2,13 +2,20 @@
 export default {
   content: ["./index.html", "./src/**/*.{js, jsx, ts,tsx}"],
   theme: {
-    extend: {},
-  },
-  plugins: [],
-  variants: {
     extend: {
-      scale: ["active"],
-      animate: ["active"],
+      colors: {
+        primaryLight: "#F9F9F9",
+        primaryDark: "#112D4E",
+        secondaryLight: "#DBE2EF",
+        secondaryDark: "#3F72AF",
+      },
+    },
+    plugins: [],
+    variants: {
+      extend: {
+        scale: ["active"],
+        animate: ["active"],
+      },
     },
   },
 };
