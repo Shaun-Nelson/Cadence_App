@@ -89,13 +89,13 @@ const Searchbar = () => {
 
   return (
     <>
-      <main className='flex flex-col items-center pt-16 h-screen w-screen bg-primaryLight dark:bg-primaryDark'>
+      <main className='flex flex-col items-center pt-16 h-full w-screen bg-primaryLight dark:bg-primaryDark'>
         <form
           className='flex items-center justify-around p-2 mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-md w-11/12 lg:w-1/2'
           onSubmit={handleSubmit}
         >
           <input
-            className='w-11/12 p-2 text-sm bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-secondayDark dark:focus:ring-secondaryLight transition cursor-pointer'
+            className='w-11/12 p-2 text-sm dark:text-primaryLight bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-secondayDark dark:focus:ring-secondaryLight transition cursor-pointer'
             type='text'
             value={search}
             onChange={handleSearch}

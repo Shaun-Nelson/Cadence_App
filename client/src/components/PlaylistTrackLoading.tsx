@@ -2,7 +2,7 @@ const PlaylistTrackLoading = () => {
   return (
     <div
       role='status'
-      className='flex flex-col my-4 p-2 w-full border shadow-md rounded hover:shadow-lg animate-pulse'
+      className='flex flex-col my-4 p-2 border shadow-md rounded hover:shadow-lg animate-pulse'
     >
       <div className='flex justify-start p-2 mt-2'>
         <div className='h-24 w-24 bg-gray-300 rounded-xl'></div>

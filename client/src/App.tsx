@@ -9,7 +9,10 @@ function App() {
   return (
     <>
       <NavBar />
-      <div id='outer-container' className='bg-primaryLight dark:bg-primaryDark'>
+      <div
+        id='outer-container'
+        className='h-screen bg-primaryLight dark:bg-primaryDark'
+      >
         <ToastContainer position='bottom-center' />
         <div id='page-wrap' className='bg-primaryLight dark:bg-primaryDark'>
           <Outlet />

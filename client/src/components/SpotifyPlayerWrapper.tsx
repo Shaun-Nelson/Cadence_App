@@ -28,7 +28,7 @@ export default function PlayerWrapper({ spotifyIds }: PlayerWrapperProps) {
       setAccessToken(cookies.access_token);
       setExpiresAt(cookies.expires_in);
 
-      callback(accessToken);
+      callback(cookies.access_token);
     } catch (error) {
       console.error(error);
     }

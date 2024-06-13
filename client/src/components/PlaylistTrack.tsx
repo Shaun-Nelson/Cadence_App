@@ -21,13 +21,19 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
             to={track.externalUrl}
             rel='noreferrer'
             target='_blank'
-            className='link'
+            className='link dark:text-blue-400 dark:hover:text-blue-600'
           >
             {track.title}
           </Link>
-          <p className='font-semibold'>{track.artist}</p>
-          <p>{track.album}</p>
-          <p>{track.duration}</p>
+          <p className='text-primaryDark dark:text-primaryLight font-semibold'>
+            {track.artist}
+          </p>
+          <p className='text-primaryDark dark:text-primaryLight'>
+            {track.album}
+          </p>
+          <p className='text-primaryDark dark:text-primaryLight'>
+            {track.duration}
+          </p>
         </div>
       </div>
       <div>
@@ -38,7 +44,7 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
             className='my-4 w-full'
           ></audio>
         ) : (
-          <span className='flex justify-center items-center my-4 h-12'>
+          <span className='flex justify-center items-center my-4 h-12 text-primaryDark dark:text-primaryLight'>
             (Preview Unavailable)
           </span>
         )}

@@ -80,7 +80,10 @@ const PlaylistButtons = () => {
       {results.length > 0 && (
         <>
           <div className='flex justify-center items-center'>
-            <form className='flex' onSubmit={(e) => handleSubmit(e)}>
+            <form
+              className='flex justify-center items-center'
+              onSubmit={(e) => handleSubmit(e)}
+            >
               <label htmlFor='playlistName' className='sr-only'>
                 Playlist Name
               </label>
@@ -106,35 +109,37 @@ const PlaylistButtons = () => {
                 alt='Playlist Description'
                 onChange={(e) => setPlaylistDescription(e.target.value)}
               />
-              <div className='flex items-center ml-4'>
+              <div className='flex items-center justify-center ml-4'>
                 <button
                   name='localSaveBtn'
                   type='submit'
                   onClick={() => setSubmitAction("localSave")}
+                  className={
+                    error
+                      ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
+                      : "transition text-primaryDark dark:text-secondaryLight hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
+                  }
                 >
                   <FontAwesomeIcon
-                    className={
-                      error
-                        ? "h-8 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                        : "h-8 transition text-primaryDark dark:text-secondaryLight hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
-                    }
                     icon={faFloppyDisk}
                     title='Save playlist to local user account'
+                    className='h-8'
                   />
                 </button>
                 <button
                   name='spotifySaveBtn'
                   type='submit'
                   onClick={() => setSubmitAction("spotifySave")}
+                  className={
+                    error
+                      ? "mx-4 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
+                      : "mx-4 text-primaryDark dark:text-secondaryLight hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
+                  }
                 >
                   <FontAwesomeIcon
-                    className={
-                      error
-                        ? "h-8 mx-4 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                        : "h-8 mx-4 text-primaryDark dark:text-secondaryLight hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
-                    }
                     icon={faSpotify}
                     title='Save playlist to Spotify account'
+                    className='h-8'
                   />
                 </button>
               </div>
