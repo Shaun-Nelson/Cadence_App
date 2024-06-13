@@ -30,7 +30,11 @@ const genertateOptions = (config: GenerateOptionsConfig): JSX.Element[] => {
   const options: JSX.Element[] = [];
   for (let i = MIN_LENGTH; i <= MAX_LENGTH; i += STEP) {
     options.push(
-      <option key={i} value={i} className='bg-transparent'>
+      <option
+        key={i}
+        value={i}
+        className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
+      >
         {i}
       </option>
     );
@@ -87,7 +91,7 @@ const Searchbar = () => {
     <>
       <main className='flex flex-col items-center pt-16 h-screen w-screen bg-primaryLight dark:bg-primaryDark'>
         <form
-          className='flex items-center justify-around p-2 mx-10 rounded border border-primaryDark dark:border:primaryLight border-opacity-50 shadow-md w-11/12 lg:w-1/2'
+          className='flex items-center justify-around p-2 mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-md w-11/12 lg:w-1/2'
           onSubmit={handleSubmit}
         >
           <input
@@ -98,17 +102,17 @@ const Searchbar = () => {
             placeholder='Generate a playlist based on your prompt.'
           />
           <FontAwesomeIcon
-            className='cursor-pointer transition hover:text-secondaryDark hover:scale-125 active:scale-50'
+            className='cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight hover:scale-125 active:scale-50'
             icon={faMagnifyingGlass}
             onClick={handleClick}
           />
         </form>
         <form className='mt-6'>
-          <label>
+          <label className='text-primaryDark dark:text-primaryLight'>
             Playlist Length:
             <select
               name='length'
-              className='ml-2'
+              className='ml-2 text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
               value={playlistLength}
               onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
             >

@@ -64,7 +64,7 @@ const NavBar = () => {
             <img
               src={logo}
               alt='Cadence Logo'
-              className='h-16 ml-2 transition hover:scale-125 active:scale-50 active:shadow-inner cursor-pointer'
+              className='h-16 ml-2 transition hover:scale-125 active:scale-50 active:shadow-inner cursor-pointer fill-secondayDark hover:fill-primaryDark dark:fill-secondaryLight dark:hover:fill-primaryLight'
             />
           </Link>
         </li>

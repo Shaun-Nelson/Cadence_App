@@ -70,9 +70,9 @@ const MyPlaylists = () => {
   }, []);
 
   return (
-    <div className='flex-container-column '>
+    <div className='flex flex-col h-screen'>
       {isLoading ? (
-        <div className='flex-container-spinner'>
+        <div className='flex justify-center items-center mt-24'>
           <FontAwesomeIcon className='spinner' icon={faSpinner} spin />
         </div>
       ) : playlists.length > 0 ? (
@@ -80,7 +80,10 @@ const MyPlaylists = () => {
           return (
             <ol className='container mt-8 list-disc' key={index}>
               <div key={playlist.id}>
-                <Link to={`/playlists/${playlist.id}`} className='inline mr-4'>
+                <Link
+                  to={`/playlists/${playlist.id}`}
+                  className='link dark:text-blue-400 dark:hover:text-blue-600'
+                >
                   {playlist.name}
                 </Link>
                 <FontAwesomeIcon
@@ -100,7 +103,9 @@ const MyPlaylists = () => {
                   icon={faTrash}
                   className='h-6 mx-4 cursor-pointer text-red-600 hover:text-red-400 hover:scale-125 active:scale-50 transition'
                 />
-                <p>{playlist.description}</p>
+                <p className='text-primaryDark dark:text-primaryLight'>
+                  {playlist.description}
+                </p>
               </div>
             </ol>
           );

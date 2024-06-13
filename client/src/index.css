@@ -283,23 +283,23 @@ td {
 }
 
 @media (prefers-color-scheme: dark) {
-  .bm-burger-bars {
+  .bm-menu {
     background: var(--primary-light);
   }
 
-  .bm-burger-bars-hover {
-    background: var(--secondary-light);
+  .bm-item-list {
+    color: var(--primary-dark);
   }
 
   .bm-cross {
     background: var(--primary-dark);
   }
 
-  .bm-menu {
+  .bm-burger-bars {
     background: var(--primary-light);
   }
 
-  .bm-item-list {
-    color: var(--primary-light);
+  .bm-burger-bars-hover {
+    background: var(--secondary-light);
   }
 }

@@ -31,9 +31,12 @@ const LoginCard = () => {
   };
 
   return (
-    <div className='flex justify-center items-center'>
-      <form className='card' onSubmit={handleSubmit}>
-        <h3 className='mb-12'>Login</h3>
+    <div className='flex justify-center items-start pt-24 h-screen'>
+      <form
+        className='flex flex-col justify-center items-center p-12 w-80 shadow-md rounded border border-opacity-50'
+        onSubmit={handleSubmit}
+      >
+        <h3 className='mb-12 text-primaryDark dark:text-primaryLight'>Login</h3>
         <input
           className='mb-4 w-48 p-2 border border-opacity-50 rounded'
           type='text'
@@ -55,9 +58,12 @@ const LoginCard = () => {
           Login
         </button>
 
-        <p className='mt-12 text-sm'>
+        <p className='mt-12 text-sm text-primaryDark dark:text-primaryLight'>
           Don't have an account?{" "}
-          <Link to={"/signup"} className='link'>
+          <Link
+            to={"/signup"}
+            className='link dark:text-blue-400 dark:hover:text-blue-600'
+          >
             Sign Up
           </Link>
         </p>

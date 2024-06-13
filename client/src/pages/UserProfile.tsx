@@ -24,13 +24,15 @@ const UserProfile = () => {
   return (
     <div className='container mx-auto'>
       <div className='flex flex-col justify-start items-center h-screen pt-12'>
-        <h3>{userInfo}'s Profile</h3>
+        <h3 className='text-primaryDark dark:text-primaryLight'>
+          {userInfo}'s Profile
+        </h3>
         <hr />
-        <span>
+        <span className='text-primaryDark dark:text-primaryLight'>
           Log in to Spotify to save playlists to your Spotify account.
         </span>
         <FontAwesomeIcon
-          className='icon-save-playlist-spotify'
+          className='text-green-500 h-12 w-12 mt-4 cursor-pointer hover:text-green-600'
           style={{ paddingLeft: "15px" }}
           icon={faSpotify}
           onClick={handleSpotfiyConnect}
