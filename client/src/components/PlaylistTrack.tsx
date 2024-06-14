@@ -9,7 +9,7 @@ interface PlaylistTrackProps {
 
 const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
   return (
-    <div className='flex flex-col my-4 p-2 border shadow-md rounded hover:shadow-lg'>
+    <div className='card'>
       <div className='flex justify-start p-2 mt-2'>
         <img
           src={track.imageUrl}

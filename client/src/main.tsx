@@ -20,11 +20,12 @@ import MyPlaylists from "./pages/MyPlaylists";
 import Page404 from "./pages/404.tsx";
 import UserProfile from "./pages/UserProfile.tsx";
 import Playlist from "./pages/Playlist.tsx";
+import Error from "./pages/Error.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
-      <Route index path='/' element={<Home />} />,
+    <Route path='/' element={<App />} errorElement={<Error />}>
+      <Route index path='/' element={<Home />} errorElement={<Error />} />,
       <Route path='/login' element={<Login />} />,
       <Route path='/logout' element={<Home />} />,
       <Route path='/signup' element={<SignUp />} />,

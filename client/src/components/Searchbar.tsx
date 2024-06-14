@@ -19,37 +19,11 @@ const generateOptionsConfig = {
   STEP: 10,
 };
 
-// interface GenerateOptionsConfig {
-//   MIN_LENGTH: number;
-//   MAX_LENGTH: number;
-//   STEP: number;
-// }
-
-// const genertateOptions = (config: GenerateOptionsConfig): JSX.Element[] => {
-//   const { MIN_LENGTH, MAX_LENGTH, STEP } = config;
-//   const options: JSX.Element[] = [];
-//   for (let i = MIN_LENGTH; i <= MAX_LENGTH; i += STEP) {
-//     options.push(
-//       <option
-//         key={i}
-//         value={i}
-//         className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
-//       >
-//         {i}
-//       </option>
-//     );
-//   }
-//   return options;
-// };
-
 const Searchbar = () => {
   const [search, setSearch] = useState<string>("");
   const [playlistLength, setPlaylistLength] = useState<number>(
     generateOptionsConfig.MIN_LENGTH
   );
-  // const [options] = useState<JSX.Element[]>(
-  //   genertateOptions(generateOptionsConfig)
-  // );
 
   const dispatch = useDispatch();
   const { results } = useSelector((state: RootState) => state.results);
@@ -102,9 +76,10 @@ const Searchbar = () => {
             placeholder='Generate a playlist based on your prompt.'
           />
           <FontAwesomeIcon
-            className='cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight hover:scale-125 active:scale-50'
+            className='cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
             icon={faMagnifyingGlass}
             onClick={handleClick}
+            size='xl'
           />
         </form>
         <form className='mt-6'>

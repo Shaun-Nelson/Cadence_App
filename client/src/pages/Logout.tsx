@@ -1,37 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useLogoutMutation } from "../slices/usersApiSlice";
 import { toast } from "react-toastify";
 
 const Logout = () => {
   const navigate = useNavigate();
+  const [userLogout] = useLogoutMutation();
+
+  const logout = async () => {
+    try {
+      await userLogout({}).unwrap();
+
+      toast.success("Logged out successfully");
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to log out");
+    }
+  };
 
   useEffect(() => {
-    const logout = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/logout`,
-          {
-            credentials: "include",
-            method: "POST",
-          }
-        );
-
-        if (response.ok) {
-          navigate("/");
-          toast.success("Logged out successfully");
-        } else {
-          console.error("Failed to log out", response.statusText);
-          toast.error("Failed to log out");
-        }
-      } catch (error) {
-        console.error(error);
-        toast.error("Failed to log out");
-      }
-    };
     logout();
-  }, [navigate]);
+  }, []);
 
-  return <div>Logging out...</div>;
+  return <></>;
 };
 
 export default Logout;

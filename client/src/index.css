@@ -9,57 +9,20 @@
   --secondary-dark: #3f72af;
 }
 
-/* Global */
-
-.flex-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.card {
+  @apply flex flex-col my-4 p-2 border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
 }
 
-.flex-container-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+.link {
+  @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
 }
 
-.flex-container-search {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10vh;
-}
-
-.flex-container-spinner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10vh;
-}
-
-/* Nav */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.nav-item {
-  margin: 0 10px;
-  list-style: none;
-}
-
-.nav-item a {
-  text-decoration: none;
+.btn-submit {
+  @apply w-48 p-2 bg-gray-800 dark:bg-gray-200 text-gray-100 dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition cursor-pointer active:scale-90 active:bg-gray-900 active:text-gray-200 active:shadow-inner;
 }
 
 /* react-burger-menu */
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
@@ -125,161 +88,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
-}
-
-/* Forms */
-
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20vh;
-  padding: 40px;
-  width: 80vw;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-}
-
-.form-header {
-  margin-bottom: 20px;
-}
-
-/* Home */
-.searchbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80vw;
-  padding: 10px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.search-input {
-  width: 85%;
-  margin: 10px;
-  padding: 5px;
-}
-
-.playlist-length-select {
-  margin-top: 15px;
-}
-
-/* Search Results */
-
-.search-results {
-  margin-top: 2vh;
-}
-
-.spinner {
-  margin-top: 10vh;
-  height: 20vh;
-}
-
-/* Playlist Table */
-
-#playlist-buttons {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-
-.playlist-form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.error-message {
-  color: red;
-  margin-top: 10px;
-}
-
-.success-message {
-  color: green;
-  margin-top: 10px;
-}
-
-.icon-save-playlist-local {
-  height: 30px;
-}
-
-.icon-save-playlist-spotify {
-  height: 30px;
-  margin-left: 10px;
-}
-
-.icon-save-playlist-local:hover {
-  cursor: pointer;
-  color: green;
-  transition-duration: 0.5s;
-}
-
-.icon-save-playlist-local:active {
-  color: rgb(0, 255, 0);
-  transition-duration: 0.5s;
-}
-
-.icon-save-playlist-local-error {
-  height: 30px;
-  margin-left: 10px;
-  color: red;
-}
-
-.icon-save-playlist-spotify:hover {
-  cursor: pointer;
-  color: green;
-  transition-duration: 0.5s;
-}
-
-.icon-save-playlist-spotify:active {
-  color: rgb(0, 255, 0);
-  transition-duration: 0.5s;
-}
-
-.icon-save-playlist-spotify-error {
-  height: 30px;
-  margin-left: 10px;
-  color: red;
-}
-
-#table-playlist-results {
-  margin-top: 5px;
-  margin-bottom: 3rem;
-  width: 75%;
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  border-radius: 12px;
-  border-collapse: collapse;
-}
-
-tr {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  text-align: center;
-}
-
-th {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 10px;
-}
-
-td {
-  border: 1px solid rgba(0, 0, 0, 0.5);
-  padding: 10px;
-}
-
-.card {
-  @apply flex flex-col justify-center items-center mt-24 p-12 w-80 shadow-md rounded border border-opacity-50;
-}
-
-.link {
-  @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
-}
-
-.btn-submit {
-  @apply w-48 p-2 bg-gray-800 dark:bg-gray-200 text-gray-100 dark:text-gray-900 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition cursor-pointer active:scale-90 active:bg-gray-900 active:text-gray-200 active:shadow-inner;
 }
 
 @media (prefers-color-scheme: dark) {

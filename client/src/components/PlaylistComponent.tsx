@@ -55,7 +55,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
             />
           </div>
         ) : (
-          <span className='font-semibold mb-4'>
+          <span className='flex justify-center font-semibold mb-4 text-primaryDark dark:text-primaryLight'>
             (Login to Spotify to play full songs)
           </span>
         )}

@@ -1,37 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {
-  useGetPlaylistsMutation,
-  useDeletePlaylistMutation,
-  useSaveSpotifyPlaylistMutation,
-} from "../slices/playlistApiSlice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { useGetPlaylistsMutation } from "../slices/playlistApiSlice";
 import { toast } from "react-toastify";
 
+// Components
+import MyPlaylistsLoading from "../components/MyPlaylistsLoading";
+
 //Types
-import type { Playlist, Track } from "../types";
+import type { Playlist } from "../types";
 
 const MyPlaylists = () => {
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
+  // const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   const [getPlaylists, { isLoading }] = useGetPlaylistsMutation();
-  const [saveSpotifyPlaylist] = useSaveSpotifyPlaylistMutation();
-  const [deletePlaylist] = useDeletePlaylistMutation();
 
   const getData = async () => {
     try {
       const data = await getPlaylists({}).unwrap();
 
-      if (!data) {
-        setPlaylists([]);
-        return (
-          <h2 className='font-semibold text-primaryDarl dark:text-primaryLight'>
-            No playlists found
-          </h2>
-        );
-      }
       setPlaylists(data);
     } catch (error) {
       console.error(error);
@@ -39,35 +26,35 @@ const MyPlaylists = () => {
     }
   };
 
-  const handlePlaylistDelete = async (id: string) => {
-    try {
-      await deletePlaylist({ id }).unwrap();
-      await getData();
-    } catch (error) {
-      console.error(error);
-      toast.error("Failed to delete playlist");
-    }
-  };
+  // const handlePlaylistDelete = async (id: string) => {
+  //   try {
+  //     await deletePlaylist({ id }).unwrap();
+  //     await getData();
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast.error("Failed to delete playlist");
+  //   }
+  // };
 
-  const handleSpotfiySave = async (
-    playlistName: string,
-    playlistDescription: string,
-    results: Track[]
-  ) => {
-    try {
-      await saveSpotifyPlaylist({
-        name: playlistName,
-        description: playlistDescription,
-        songs: results,
-      }).unwrap();
-      toast.success("Playlist saved to Spotify!");
-    } catch (error) {
-      console.error(error);
-      toast.error(
-        "Error saving playlist to Spotify. Please connect via User Profile."
-      );
-    }
-  };
+  // const handleSpotfiySave = async (
+  //   playlistName: string,
+  //   playlistDescription: string,
+  //   results: Track[]
+  // ) => {
+  //   try {
+  //     await saveSpotifyPlaylist({
+  //       name: playlistName,
+  //       description: playlistDescription,
+  //       songs: results,
+  //     }).unwrap();
+  //     toast.success("Playlist saved to Spotify!");
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast.error(
+  //       "Error saving playlist to Spotify. Please connect via User Profile."
+  //     );
+  //   }
+  // };
 
   useEffect(() => {
     getData();
@@ -75,75 +62,48 @@ const MyPlaylists = () => {
 
   return (
     <div className='contaier mx-auto mt-12'>
-      <div className='flex flex-col h-screen'>
+      <div className='flex flex-col items'>
         {isLoading ? (
-          <div className='flex justify-center items-center mt-24'>
-            <FontAwesomeIcon
-              className='spinner text-primaryDark dark:text-primaryLight'
-              icon={faSpinner}
-              spin
-            />
-          </div>
+          playlists.length > 0 ? (
+            playlists.map((_, index) => {
+              return <MyPlaylistsLoading key={index} />;
+            })
+          ) : (
+            <div className='flex flex-col justify center items-center p-8 mx-24 border rounded shadow-md hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl'>
+              <h2 className='text-4xl font-bold text-primaryDark dark:text-primaryLight'>
+                No Playlists Found
+              </h2>
+            </div>
+          )
         ) : (
-          <table className='w-11/12 table-auto border-collapse mt-8 mx-auto rounded-xl overflow-hidden shadow p-8 text-primaryDark dark:text-primaryLight border-primaryDark dark:border-primaryLight border-opacity-50 transition hover:shadow-lg active:shadow-inner hover:border-opacity-100 active:border-opacity-100'>
-            <thead>
-              <tr className=''>
-                <th className='text-center'>Name</th>
-                <th className='text-center'>Description</th>
-                <th className='text-center'>Save to Spotify</th>
-                <th className='text-center'>Delete</th>
-              </tr>
-            </thead>
-            {playlists.length > 0 ? (
-              playlists.map((playlist, index) => {
-                return (
-                  <tr key={index} className='p-4'>
-                    <td className='text-left'>
+          <div className='flex flex-col'>
+            {playlists.map((playlist, index) => {
+              return (
+                <ol
+                  key={index}
+                  className='flex flex-col my-4 mx-12 p-2 border shadow-md rounded hover:shadow-lg active:shadow-inner list-decimal list-inside'
+                >
+                  <li key={index} className='flex justify-start ml-4 p-2'>
+                    <div className='flex flex-col'>
                       <Link
                         to={`/playlists/${playlist.id}`}
                         className='link dark:text-blue-400 dark:hover:text-blue-600'
                       >
                         {playlist.name}
                       </Link>
-                    </td>
-                    <td>
-                      <p className='text-primaryDark dark:text-primaryLight'>
+                      <p className='text-primaryDark dark:text-primaryLight font-semibold'>
                         {playlist.description}
                       </p>
-                    </td>
-                    <td className=''>
-                      <FontAwesomeIcon
-                        className='h-8 text-green-500 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer'
-                        icon={faSpotify}
-                        onClick={() =>
-                          handleSpotfiySave(
-                            playlist.name,
-                            playlist.description,
-                            playlist.songs
-                          )
-                        }
-                        title='Save playlist to Spotify account'
-                      />
-                    </td>
-                    <td className='text-center'>
-                      <FontAwesomeIcon
-                        onClick={() => handlePlaylistDelete(playlist.id)}
-                        icon={faTrash}
-                        className='h-8 cursor-pointer text-red-600 hover:text-red-400 hover:scale-125 active:scale-50 transition'
-                      />
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <h2 className='font-semibold text-primaryDark dark:text-primaryLight'>
-                No playlists found
-              </h2>
-            )}
-          </table>
+                    </div>
+                  </li>
+                </ol>
+              );
+            })}
+          </div>
         )}
       </div>
     </div>
   );
 };
+
 export default MyPlaylists;
