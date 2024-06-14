@@ -14,7 +14,7 @@ interface NavItemProps {
 const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
   return (
     <li className='list-none p-4 lg lg:px-6'>
-      <button className='dark:text-primaryLight active:scale-75 active:shadow-inner hover:scale-125 transition'>
+      <button className='lg:dark:text-primaryLight active:scale-75 active:shadow-inner hover:scale-125 transition'>
         <FontAwesomeIcon icon={icon} className='mr-2' />
         <Link onClick={onClickHandler} to={linkTo}>
           {bodyText}

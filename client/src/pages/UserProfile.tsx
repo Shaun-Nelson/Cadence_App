@@ -22,18 +22,17 @@ const UserProfile = () => {
   };
 
   return (
-    <div className='container mx-auto'>
-      <div className='flex flex-col justify-start items-center h-screen pt-12'>
-        <h3 className='text-primaryDark dark:text-primaryLight'>
+    <div className='container mx-auto px-8 mt-24'>
+      <div className='flex flex-col justify-start items-center h-screen'>
+        <h3 className='text-primaryDark dark:text-primaryLight text-2xl font-semibold mb-4'>
           {userInfo}'s Profile
         </h3>
         <hr />
-        <span className='text-primaryDark dark:text-primaryLight'>
+        <span className='text-primaryDark dark:text-primaryLight text-center text-lg'>
           Log in to Spotify to save playlists to your Spotify account.
         </span>
         <FontAwesomeIcon
-          className='text-green-500 h-12 w-12 mt-4 cursor-pointer hover:text-green-600'
-          style={{ paddingLeft: "15px" }}
+          className='h-16 mt-8 text-green-500 hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer'
           icon={faSpotify}
           onClick={handleSpotfiyConnect}
           title='Save playlist to Spotify account'

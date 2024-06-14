@@ -66,7 +66,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
         ) : windowWidth >= 768 ? (
           <table className='table-auto w-full text-primaryDark dark:text-primaryLight rounded-2xl shadow outline outline-1 outline-primaryDark dark:outline-primaryLight border-primaryDark dark:border-primaryLight overflow-hidden'>
             <thead>
-              <tr className='border-primaryDark dark:border-primaryLight'>
+              <tr>
                 <th className='px-4 py-2'>Album Cover</th>
                 <th className='px-4 py-2'>Title</th>
                 <th className='px-4 py-2'>Artist</th>

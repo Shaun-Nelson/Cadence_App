@@ -8,11 +8,11 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <>
-      <NavBar />
       <div
         id='outer-container'
-        className='h-screen bg-primaryLight dark:bg-primaryDark'
+        className='min-h-screen bg-primaryLight dark:bg-primaryDark'
       >
+        <NavBar />
         <ToastContainer position='bottom-center' />
         <div id='page-wrap' className='bg-primaryLight dark:bg-primaryDark'>
           <Outlet />

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetPlaylistMutation } from "../slices/playlistApiSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 import PlaylistComponent from "../components/PlaylistComponent";
@@ -16,7 +18,6 @@ const PlaylistPage = () => {
     songs: [],
   });
   const { id } = useParams<{ id: string }>();
-  console.log("PLAYLIST ID", id);
 
   const [getPlaylist] = useGetPlaylistMutation();
 
@@ -33,7 +34,13 @@ const PlaylistPage = () => {
   }, [id, getPlaylist]);
 
   return (
-    <section>
+    <section className='flex flex-col'>
+      <Link to='/playlists' className='mt-4 ml-4'>
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          className='h-8 text-primaryDark dark:text-primaryLight'
+        />
+      </Link>
       <PlaylistComponent playlist={playlist} />
     </section>
   );
