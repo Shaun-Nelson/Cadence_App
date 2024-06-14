@@ -64,39 +64,29 @@ const MyPlaylists = () => {
     <div className='contaier mx-auto mt-12'>
       <div className='flex flex-col items'>
         {isLoading ? (
-          playlists.length > 0 ? (
-            playlists.map((_, index) => {
-              return <MyPlaylistsLoading key={index} />;
-            })
-          ) : (
-            <div className='flex flex-col justify center items-center p-8 mx-24 border rounded shadow-md hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl'>
-              <h2 className='text-4xl font-bold text-primaryDark dark:text-primaryLight'>
-                No Playlists Found
-              </h2>
-            </div>
-          )
+          playlists.length > 0 &&
+          playlists.map((_, index) => {
+            return <MyPlaylistsLoading key={index} />;
+          })
         ) : (
           <div className='flex flex-col'>
             {playlists.map((playlist, index) => {
               return (
-                <ol
-                  key={index}
-                  className='flex flex-col my-4 mx-12 p-2 border shadow-md rounded hover:shadow-lg active:shadow-inner list-decimal list-inside'
-                >
-                  <li key={index} className='flex justify-start ml-4 p-2'>
-                    <div className='flex flex-col'>
-                      <Link
-                        to={`/playlists/${playlist.id}`}
-                        className='link dark:text-blue-400 dark:hover:text-blue-600'
-                      >
+                <div className='flex flex-col my-4 mx-12 p-2 border shadow-md rounded hover:shadow-lg active:shadow-inner list-decimal list-inside'>
+                  <Link
+                    to={`/playlists/${playlist.id}`}
+                    className='link dark:text-blue-400 dark:hover:text-blue-600'
+                  >
+                    <div key={index} className='flex justify-start ml-4 p-2'>
+                      <div className='flex flex-col'>
                         {playlist.name}
-                      </Link>
-                      <p className='text-primaryDark dark:text-primaryLight font-semibold'>
-                        {playlist.description}
-                      </p>
+                        <p className='text-primaryDark dark:text-primaryLight font-semibold'>
+                          {playlist.description}
+                        </p>
+                      </div>
                     </div>
-                  </li>
-                </ol>
+                  </Link>
+                </div>
               );
             })}
           </div>

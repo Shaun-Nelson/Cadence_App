@@ -78,7 +78,7 @@ const PlaylistButtons = () => {
   return (
     <>
       {results.length > 0 && (
-        <>
+        <div className='container mx-auto p-3'>
           <div className='flex justify-center items-center'>
             <form
               className='flex justify-center items-center'
@@ -88,7 +88,7 @@ const PlaylistButtons = () => {
                 Playlist Name
               </label>
               <input
-                className='w-2/5 lg:w-full ml-2 mr-1 lg:mr-2 p-2 text-sm border border-primaryDark dark:border-primaryLight border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-secondaryDark dark:focus:ring-secondaryLight focus:border-transparent transition cursor-pointer'
+                className='w-2/5 lg:w-full ml-2 mr-1 lg:mr-2 p-2 text-sm card-inner'
                 type='text'
                 placeholder={namePlaceholder}
                 required
@@ -101,7 +101,7 @@ const PlaylistButtons = () => {
                 Playlist Description
               </label>
               <input
-                className='w-1/2 lg:w-full p-2 text-sm border border-primaryDark dark:border-primaryLight border-opacity-50 rounded focus:outline-none focus:ring-2 focus:ring-secondaryDark dark:focus:ring-secondaryLight focus:border-transparent transition cursor-pointer'
+                className='w-1/2 lg:w-full p-2 text-sm card-inner'
                 type='text'
                 placeholder={descriptionPlaceholder}
                 name={playlistDescription}
@@ -110,42 +110,46 @@ const PlaylistButtons = () => {
                 onChange={(e) => setPlaylistDescription(e.target.value)}
               />
               <div className='flex items-center justify-center ml-4'>
-                <button
-                  name='localSaveBtn'
-                  type='submit'
-                  onClick={() => setSubmitAction("localSave")}
-                  className={
-                    error
-                      ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                      : "transition text-primaryDark dark:text-secondaryLight hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
-                  }
-                >
-                  <FontAwesomeIcon
-                    icon={faFloppyDisk}
-                    title='Save playlist to local user account'
-                    className='h-8'
-                  />
-                </button>
-                <button
-                  name='spotifySaveBtn'
-                  type='submit'
-                  onClick={() => setSubmitAction("spotifySave")}
-                  className={
-                    error
-                      ? "mx-4 text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                      : "mx-4 text-primaryDark dark:text-secondaryLight hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
-                  }
-                >
-                  <FontAwesomeIcon
-                    icon={faSpotify}
-                    title='Save playlist to Spotify account'
-                    className='h-8'
-                  />
-                </button>
+                <div className='card-btn'>
+                  <button
+                    name='localSaveBtn'
+                    type='submit'
+                    onClick={() => setSubmitAction("localSave")}
+                    className={
+                      error
+                        ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
+                        : "transition text-primaryDark dark:text-secondaryLight hover:text-green-700 hover:scale-125 focus:scale-75 active:text-green-700 active:scale-50 cursor-pointer"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={faFloppyDisk}
+                      title='Save playlist to local user account'
+                      className='h-8'
+                    />
+                  </button>
+                </div>
+                <div className='ml-4 card-btn'>
+                  <button
+                    name='spotifySaveBtn'
+                    type='submit'
+                    onClick={() => setSubmitAction("spotifySave")}
+                    className={
+                      error
+                        ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
+                        : " text-primaryDark dark:text-secondaryLight hover:text-green-700 transition active:scale-50 active:text-green-700 hover:scale-125 cursor-pointer"
+                    }
+                  >
+                    <FontAwesomeIcon
+                      icon={faSpotify}
+                      title='Save playlist to Spotify account'
+                      className='h-8'
+                    />
+                  </button>
+                </div>
               </div>
             </form>
           </div>
-        </>
+        </div>
       )}
     </>
   );

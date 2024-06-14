@@ -13,6 +13,14 @@
   @apply flex flex-col my-4 p-2 border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
 }
 
+.card-inner {
+  @apply flex flex-col my-4 p-2 border shadow-inner rounded hover:shadow-md hover:dark:shadow-2xl active:shadow-inner active:border-opacity-100 transition;
+}
+
+.card-btn {
+  @apply flex flex-col p-1.5 border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
+}
+
 .link {
   @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
 }

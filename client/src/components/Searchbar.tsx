@@ -13,16 +13,16 @@ import SearchResults from "./SearchResults";
 //Types
 import type { Track } from "../types";
 
-const generateOptionsConfig = {
-  MIN_LENGTH: 10,
-  MAX_LENGTH: 50,
-  STEP: 10,
-};
+enum PlaylistLengthConfig {
+  MIN_LENGTH = 10,
+  MAX_LENGTH = 75,
+  STEP = 25,
+}
 
 const Searchbar = () => {
   const [search, setSearch] = useState<string>("");
   const [playlistLength, setPlaylistLength] = useState<number>(
-    generateOptionsConfig.MIN_LENGTH
+    PlaylistLengthConfig.MIN_LENGTH
   );
 
   const dispatch = useDispatch();
@@ -62,54 +62,53 @@ const Searchbar = () => {
   }, [results]);
 
   return (
-    <>
-      <main className='flex flex-col items-center pt-16 h-full w-screen bg-primaryLight dark:bg-primaryDark'>
-        <form
-          className='flex items-center justify-around p-2 mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-md w-11/12 lg:w-1/2'
-          onSubmit={handleSubmit}
-        >
-          <input
-            className='w-11/12 p-2 text-sm dark:text-primaryLight bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-secondayDark dark:focus:ring-secondaryLight transition cursor-pointer'
-            type='text'
-            value={search}
-            onChange={handleSearch}
-            placeholder='Generate a playlist based on your prompt.'
-          />
+    <main className='flex flex-col items-center pt-16 h-full w-screen bg-primaryLight dark:bg-primaryDark'>
+      <form
+        className='flex items-center justify-around mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-md w-11/12 lg:w-1/2'
+        onSubmit={handleSubmit}
+      >
+        <input
+          className='w-10/12 p-2 text-sm dark:text-primaryLight bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-secondayDark dark:focus:ring-secondaryLight transition cursor-pointer'
+          type='text'
+          value={search}
+          onChange={handleSearch}
+          placeholder='Generate a playlist based on your prompt.'
+        />
+        <div className='shadow-md rounded active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'>
           <FontAwesomeIcon
-            className='cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
+            className='ml-1 cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
             icon={faMagnifyingGlass}
             onClick={handleClick}
             size='xl'
           />
-        </form>
-        <form className='mt-6'>
-          <label className='text-primaryDark dark:text-primaryLight'>
-            Playlist Length:
-            <select
-              name='length'
-              className='ml-2 text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
-              value={playlistLength}
-              onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
-            >
-              {/* {options.map((option) => option)} */}
-              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-                10
-              </option>
-              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-                25
-              </option>
-              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-                50
-              </option>
-              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-                75
-              </option>
-            </select>
-          </label>
-        </form>
-        <SearchResults loading={isLoading} />
-      </main>
-    </>
+        </div>
+      </form>
+      <form className='mt-6'>
+        <label className='text-primaryDark dark:text-primaryLight'>
+          Playlist Length:
+          <select
+            name='length'
+            className='ml-2 text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
+            value={playlistLength}
+            onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
+          >
+            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+              10
+            </option>
+            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+              25
+            </option>
+            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+              50
+            </option>
+            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+              75
+            </option>
+          </select>
+        </label>
+      </form>
+      <SearchResults loading={isLoading} />
+    </main>
   );
 };
 
