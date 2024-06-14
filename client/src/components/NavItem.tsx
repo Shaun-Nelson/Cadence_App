@@ -2,7 +2,8 @@ import {
   FontAwesomeIcon,
   FontAwesomeIconProps,
 } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 interface NavItemProps {
   linkTo: string;
@@ -12,13 +13,28 @@ interface NavItemProps {
 }
 
 const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const location = useLocation();
+  const activeStyle =
+    "scale-125 lg:dark:text-primaryLight active:scale-50 hover:scale-150 active:shadow-inner transition";
+  const inactiveStyle =
+    "scale-100 lg:dark:text-primaryLight active:scale-50 hover:scale-150 active:shadow-inner transition";
+
+  useEffect(() => {
+    if (location.pathname === linkTo && !onClickHandler) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [location, linkTo, onClickHandler]);
+
   return (
-    <li className='list-none p-4 lg lg:px-6'>
-      <button className='lg:dark:text-primaryLight active:scale-75 active:shadow-inner hover:scale-125 transition'>
+    <li className='list-none p-9 lg lg:px-6'>
+      <button className={isActive ? activeStyle : inactiveStyle}>
         <FontAwesomeIcon icon={icon} className='mr-2' />
-        <Link onClick={onClickHandler} to={linkTo}>
+        <NavLink onClick={onClickHandler} to={linkTo}>
           {bodyText}
-        </Link>
+        </NavLink>
       </button>
     </li>
   );
