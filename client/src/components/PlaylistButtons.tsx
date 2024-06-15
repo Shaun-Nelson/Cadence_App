@@ -78,7 +78,7 @@ const PlaylistButtons = () => {
   return (
     <>
       {results.length > 0 && (
-        <div className='container mx-auto p-3'>
+        <div className='container mx-auto px-3'>
           <div className='flex justify-center items-center'>
             <form
               className='flex justify-center items-center'
@@ -88,7 +88,7 @@ const PlaylistButtons = () => {
                 Playlist Name
               </label>
               <input
-                className='w-2/5 lg:w-full ml-2 mr-1 lg:mr-2 p-2 text-sm card-inner'
+                className='w-2/5 mr-1 lg:mr-2 p-2 text-sm card-inner'
                 type='text'
                 placeholder={namePlaceholder}
                 required
@@ -101,7 +101,7 @@ const PlaylistButtons = () => {
                 Playlist Description
               </label>
               <input
-                className='w-1/2 lg:w-full p-2 text-sm card-inner'
+                className='w-1/2 p-2 text-sm card-inner'
                 type='text'
                 placeholder={descriptionPlaceholder}
                 name={playlistDescription}
@@ -124,7 +124,7 @@ const PlaylistButtons = () => {
                     <FontAwesomeIcon
                       icon={faFloppyDisk}
                       title='Save playlist to local user account'
-                      className='h-8'
+                      size='lg'
                     />
                   </button>
                 </div>
@@ -142,7 +142,7 @@ const PlaylistButtons = () => {
                     <FontAwesomeIcon
                       icon={faSpotify}
                       title='Save playlist to Spotify account'
-                      className='h-8'
+                      size='lg'
                     />
                   </button>
                 </div>

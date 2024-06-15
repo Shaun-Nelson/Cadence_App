@@ -85,39 +85,47 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
           />
         </div>
       )}
-      <div className='container mx-auto p-3'>
+      <div className='container mx-auto px-3'>
         <div className='flex flex-col justify-around items-center mb-6'>
           <h2 className='text-2xl font-semibold text-primaryDark dark:text-primaryLight'>
             {playlist.name}
           </h2>
           {cookies.refresh_token && location !== "/" && (
-            <div className='flex items-center pt-4'>
-              <p className='text-sm text-primaryDark dark:text-primaryLight mr-2'>
-                Save to Spotify:
-              </p>
-              <FontAwesomeIcon
-                onClick={() =>
-                  handleSpotfiySave(
-                    playlist.name,
-                    playlist.description,
-                    playlist.songs
-                  )
-                }
-                icon={faSpotify}
-                className='text-green-500 hover:text-green-400 mr-6 cursor-pointer'
-                size='2x'
-              />
-              <FontAwesomeIcon
-                onClick={() => handleDelete(playlist.id)}
-                icon={faTrash}
-                className='text-red-500 hover:text-red-400 cursor-pointer'
-                size='2x'
-              />
+            <div className='container mx-auto px-3 my-3'>
+              <div className='flex justify-between mx-auto items-center pt-4 lg:w-1/2'>
+                <div className='flex justify-start items-center'>
+                  <p className='text-sm text-primaryDark dark:text-primaryLight mr-2'>
+                    Save to Spotify:
+                  </p>
+                  <div className='card-btn mr-6'>
+                    <FontAwesomeIcon
+                      onClick={() =>
+                        handleSpotfiySave(
+                          playlist.name,
+                          playlist.description,
+                          playlist.songs
+                        )
+                      }
+                      icon={faSpotify}
+                      className='text-green-500 hover:text-green-400 cursor-pointer'
+                      size='2x'
+                    />
+                  </div>
+                </div>
+                <div className='card-btn'>
+                  <FontAwesomeIcon
+                    onClick={() => handleDelete(playlist.id)}
+                    icon={faTrash}
+                    className='text-red-500 hover:text-red-400 cursor-pointer'
+                    size='2x'
+                  />
+                </div>
+              </div>
             </div>
           )}
-          <div className='container mt-4'>
+          <div className='container mx-auto px-3 mt-4'>
             {cookies.refresh_token && playlist.songs.length > 0 ? (
-              <div className='lg:w-3/4 pt-4 pb-10 mx-auto border rounded-xl shadow-inner'>
+              <div className='card-inner lg:w-2/3 mt-4 mb-12 rounded-2xl mx-auto'>
                 <SpotifyPlayer
                   spotifyIds={playlist.songs?.map((song) => song.spotifyId)}
                 />
@@ -135,11 +143,11 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
               <table className='table-auto w-full text-primaryDark dark:text-primaryLight rounded-2xl shadow outline outline-1 outline-primaryDark dark:outline-primaryLight border-primaryDark dark:border-primaryLight overflow-hidden'>
                 <thead>
                   <tr>
-                    <th className='px-4 py-2'>Album Cover</th>
-                    <th className='px-4 py-2'>Title</th>
-                    <th className='px-4 py-2'>Artist</th>
-                    <th className='px-4 py-2'>Album</th>
-                    <th className='px-4 py-2'>Duration</th>
+                    <th className='px-4 py-2 text-center'>Album Cover</th>
+                    <th className='px-4 py-2 text-left'>Title</th>
+                    <th className='px-4 py-2 text-left'>Artist</th>
+                    <th className='px-4 py-2 text-left'>Album</th>
+                    <th className='px-4 py-2 text-left'>Duration</th>
                     <th className='px-4 py-2'>Preview</th>
                   </tr>
                 </thead>

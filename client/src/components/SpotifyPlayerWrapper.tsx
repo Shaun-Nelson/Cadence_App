@@ -39,6 +39,9 @@ export default function PlayerWrapper({ spotifyIds }: PlayerWrapperProps) {
       getOAuthToken={getOAuthToken}
       token={accessToken}
       uris={spotifyIds}
+      styles={{
+        bgColor: "#f9f9f9",
+      }}
     />
   );
 }
