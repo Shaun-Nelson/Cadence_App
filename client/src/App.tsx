@@ -10,11 +10,11 @@ function App() {
     <>
       <div
         id='outer-container'
-        className='min-h-screen bg-primaryLight dark:bg-primaryDark'
+        className='min-h-screen bg-light-200 dark:bg-dark-600'
       >
         <NavBar />
         <ToastContainer position='bottom-center' />
-        <div id='page-wrap' className='bg-primaryLight dark:bg-primaryDark'>
+        <div id='page-wrap'>
           <Outlet />
         </div>
       </div>

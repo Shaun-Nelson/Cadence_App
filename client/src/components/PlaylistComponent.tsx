@@ -90,7 +90,7 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
           <h2 className='text-2xl font-semibold text-primaryDark dark:text-primaryLight'>
             {playlist.name}
           </h2>
-          {cookies.refresh_token && location !== "/" && (
+          {location !== "/" && (
             <div className='container mx-auto px-3 my-3'>
               <div className='flex justify-between mx-auto items-center pt-4 lg:w-1/2'>
                 <div className='flex justify-start items-center'>
@@ -123,15 +123,15 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
               </div>
             </div>
           )}
-          <div className='container mx-auto px-3 mt-4'>
+          <div className='container mx-auto px-3'>
             {cookies.refresh_token && playlist.songs.length > 0 ? (
-              <div className='card-inner lg:w-2/3 mt-4 mb-12 rounded-2xl mx-auto'>
+              <div className='card-inner lg:w-2/3 mt-12 mb-24 rounded-2xl mx-auto'>
                 <SpotifyPlayer
                   spotifyIds={playlist.songs?.map((song) => song.spotifyId)}
                 />
               </div>
             ) : (
-              <span className='flex justify-center font-semibold mb-4 text-primaryDark dark:text-primaryLight'>
+              <span className='text-lg flex justify-center font-semibold mb-4 text-slate-400'>
                 (Login to Spotify to play full songs)
               </span>
             )}
@@ -140,15 +140,15 @@ const Playlist = ({ playlist, handlePlaylistDelete }: PlaylistProps) => {
                 return <PlaylistTrack key={index} track={track} />;
               })
             ) : windowWidth >= 768 ? (
-              <table className='table-auto w-full text-primaryDark dark:text-primaryLight rounded-2xl shadow outline outline-1 outline-primaryDark dark:outline-primaryLight border-primaryDark dark:border-primaryLight overflow-hidden'>
-                <thead>
+              <table className='table-auto w-full text-slate-600 dark:text-slate-400 rounded-2xl shadow-xl dark:shadow-2xl  overflow-hidden bg-light-100 dark:bg-dark-500'>
+                <thead className='text-slate-800 dark:text-slate-300'>
                   <tr>
-                    <th className='px-4 py-2 text-center'>Album Cover</th>
-                    <th className='px-4 py-2 text-left'>Title</th>
-                    <th className='px-4 py-2 text-left'>Artist</th>
-                    <th className='px-4 py-2 text-left'>Album</th>
-                    <th className='px-4 py-2 text-left'>Duration</th>
-                    <th className='px-4 py-2'>Preview</th>
+                    <th className='p-6 text-center'>Album Cover</th>
+                    <th className='p-6 text-left'>Title</th>
+                    <th className='p-6 text-left'>Artist</th>
+                    <th className='p-6 text-left'>Album</th>
+                    <th className='p-6 text-left'>Duration</th>
+                    <th className='p-6'>Preview</th>
                   </tr>
                 </thead>
                 <tbody>

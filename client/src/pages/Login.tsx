@@ -12,15 +12,15 @@ const Login = () => {
     <>
       {userInfo ? (
         <div className='flex justify-center items-start pt-24 h-screen'>
-          <div className='flex flex-col justify-center items-center p-6 w-80 shadow-md rounded border border-opacity-50'>
+          <div className='flex flex-col my-4 p-6 bg-light-100 dark:bg-primaryDark border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-80 items-center'>
             <div className='text-center'>
-              <h1 className='text-xl text-primaryDark dark:text-primaryLight font-semibold'>
+              <h1 className='text-lg font-semibold text-slate-400 dark:text-slate-400'>
                 Already logged-in as:
               </h1>
-              <span className='text-3xl text-primaryDark dark:text-primaryLight'>
+              <span className='text-xl text-slate-600 dark:text-slate-300'>
                 {userInfo}
               </span>
-              <p className='mt-12 text-sm text-primaryDark dark:text-primaryLight'>
+              <p className='mt-12 text-sm text-slate-400'>
                 Want to register a new account?{" "}
                 <Link
                   to={"/signup"}

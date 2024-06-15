@@ -62,7 +62,7 @@ const Searchbar = () => {
   }, [results]);
 
   return (
-    <main className='flex flex-col mx-auto items-center pt-16 h-full w-full lg:w-2/3 bg-primaryLight dark:bg-primaryDark'>
+    <main className='flex flex-col mx-auto items-center pt-16 h-full w-full lg:w-2/3 bg-light-200 dark:bg-dark-600'>
       <form
         className='flex items-center justify-between mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-11/12 lg:w-3/5'
         onSubmit={handleSubmit}
@@ -74,21 +74,23 @@ const Searchbar = () => {
           onChange={handleSearch}
           placeholder='Generate a playlist based on your prompt.'
         />
-        <div className='shadow-md rounded active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'>
+        <button
+          className='shadow-md rounded active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'
+          onClick={handleClick}
+        >
           <FontAwesomeIcon
             className='ml-1 cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
             icon={faMagnifyingGlass}
-            onClick={handleClick}
             size='xl'
           />
-        </div>
+        </button>
       </form>
       <form className='mt-6'>
         <label className='text-primaryDark dark:text-primaryLight'>
           Playlist Length:
           <select
             name='length'
-            className='ml-2 text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'
+            className='ml-2 text-slate-400 bg-transparent cursor-pointer'
             value={playlistLength}
             onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
           >

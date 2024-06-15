@@ -40,12 +40,12 @@ const MyPlaylists = () => {
           <div className='flex flex-col'>
             {playlists.map((playlist, index) => {
               return (
-                <div className='flex flex-col my-4 mx-12 p-2 border shadow-md rounded hover:shadow-lg active:shadow-inner list-decimal list-inside'>
+                <div className='card'>
                   <Link
                     to={`/playlists/${playlist.id}`}
                     className='link dark:text-blue-400 dark:hover:text-blue-600'
                   >
-                    <div key={index} className='flex justify-start ml-4 p-2'>
+                    <div key={index} className='flex justify-start p-4'>
                       <div className='flex flex-col'>
                         {playlist.name}
                         <p className='text-primaryDark dark:text-primaryLight font-semibold'>

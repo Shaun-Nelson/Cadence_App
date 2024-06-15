@@ -19,7 +19,7 @@ const SearchResults = ({ loading }: SearchResultsProps) => {
       ) : (
         <div className='flex flex-col items-center justify-center w-screen lg:w-full'>
           <PlaylistButtonsLoading />
-          <div className='container mx-auto p-3'>
+          <div className='container mx-auto px-6'>
             <PlaylistTrackLoading />
             <PlaylistTrackLoading />
             <PlaylistTrackLoading />

@@ -16,9 +16,9 @@ const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
   const [isActive, setIsActive] = useState<boolean>(false);
   const location = useLocation();
   const activeStyle =
-    "scale-125 lg:dark:text-primaryLight active:scale-50 hover:scale-150 active:shadow-inner transition";
+    "scale-125 active:scale-50 hover:scale-150 active:shadow-inner transition lg:text-slate-800 lg:dark:text-slate-300";
   const inactiveStyle =
-    "scale-100 lg:dark:text-primaryLight active:scale-50 hover:scale-150 active:shadow-inner transition";
+    "scale-100 active:scale-50 hover:scale-150 active:shadow-inner transition lg:text-slate-500 lg:hover:text-slate-800 lg:dark:text-slate-500 lg:dark:hover:text-slate-300";
 
   useEffect(() => {
     if (location.pathname === linkTo && !onClickHandler) {

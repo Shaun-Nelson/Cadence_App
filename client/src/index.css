@@ -10,15 +10,15 @@
 }
 
 .card {
-  @apply flex flex-col my-4 p-2 border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
+  @apply flex flex-col my-4 p-2 bg-light-100 dark:bg-primaryDark border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
 }
 
 .card-inner {
-  @apply flex flex-col my-4 p-2 border shadow-inner rounded hover:shadow-md hover:dark:shadow-2xl active:shadow-inner active:border-opacity-100 transition;
+  @apply flex flex-col p-2 border shadow-inner rounded active:shadow-inner active:border-opacity-100 transition;
 }
 
 .card-btn {
-  @apply flex flex-col justify-center items-center p-1.5 border shadow-md rounded-lg hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
+  @apply flex flex-col justify-center items-start p-1.5 bg-light-100 dark:bg-primaryDark border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer;
 }
 
 .link {

@@ -29,12 +29,12 @@ const SignUpCard = () => {
   };
 
   return (
-    <div className='flex justify-center items-start pt-24 h-screen'>
+    <div className='flex justify-center items-center pt-24 bg-light-200 dark:bg-dark-600'>
       <form
-        className='flex flex-col justify-center items-center p-12 w-80 shadow-md rounded border border-opacity-50'
+        className='flex flex-col my-4 p-12 bg-light-100 dark:bg-primaryDark border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-80 items-center'
         onSubmit={handleSubmit}
       >
-        <h3 className='mb-12 text-primaryDark dark:text-primaryLight'>
+        <h3 className='mb-12 text-xl font-semibold text-slate-600 dark:text-slate-300'>
           Sign Up
         </h3>
         <input
@@ -65,7 +65,7 @@ const SignUpCard = () => {
           Sign Up
         </button>
 
-        <p className='mt-12 text-sm text-primaryDark dark:text-primaryLight'>
+        <p className='mt-12 text-sm text-slate-400'>
           Already have an account?{" "}
           <Link
             to={"/login"}
