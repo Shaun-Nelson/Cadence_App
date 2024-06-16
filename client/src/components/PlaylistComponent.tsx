@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCookies } from "react-cookie";
 import { useDeletePlaylistMutation } from "../slices/playlistApiSlice";
 import { toast } from "react-toastify";
@@ -14,7 +12,6 @@ import SpotifyPlayer from "./SpotifyPlayerWrapper";
 
 // Types
 import type { Playlist, Track } from "../types";
-import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 
 interface PlaylistProps {
   playlist: Playlist;
@@ -78,33 +75,24 @@ const Playlist = ({ playlist }: PlaylistProps) => {
         </h2>
         {location !== "/" && (
           <div className='container mx-auto px-3 my-3'>
-            <div className='flex justify-between mx-auto items-center pt-4 lg:w-1/2'>
-              <div className='flex justify-start items-center'>
-                <p className='text-sm text-slate-500 dark:text-slate-400 mr-2'>
-                  Save to Spotify:
-                </p>
-                <div className='flex flex-col justify-center items-start p-2 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer mr-6'>
-                  <FontAwesomeIcon
-                    onClick={() =>
-                      handleSpotfiySave(
-                        playlist.name,
-                        playlist.description,
-                        playlist.songs
-                      )
-                    }
-                    icon={faSpotify}
-                    className='text-green-500 hover:text-green-400 cursor-pointer'
-                    size='2x'
-                  />
-                </div>
-              </div>
-              <div className='flex flex-col justify-center items-start p-3 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer'>
-                <FontAwesomeIcon
-                  onClick={() => handleDelete(playlist.id)}
-                  icon={faTrash}
-                  className='text-red-500 hover:text-red-400 cursor-pointer'
-                  size='2x'
-                />
+            <div className='flex justify-center mx-auto items-center pt-4 lg:w-1/2'>
+              <button
+                className='cursor-pointer border rounded-xl mr-4 p-2.5 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
+                onClick={() =>
+                  handleSpotfiySave(
+                    playlist.name,
+                    playlist.description,
+                    playlist.songs
+                  )
+                }
+              >
+                Save to Spotify
+              </button>
+              <div
+                className='cursor-pointer border-2 border-dark-400 dark:border-light-400 rounded-xl p-2.5 dark:transparent text-red-700 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
+                onClick={() => handleDelete(playlist.id)}
+              >
+                Delete Playlist
               </div>
             </div>
           </div>

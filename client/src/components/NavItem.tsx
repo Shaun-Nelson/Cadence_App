@@ -31,7 +31,7 @@ const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
   return (
     <li className='list-none p-9 lg lg:px-6'>
       <button className={isActive ? activeStyle : inactiveStyle}>
-        <FontAwesomeIcon icon={icon} className='mr-2' />
+        <FontAwesomeIcon icon={icon} className='mr-2 opacity-35' />
         <NavLink onClick={onClickHandler} to={linkTo}>
           {bodyText}
         </NavLink>
