@@ -1,13 +1,57 @@
 const MyPlaylistsLoading = () => {
   return (
-    <div
-      role='status'
-      className='flex flex-col my-4 p-2 mx-12 border shadow-md rounded hover:shadow-lg animate-pulse'
-    >
-      <div className='flex justify-start p-2 mt-2'>
-        <div className='flex flex-col ml-6'>
-          <div className='h-3 w-40 bg-gray-300 rounded mb-2'></div>
-          <div className='h-3 w-24 bg-gray-300 rounded mb-2'></div>
+    <div className='container mx-auto px-3'>
+      <div
+        role='status'
+        className='flex flex-col mt-28 mb-4 h-fit p-6 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
+      >
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+        </div>
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+        </div>
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+        </div>
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+        </div>
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+        </div>
+        <div className='mb-12'>
+          <div className='flex justify-between items-center'>
+            <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
+            <div className='h-4 bg-gray-300 w-1/4 rounded-3xl'></div>
+          </div>
+          <div className='h-4 bg-gray-300 w-3/4 rounded-3xl my-2'></div>
+          <div className='h-4 bg-gray-300 w-1/2 rounded-3xl'></div>
         </div>
       </div>
     </div>

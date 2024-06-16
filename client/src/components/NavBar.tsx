@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { RootState } from "../store";
-import { useLogoutMutation } from "../slices/usersApiSlice";
+import {
+  useLoginSpotifyMutation,
+  useLogoutMutation,
+} from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { toast } from "react-toastify";
 
@@ -20,6 +23,7 @@ import {
   faUser,
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -29,6 +33,18 @@ const NavBar = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [loginSpotify] = useLoginSpotifyMutation();
+
+  const handleSpotfiyConnect = async () => {
+    try {
+      const res = await loginSpotify({}).unwrap();
+
+      window.location.href = res;
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to connect to Spotify");
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -85,6 +101,12 @@ const NavBar = () => {
                 linkTo='/profile'
                 bodyText='User Profile'
                 icon={faUser}
+              />
+              <NavItem
+                linkTo=''
+                bodyText='Connect'
+                onClickHandler={handleSpotfiyConnect}
+                icon={faSpotify}
               />
               <NavItem
                 linkTo='/'

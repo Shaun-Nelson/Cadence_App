@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
 interface NavItemProps {
-  linkTo: string;
+  linkTo?: string;
   bodyText: string;
   icon: FontAwesomeIconProps["icon"];
   onClickHandler?: () => void;
@@ -32,7 +32,7 @@ const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
     <li className='list-none p-9 lg lg:px-6'>
       <button className={isActive ? activeStyle : inactiveStyle}>
         <FontAwesomeIcon icon={icon} className='mr-2 opacity-35' />
-        <NavLink onClick={onClickHandler} to={linkTo}>
+        <NavLink onClick={onClickHandler} to={linkTo ? linkTo : ""}>
           {bodyText}
         </NavLink>
       </button>

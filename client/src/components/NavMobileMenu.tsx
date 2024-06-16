@@ -8,6 +8,9 @@ import {
   faArrowRightFromBracket,
   faArrowRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { toast } from "react-toastify";
+import { useLoginSpotifyMutation } from "../slices/thirdPartyApiSlice";
 
 // Components
 import NavItem from "./NavItem";
@@ -19,6 +22,19 @@ interface NavMobileMenuProps extends Props {
 
 const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const [loginSpotify] = useLoginSpotifyMutation();
+
+  const handleSpotfiyConnect = async () => {
+    try {
+      const res = await loginSpotify({}).unwrap();
+
+      window.location.href = res;
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to connect to Spotify");
+    }
+  };
 
   return (
     <Menu
@@ -42,6 +58,13 @@ const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
           />
           <hr />
           <NavItem linkTo='/profile' bodyText='User Profile' icon={faUser} />
+          <hr />
+          <NavItem
+            linkTo=''
+            bodyText='Connect'
+            onClickHandler={handleSpotfiyConnect}
+            icon={faSpotify}
+          />
           <hr />
           <NavItem
             linkTo='/'

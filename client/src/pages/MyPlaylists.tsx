@@ -29,38 +29,48 @@ const MyPlaylists = () => {
   }, []);
 
   return (
-    <div className='container mx-auto px-3 mt-12'>
-      <div className='flex flex-col w-full items-center'>
-        {isLoading ? (
-          playlists.length > 0 &&
-          playlists.map((_, index) => {
-            return <MyPlaylistsLoading key={index} />;
-          })
-        ) : (
-          <div className='flex flex-col'>
-            {playlists.map((playlist, index) => {
-              return (
-                <div className='card'>
-                  <Link
-                    to={`/playlists/${playlist.id}`}
-                    className='link dark:text-blue-400 dark:hover:text-blue-600'
-                  >
-                    <div key={index} className='flex justify-start p-4'>
-                      <div className='flex flex-col'>
-                        {playlist.name}
-                        <p className='text-primaryDark dark:text-primaryLight font-semibold'>
-                          {playlist.description}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        playlists.length > 0 && <MyPlaylistsLoading />
+      ) : (
+        <div className='container mx-auto px-3 mt-12'>
+          <h1 className='text-3xl font-semibold text-center dark:text-slate-300'>
+            Playlists
+          </h1>
+          <table className='table-auto w-full mt-8 bg-light-100 dark:bg-dark-500 shadow-xl dark:shadow-2xl border-collapse rounded-3xl'>
+            <thead>
+              <tr>
+                <th className='px-6 py-6 text-slate-400 text-left'>Name</th>
+                <th className='px-6 py-6 text-slate-400 text-left'>
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <>
+                {playlists.map((playlist, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className='px-6 py-4'>
+                        <Link
+                          to={`/playlists/${playlist.id}`}
+                          className='link dark:text-blue-400 dark:hover:text-blue-600'
+                        >
+                          {playlist.name}
+                        </Link>
+                      </td>
+                      <td className='px-6 py-4  text-slate-600 dark:text-slate-500'>
+                        {playlist.description}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </>
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 };
 

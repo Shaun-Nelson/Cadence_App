@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { useDeletePlaylistMutation } from "../slices/playlistApiSlice";
 import { toast } from "react-toastify";
@@ -25,10 +25,13 @@ const Playlist = ({ playlist }: PlaylistProps) => {
   const [deletePlaylist] = useDeletePlaylistMutation();
   const [saveSpotifyPlaylist] = useSaveSpotifyPlaylistMutation();
   const location = useLocation().pathname;
+  const navigate = useNavigate();
 
   const handleDelete = async (id: string) => {
     try {
       await deletePlaylist({ id }).unwrap();
+      toast.success("Playlist deleted");
+      navigate("/playlists");
     } catch (error) {
       console.error(error);
       toast.error("Failed to delete playlist");
@@ -88,12 +91,12 @@ const Playlist = ({ playlist }: PlaylistProps) => {
               >
                 Save to Spotify
               </button>
-              <div
+              <button
                 className='cursor-pointer border-2 border-dark-400 dark:border-light-400 rounded-xl p-2.5 dark:transparent text-red-700 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
                 onClick={() => handleDelete(playlist.id)}
               >
                 Delete Playlist
-              </div>
+              </button>
             </div>
           </div>
         )}

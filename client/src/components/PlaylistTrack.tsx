@@ -14,7 +14,7 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
         <img
           src={track.imageUrl}
           alt={track.album}
-          className='h-24 rounded-xl transition hover:scale-125'
+          className='h-24 rounded-full transition hover:scale-125'
         />
         <div className='flex flex-col ml-6'>
           <Link
