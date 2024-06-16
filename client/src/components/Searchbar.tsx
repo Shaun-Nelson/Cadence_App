@@ -62,9 +62,9 @@ const Searchbar = () => {
   }, [results]);
 
   return (
-    <main className='flex flex-col mx-auto items-center pt-16 h-full w-full lg:w-2/3 bg-light-200 dark:bg-dark-600'>
+    <section className='flex flex-col mx-auto items-center pt-16 h-full w-full lg:w-2/3 bg-light-200 dark:bg-dark-600'>
       <form
-        className='flex items-center justify-between mx-10 rounded border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-11/12 lg:w-3/5'
+        className='flex items-center justify-between mx-10 rounded-full border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-11/12 lg:w-3/5'
         onSubmit={handleSubmit}
       >
         <input
@@ -75,7 +75,7 @@ const Searchbar = () => {
           placeholder='Generate a playlist based on your prompt.'
         />
         <button
-          className='shadow-md rounded active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'
+          className='shadow-md rounded-r-full active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'
           onClick={handleClick}
         >
           <FontAwesomeIcon
@@ -110,7 +110,7 @@ const Searchbar = () => {
         </label>
       </form>
       <SearchResults loading={isLoading} />
-    </main>
+    </section>
   );
 };
 

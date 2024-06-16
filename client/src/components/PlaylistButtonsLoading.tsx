@@ -1,6 +1,6 @@
 const PlaylistButtonsLoading = () => {
   return (
-    <div className='container mx-auto px-3 my-10 animate-pulse'>
+    <div className='container mx-auto px-3 my-5 animate-pulse'>
       <div className='flex justify-center'>
         <div className='flex flex-col p-6 w-full bg-gray-300 border shadow-md rounded-xl'>
           <div className='flex flex-col rounded'>

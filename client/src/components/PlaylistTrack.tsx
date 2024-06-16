@@ -25,15 +25,11 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
           >
             {track.title}
           </Link>
-          <p className='text-primaryDark dark:text-primaryLight font-semibold'>
+          <p className='text-slate-600 dark:text-slate-300 font-semibold'>
             {track.artist}
           </p>
-          <p className='text-primaryDark dark:text-primaryLight'>
-            {track.album}
-          </p>
-          <p className='text-primaryDark dark:text-primaryLight'>
-            {track.duration}
-          </p>
+          <p className='text-slate-500 dark:text-slate-400'>{track.album}</p>
+          <p className='text-slate-400 dark:text-slate-500'>{track.duration}</p>
         </div>
       </div>
       <div>
@@ -41,10 +37,10 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
           <audio
             controls
             src={track.previewUrl}
-            className='my-4 w-full'
+            className='my-4 px-2 w-full'
           ></audio>
         ) : (
-          <span className='flex justify-center items-center my-4 h-12 text-primaryDark dark:text-primaryLight'>
+          <span className='flex justify-center items-center my-4 h-12 text-slate-500 dark:text-slate-400'>
             (Preview Unavailable)
           </span>
         )}

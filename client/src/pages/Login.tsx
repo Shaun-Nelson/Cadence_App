@@ -12,7 +12,7 @@ const Login = () => {
     <>
       {userInfo ? (
         <div className='flex justify-center items-start pt-24 h-screen'>
-          <div className='flex flex-col my-4 p-6 bg-light-100 dark:bg-primaryDark border shadow-md rounded hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-80 items-center'>
+          <div className='flex flex-col my-4 p-6 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-80 items-center'>
             <div className='text-center'>
               <h1 className='text-lg font-semibold text-slate-400 dark:text-slate-400'>
                 Already logged-in as:
