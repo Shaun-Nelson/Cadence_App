@@ -85,8 +85,8 @@ const Searchbar = () => {
           />
         </button>
       </form>
-      <form className='mt-6'>
-        <label className='text-primaryDark dark:text-primaryLight'>
+      <form className='mt-4'>
+        <label className='text-primaryDark dark:text-light-300'>
           Playlist Length:
           <select
             name='length'

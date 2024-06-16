@@ -11,6 +11,7 @@ import {
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
 import { toast } from "react-toastify";
 import { useLoginSpotifyMutation } from "../slices/thirdPartyApiSlice";
+import { useCookies } from "react-cookie";
 
 // Components
 import NavItem from "./NavItem";
@@ -21,6 +22,7 @@ interface NavMobileMenuProps extends Props {
 }
 
 const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
+  const [cookies] = useCookies(["refresh_token"]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const [loginSpotify] = useLoginSpotifyMutation();
@@ -59,13 +61,17 @@ const NavMobileMenu = ({ isLoggedIn, handleLogout }: NavMobileMenuProps) => {
           <hr />
           <NavItem linkTo='/profile' bodyText='User Profile' icon={faUser} />
           <hr />
-          <NavItem
-            linkTo=''
-            bodyText='Connect'
-            onClickHandler={handleSpotfiyConnect}
-            icon={faSpotify}
-          />
-          <hr />
+          {!cookies.refresh_token && (
+            <>
+              <NavItem
+                linkTo=''
+                bodyText='Connect'
+                onClickHandler={handleSpotfiyConnect}
+                icon={faSpotify}
+              />
+              <hr />
+            </>
+          )}
           <NavItem
             linkTo='/'
             bodyText='Logout'

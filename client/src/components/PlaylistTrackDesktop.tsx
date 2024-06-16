@@ -5,12 +5,12 @@ import type { Track } from "../types";
 
 const PlaylistTrackDesktop = ({ track }: { track: Track }) => {
   return (
-    <tr className='border-primaryDark dark:border-primaryLight'>
+    <tr className='border-b-2 border-t-2 last:border-b-0 dark:border-light-500'>
       <td className='p-6'>
         <img
           src={track.imageUrl}
           alt={track.album}
-          className='w-48 rounded-xl transition hover:scale-125'
+          className='w-48 rounded-full transition lg:hover:scale-125'
         />
       </td>
       <td className='p-6'>

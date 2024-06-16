@@ -71,38 +71,36 @@ const Playlist = ({ playlist }: PlaylistProps) => {
   }, []);
 
   return (
-    <div className='container mx-auto px-3'>
-      <div className='flex flex-col justify-around items-center mb-6'>
+    <div className='container mx-auto px-3 mt-16'>
+      <div className='flex flex-col items-center'>
         <h2 className='text-2xl font-semibold text-primaryDark dark:text-primaryLight'>
           {playlist.name}
         </h2>
         {location !== "/" && (
-          <div className='container mx-auto px-3 my-3'>
-            <div className='flex justify-center mx-auto items-center pt-4 lg:w-1/2'>
-              <button
-                className='cursor-pointer border rounded-xl mr-4 p-2.5 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
-                onClick={() =>
-                  handleSpotfiySave(
-                    playlist.name,
-                    playlist.description,
-                    playlist.songs
-                  )
-                }
-              >
-                Save to Spotify
-              </button>
-              <button
-                className='cursor-pointer border-2 border-dark-400 dark:border-light-400 rounded-xl p-2.5 dark:transparent text-red-700 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
-                onClick={() => handleDelete(playlist.id)}
-              >
-                Delete Playlist
-              </button>
-            </div>
+          <div className='flex justify-center mx-auto items-center mb-12 lg:w-1/2'>
+            <button
+              className='cursor-pointer border rounded-xl mr-4 p-2.5 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
+              onClick={() =>
+                handleSpotfiySave(
+                  playlist.name,
+                  playlist.description,
+                  playlist.songs
+                )
+              }
+            >
+              Save to Spotify
+            </button>
+            <button
+              className='cursor-pointer border-2 border-dark-400 dark:border-light-400 rounded-xl p-2.5 dark:transparent text-red-700 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
+              onClick={() => handleDelete(playlist.id)}
+            >
+              Delete Playlist
+            </button>
           </div>
         )}
         <div className='container mx-auto px-3'>
           {cookies.refresh_token && playlist.songs.length > 0 ? (
-            <div className='flex flex-col p-2 border shadow-inner active:shadow-inner active:border-opacity-100 transition lg:w-2/3 mt-6 mb-16 rounded-xl mx-auto'>
+            <div className='flex flex-col p-2 border shadow-inner active:shadow-inner active:border-opacity-100 transition lg:w-3/5 mb-16 rounded-xl mx-auto'>
               <SpotifyPlayer
                 spotifyIds={playlist.songs?.map((song) => song.spotifyId)}
               />
@@ -117,7 +115,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
               return <PlaylistTrack key={index} track={track} />;
             })
           ) : windowWidth >= 768 ? (
-            <table className='table-auto w-full text-slate-600 dark:text-slate-400 rounded-3xl shadow-xl dark:shadow-2xl  overflow-hidden bg-light-100 dark:bg-dark-500'>
+            <table className='table-auto w-full mb-4 border-collapse text-slate-600 dark:text-slate-400 rounded-3xl shadow-xl dark:shadow-2xl  overflow-hidden bg-light-100 dark:bg-dark-500 active:shadow-inner'>
               <thead className='text-slate-800 dark:text-slate-300'>
                 <tr>
                   <th className='p-6 text-center'>Album Cover</th>

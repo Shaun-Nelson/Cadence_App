@@ -24,8 +24,10 @@ import {
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons";
+import { useCookies } from "react-cookie";
 
 const NavBar = () => {
+  const [cookies] = useCookies(["refresh_token"]);
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const { userInfo } = useSelector((state: RootState) => state.auth);
@@ -102,12 +104,14 @@ const NavBar = () => {
                 bodyText='User Profile'
                 icon={faUser}
               />
-              <NavItem
-                linkTo=''
-                bodyText='Connect'
-                onClickHandler={handleSpotfiyConnect}
-                icon={faSpotify}
-              />
+              {!cookies.refresh_token && (
+                <NavItem
+                  linkTo=''
+                  bodyText='Connect'
+                  onClickHandler={handleSpotfiyConnect}
+                  icon={faSpotify}
+                />
+              )}
               <NavItem
                 linkTo='/'
                 bodyText='Logout'
