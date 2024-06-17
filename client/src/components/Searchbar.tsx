@@ -62,55 +62,57 @@ const Searchbar = () => {
   }, [results]);
 
   return (
-    <section className='flex flex-col mx-auto items-center pt-16 h-full w-full lg:w-2/3 bg-light-200 dark:bg-dark-600'>
-      <form
-        className='flex items-center justify-between mx-10 rounded-full border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-11/12 lg:w-3/5'
-        onSubmit={handleSubmit}
-      >
-        <input
-          className='w-full mx-2 p-2 text-sm dark:text-primaryLight bg-transparent border-none focus:outline-none focus:ring-2 focus:border-transparent focus:ring-secondayDark dark:focus:ring-secondaryLight transition cursor-pointer'
-          type='text'
-          value={search}
-          onChange={handleSearch}
-          placeholder='Generate a playlist based on your prompt.'
-        />
-        <button
-          className='shadow-md rounded-r-full active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'
-          onClick={handleClick}
+    <>
+      <section className='flex flex-col items-center pt-16 h-full bg-light-200 dark:bg-dark-600'>
+        <form
+          className='flex items-center justify-between rounded-full border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-full lg:w-3/5'
+          onSubmit={handleSubmit}
         >
-          <FontAwesomeIcon
-            className='ml-1 cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
-            icon={faMagnifyingGlass}
-            size='xl'
+          <input
+            className='w-full mx-2 p-2 text-sm dark:text-primaryLight bg-transparent border-none focus:outline-none transition cursor-pointer'
+            type='text'
+            value={search}
+            onChange={handleSearch}
+            placeholder='Generate a playlist based on your prompt.'
           />
-        </button>
-      </form>
-      <form className='mt-4'>
-        <label className='text-primaryDark dark:text-light-300'>
-          Playlist Length:
-          <select
-            name='length'
-            className='ml-2 text-slate-400 bg-transparent cursor-pointer'
-            value={playlistLength}
-            onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
+          <button
+            className='shadow-md rounded-r-full active:shadow-inner p-4 bg-primaryLight dark:bg-primaryDark'
+            onClick={handleClick}
           >
-            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-              10
-            </option>
-            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-              25
-            </option>
-            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-              50
-            </option>
-            <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
-              75
-            </option>
-          </select>
-        </label>
-      </form>
+            <FontAwesomeIcon
+              className='ml-1 cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
+              icon={faMagnifyingGlass}
+              size='xl'
+            />
+          </button>
+        </form>
+        <form className='mt-4'>
+          <label className='text-slate-600 dark:text-slate-300'>
+            Playlist Length:
+            <select
+              name='length'
+              className='ml-2 text-slate-400 bg-transparent cursor-pointer'
+              value={playlistLength}
+              onChange={(e) => setPlaylistLength(parseInt(e.target.value))}
+            >
+              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+                10
+              </option>
+              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+                25
+              </option>
+              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+                50
+              </option>
+              <option className='text-primaryDark dark:text-primaryLight bg-primaryLight dark:bg-primaryDark cursor-pointer'>
+                75
+              </option>
+            </select>
+          </label>
+        </form>
+      </section>
       <SearchResults loading={isLoading} />
-    </section>
+    </>
   );
 };
 

@@ -1,9 +1,9 @@
 const MyPlaylistsLoading = () => {
   return (
-    <div className='container mx-auto px-3'>
+    <div className='container mx-auto px-3 mt-32'>
       <div
         role='status'
-        className='flex flex-col mt-28 mb-4 h-fit p-6 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
+        className='flex flex-col mx-auto lg:w-1/2 mb-4 h-fit p-6 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
       >
         <div className='mb-12'>
           <div className='flex justify-between items-center'>

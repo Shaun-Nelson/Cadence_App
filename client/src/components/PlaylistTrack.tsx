@@ -10,11 +10,11 @@ interface PlaylistTrackProps {
 const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
   return (
     <div className='card'>
-      <div className='flex justify-start p-2 mt-2'>
+      <div className='flex justify-start p-2 mt-2 ml-2'>
         <img
           src={track.imageUrl}
           alt={track.album}
-          className='h-24 rounded-full transition hover:scale-125'
+          className='h-24 rounded-full transition hover:scale-125 hover:rounded-xl cursor-pointer'
         />
         <div className='flex flex-col ml-6'>
           <Link

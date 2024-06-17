@@ -10,18 +10,16 @@ interface SearchResultsProps {
 
 const SearchResults = ({ loading }: SearchResultsProps) => {
   return (
-    <section className='container mx-auto'>
+    <section>
       {!loading ? (
         <div className='flex flex-col items-center'>
           <PlaylistButtons />
           <PlaylistResults />
         </div>
       ) : (
-        <div className='flex flex-col items-center justify-center w-screen lg:w-full'>
+        <div className='flex flex-col items-center'>
           <PlaylistButtonsLoading />
-          <div className='container mx-auto px-6'>
-            <PlaylistTrackLoading />
-          </div>
+          <PlaylistTrackLoading />
         </div>
       )}
     </section>

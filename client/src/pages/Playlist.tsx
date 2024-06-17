@@ -34,14 +34,16 @@ const PlaylistPage = () => {
   }, [id, getPlaylist]);
 
   return (
-    <section className='flex flex-col'>
-      <Link to='/playlists' className='mt-4 ml-4'>
-        <FontAwesomeIcon
-          icon={faArrowLeft}
-          className='h-8 text-primaryDark dark:text-primaryLight'
-        />
-      </Link>
-      <PlaylistComponent playlist={playlist} />
+    <section>
+      <div className='flex flex-col'>
+        <Link to='/playlists' className='mt-4'>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            className='h-8 text-primaryDark dark:text-primaryLight'
+          />
+        </Link>
+        <PlaylistComponent playlist={playlist} />
+      </div>
     </section>
   );
 };

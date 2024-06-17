@@ -1,50 +1,56 @@
 const PlaylistTrackLoading = () => {
   return (
-    <>
+    <div className='container mx-auto'>
       <div
         role='status'
-        className='md:hidden flex flex-col mb-4 p-2 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
+        className='md:hidden flex flex-col mb-4 animate-pulse w-full'
       >
-        <div className='flex justify-start p-2 mt-2'>
-          <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
-          <div className='flex flex-col ml-6'>
-            <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+          <div className='flex justify-start p-2 mb-4'>
+            <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
+            <div className='flex flex-col ml-6'>
+              <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+            </div>
+          </div>
+          <div className='h-12 flex justify-center items-center my-4'>
+            <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
           </div>
         </div>
-        <div className='h-12 flex justify-center items-center my-4'>
-          <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
-        </div>
-        <div className='flex justify-start p-2 mt-2'>
-          <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
-          <div className='flex flex-col ml-6'>
-            <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+          <div className='flex justify-start p-2 mt-2'>
+            <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
+            <div className='flex flex-col ml-6'>
+              <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+            </div>
+          </div>
+          <div className='h-12 flex justify-center items-center my-4'>
+            <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
           </div>
         </div>
-        <div className='h-12 flex justify-center items-center my-4'>
-          <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
-        </div>
-        <div className='flex justify-start p-2 mt-2'>
-          <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
-          <div className='flex flex-col ml-6'>
-            <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
-            <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+          <div className='flex justify-start p-2 mt-2'>
+            <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
+            <div className='flex flex-col ml-6'>
+              <div className='h-4 w-40 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-24 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-32 bg-gray-300 rounded-3xl mb-2'></div>
+              <div className='h-4 w-16 bg-gray-300 rounded-3xl'></div>
+            </div>
           </div>
-        </div>
-        <div className='h-12 flex justify-center items-center my-4'>
-          <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
+          <div className='h-12 flex justify-center items-center my-4'>
+            <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
+          </div>
         </div>
       </div>
       <div
         role='status'
-        className='flex flex-col mb-4 h-fit p-6 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
+        className='hidden lg:flex lg:flex-col mb-4 h-fit p-6 border shadow-md rounded-3xl hover:shadow-lg animate-pulse'
       >
         <div className='mb-12'>
           <div className='flex items-center'>
@@ -97,7 +103,7 @@ const PlaylistTrackLoading = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

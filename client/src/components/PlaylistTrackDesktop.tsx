@@ -10,7 +10,7 @@ const PlaylistTrackDesktop = ({ track }: { track: Track }) => {
         <img
           src={track.imageUrl}
           alt={track.album}
-          className='w-48 rounded-full transition lg:hover:scale-125'
+          className='w-48 rounded-full transition hover:scale-125 hover:rounded-xl cursor-pointer'
         />
       </td>
       <td className='p-6'>
@@ -24,7 +24,7 @@ const PlaylistTrackDesktop = ({ track }: { track: Track }) => {
         </Link>
       </td>
       <td className='p-6'>
-        <p className='font-semibold'>{track.artist}</p>
+        <p className='font-semibold dark:text-slate-300'>{track.artist}</p>
       </td>
       <td className='p-6'>
         <p>{track.album}</p>

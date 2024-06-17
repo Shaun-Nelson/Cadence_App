@@ -10,11 +10,11 @@
 }
 
 .card {
-  @apply flex flex-col my-4 p-2 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
+  @apply flex flex-col mb-4 p-2 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
 }
 
 .card-inner {
-  @apply flex flex-col p-2 border shadow-inner rounded-3xl active:shadow-inner active:border-opacity-100 transition;
+  @apply flex flex-col p-2 border shadow-inner rounded-xl active:shadow-inner active:border-opacity-100 transition;
 }
 
 .card-btn {
@@ -26,7 +26,7 @@
 }
 
 .btn-submit {
-  @apply w-48 p-2 bg-dark-400 dark:bg-light-500 text-slate-100 dark:text-slate-700 rounded-3xl lg:hover:bg-dark-300 lg:dark:hover:bg-light-200 transition cursor-pointer active:scale-75 active:shadow-inner;
+  @apply w-48 p-2 bg-dark-400 dark:bg-light-400 text-slate-100 dark:text-slate-700 rounded-3xl lg:hover:bg-dark-300 lg:dark:hover:bg-light-300 transition cursor-pointer active:scale-75 active:shadow-inner;
 }
 
 /* react-burger-menu */

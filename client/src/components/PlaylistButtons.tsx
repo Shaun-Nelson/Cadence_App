@@ -75,7 +75,7 @@ const PlaylistButtons = () => {
   return (
     <>
       {results.length > 0 && (
-        <div className='container mx-auto px-6 mt-16'>
+        <div className='container mx-auto my-16'>
           <div className='flex justify-center'>
             <div className='flex flex-col p-6 w-fit bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition'>
               <div className='flex justify-center items-center'>
