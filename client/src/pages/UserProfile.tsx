@@ -32,7 +32,7 @@ const UserProfile = () => {
           Log in to Spotify to save playlists to your Spotify account.
         </span>
         <button
-          className='mt-8 flex justify-center items-center py-3 px-7 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-400 text-2xl lg:hover:text-slate-300 active:text-slate-300 active:scale-50'
+          className='mt-8 flex justify-center items-center py-3 px-7 w-fit bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-200 dark:text-slate-300 text-2xl lg:hover:text-slate-100 active:text-slate-100 active:scale-50'
           onClick={handleSpotfiyConnect}
         >
           <FontAwesomeIcon

@@ -33,7 +33,7 @@ const MyPlaylists = () => {
       {isLoading ? (
         playlists.length > 0 && <MyPlaylistsLoading />
       ) : (
-        <div className='flex flex-col items-center mt-16'>
+        <div className='flex flex-col items-center mt-12'>
           <h1 className='text-3xl font-semibold text-center dark:text-slate-300'>
             Playlists
           </h1>

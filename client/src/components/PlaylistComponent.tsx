@@ -93,7 +93,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
       {location !== "/" && (
         <div className='flex justify-center mx-auto items-center my-12 lg:w-1/2'>
           <button
-            className='cursor-pointer rounded-full mr-4 py-2.5 px-5 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
+            className='cursor-pointer rounded-full mr-4 py-2.5 px-5 bg-dark-400 text-slate-200 dark:bg-light-400 dark:text-slate-800 lg:hover:text-slate-50 shadow-md dark:shadow-xl transition active:text-slate-50 dark:active:text-slate-600 active:shadow-inner active:scale-75'
             onClick={() =>
               handleSpotfiySave(
                 playlist.name,
@@ -112,7 +112,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
           </button>
         </div>
       )}
-      <div className='container mx-auto'>
+      <div>
         {cookies.refresh_token && playlist.songs.length > 0 ? (
           <div className='flex flex-col p-2 border shadow-inner active:shadow-inner active:border-opacity-100 transition lg:w-3/5 mb-16 rounded-xl mx-auto'>
             <SpotifyPlayer
@@ -120,12 +120,12 @@ const Playlist = ({ playlist }: PlaylistProps) => {
             />
           </div>
         ) : (
-          <div className='flex flex-col items-center mb-16'>
+          <div className='flex flex-col items-center mb-12'>
             <span className='flex justify-center font-semibold mb-4 text-slate-400'>
               Connect to Spotify to play full songs
             </span>
             <button
-              className='flex justify-center items-center py-2 px-6 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-500 dark:text-slate-300 text-xl lg:hover:text-slate-600 dark:lg:hover:text-slate-100 dark:active:text-slate-200 active:scale-50'
+              className='flex justify-center items-center py-2 px-6 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-500 dark:text-slate-300 text-xl lg:hover:text-slate-700 dark:lg:hover:text-slate-100 dark:active:text-slate-700 active:scale-50'
               onClick={handleSpotfiyConnect}
             >
               <FontAwesomeIcon

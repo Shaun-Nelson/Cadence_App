@@ -65,7 +65,7 @@ const Searchbar = () => {
     <>
       <section className='flex flex-col items-center pt-16 h-full bg-light-200 dark:bg-dark-600'>
         <form
-          className='flex items-center justify-between rounded-full border border-primaryDark dark:border-primaryLight border-opacity-50 shadow-inner w-full lg:w-3/5'
+          className='flex items-center justify-between rounded-full border border-primaryDark dark:border-light-400 border-opacity-50 shadow-inner w-full lg:w-3/5 hover:border-opacity-100'
           onSubmit={handleSubmit}
         >
           <input
