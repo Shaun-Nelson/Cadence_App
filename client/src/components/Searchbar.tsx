@@ -80,9 +80,9 @@ const Searchbar = () => {
             onClick={handleClick}
           >
             <FontAwesomeIcon
-              className='ml-1 cursor-pointer transition text-primaryDark hover:text-secondaryDark dark:text-primaryLight dark:hover:text-secondaryLight lg:hover:scale-125 active:scale-50'
+              className='cursor-pointer transition text-dark-400 dark:text-light-300 lg:hover:scale-125 active:scale-50'
               icon={faMagnifyingGlass}
-              size='xl'
+              size='lg'
             />
           </button>
         </form>

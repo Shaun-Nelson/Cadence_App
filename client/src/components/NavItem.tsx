@@ -33,7 +33,7 @@ const NavItem = ({ linkTo, bodyText, icon, onClickHandler }: NavItemProps) => {
   }, [location, linkTo, onClickHandler]);
 
   return (
-    <li className='list-none p-9 lg lg:px-6'>
+    <li className='list-none p-9 lg:py-6 lg:px-6'>
       <button className={isActive ? btnActiveStyle : btnInactiveStyle}>
         <FontAwesomeIcon
           icon={icon}

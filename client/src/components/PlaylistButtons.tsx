@@ -77,13 +77,13 @@ const PlaylistButtons = () => {
       {results.length > 0 && (
         <div className='container mx-auto my-16'>
           <div className='flex justify-center'>
-            <div className='flex flex-col p-6 w-fit bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition'>
+            <div className='flex flex-col p-4 w-fit bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition'>
               <div className='flex justify-center items-center'>
                 <form
                   className='flex flex-col'
                   onSubmit={(e) => handleSubmit(e)}
                 >
-                  <h3 className='text-lg ml-3 mb-6 text-slate-500 dark:text-slate-400'>
+                  <h3 className='text-lg mb-4 text-slate-500 dark:text-slate-400'>
                     Save Playlist
                   </h3>
                   <div className='flex mb-2'>

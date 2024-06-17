@@ -31,7 +31,7 @@ const SignUpCard = () => {
   return (
     <div className='flex justify-center items-center pt-24 bg-light-200 dark:bg-dark-600'>
       <form
-        className='flex flex-col p-8 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-80 items-center'
+        className='flex flex-col p-8 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition items-center'
         onSubmit={handleSubmit}
       >
         <h3 className='mb-12 text-xl font-semibold text-slate-600 dark:text-slate-300'>

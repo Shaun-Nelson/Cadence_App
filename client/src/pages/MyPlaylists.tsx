@@ -40,7 +40,7 @@ const MyPlaylists = () => {
             </h1>
             <table className='table-auto w-full lg:w-1/2 mt-12 bg-light-100 dark:bg-dark-500 shadow-xl dark:shadow-2xl border-collapse rounded-3xl'>
               <thead>
-                <tr className='border-b-2 border-slate-500'>
+                <tr className='border-b-2 border-slate-300 dark:border-slate-500'>
                   <th className='px-6 py-4 text-slate-400 text-left'>Name</th>
                   <th className='px-6 py-4 text-slate-400 text-left'>
                     Description
@@ -53,7 +53,7 @@ const MyPlaylists = () => {
                     return (
                       <tr
                         key={index}
-                        className='border-b-2 border-slate-600 last:border-0'
+                        className='border-b-2 border-slate-200 dark:border-slate-600 last:border-0'
                       >
                         <td className='px-6 py-4'>
                           <Link

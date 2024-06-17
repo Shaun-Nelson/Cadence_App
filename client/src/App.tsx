@@ -13,7 +13,7 @@ function App() {
         <ToastContainer position='bottom-center' />
         <section
           id='page-wrap'
-          className='container mx-auto px-3 min-h-screen lg:w-3/5'
+          className='container mx-auto px-4 min-h-screen lg:w-3/5'
         >
           <Outlet />
         </section>

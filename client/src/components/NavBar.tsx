@@ -75,14 +75,14 @@ const NavBar = () => {
   }, [userInfo]);
 
   return (
-    <nav className='sticky top-0 w-full shadow bg-light-100 dark:bg-dark-500 z-50'>
+    <nav className='sticky top-0 w-full p-0.5 lg:p-0 shadow bg-light-100 dark:bg-dark-500 z-50'>
       <ul className='lg:flex lg:justify-center lg:items-center'>
         <li>
           <Link to='/'>
             <img
               src={logo}
               alt='Cadence Logo'
-              className='h-16 ml-2 transition lg:hover:scale-125 active:scale-50 active:shadow-inner cursor-pointer text-secondayDark hover:text-primaryDark dark:text-secondaryLight dark:hover:text-primaryLight'
+              className='h-14 pl-1 transition lg:hover:scale-125 active:scale-50 active:shadow-inner cursor-pointer text-secondayDark hover:text-primaryDark dark:text-secondaryLight dark:hover:text-primaryLight'
             />
           </Link>
         </li>
