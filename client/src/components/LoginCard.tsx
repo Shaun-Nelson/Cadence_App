@@ -33,14 +33,14 @@ const LoginCard = () => {
   return (
     <div className='flex justify-center items-start pt-24 h-screen'>
       <form
-        className='flex flex-col p-8 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition items-center'
+        className='flex flex-col w-full lg:w-1/3 p-8 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition items-center'
         onSubmit={handleSubmit}
       >
-        <h3 className='mb-12 text-xl font-semibold text-slate-600 dark:text-slate-300'>
+        <h3 className='mb-8 text-xl font-semibold text-slate-600 dark:text-slate-300'>
           Login
         </h3>
         <input
-          className='mb-4 w-48 p-2 border border-opacity-50 rounded-xl'
+          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl'
           type='text'
           placeholder='Username'
           value={username}
@@ -48,7 +48,7 @@ const LoginCard = () => {
           required
         />
         <input
-          className='mb-4 w-48 p-2 border border-opacity-50 rounded-xl'
+          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl'
           type='password'
           placeholder='Password'
           value={password}
@@ -60,7 +60,7 @@ const LoginCard = () => {
           Login
         </button>
 
-        <p className='mt-12 text-sm text-slate-400'>
+        <p className='mt-8 text-sm text-slate-400'>
           Don't have an account?{" "}
           <Link
             to={"/signup"}

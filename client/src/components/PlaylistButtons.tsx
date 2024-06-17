@@ -91,7 +91,7 @@ const PlaylistButtons = () => {
                       Name
                     </label>
                     <input
-                      className='w-1/2 mr-2 p-2 text-sm card-inner'
+                      className='w-1/2 mr-2 text-sm card-inner'
                       type='text'
                       placeholder='Name'
                       required
@@ -122,7 +122,7 @@ const PlaylistButtons = () => {
                         className={
                           error
                             ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                            : "text-slate-500 dark:text-slate-400 lg:hover:text-slate-600 lg:dark:hover:text-slate-200 active:text-slate-600 dark:active:text-slate-200 transition cursor-pointer"
+                            : "text-slate-400 dark:text-slate-300 lg:hover:text-slate-600 lg:dark:hover:text-slate-100 active:text-slate-600 dark:active:text-slate-100 transition cursor-pointer"
                         }
                       >
                         <FontAwesomeIcon
@@ -141,7 +141,7 @@ const PlaylistButtons = () => {
                         className={
                           error
                             ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                            : "text-slate-500 dark:text-slate-400 transition lg:hover:text-slate-600 lg:dark:hover:text-slate-200 active:text-slate-600 dark:active:text-slate-200 cursor-pointer"
+                            : "text-slate-500 dark:text-slate-300 transition lg:hover:text-slate-600 lg:dark:hover:text-slate-100 active:text-slate-600 dark:active:text-slate-100 cursor-pointer"
                         }
                       >
                         <FontAwesomeIcon

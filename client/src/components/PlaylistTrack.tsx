@@ -10,13 +10,13 @@ interface PlaylistTrackProps {
 const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
   return (
     <div className='card'>
-      <div className='flex justify-start p-2 mt-2 ml-2'>
+      <div className='flex justify-start'>
         <img
           src={track.imageUrl}
           alt={track.album}
           className='h-24 rounded-full transition hover:scale-125 hover:rounded-xl cursor-pointer'
         />
-        <div className='flex flex-col ml-6'>
+        <div className='flex flex-col pl-6'>
           <Link
             to={track.externalUrl}
             rel='noreferrer'
@@ -37,10 +37,10 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
           <audio
             controls
             src={track.previewUrl}
-            className='my-4 px-2 w-full'
+            className='mt-6 w-full'
           ></audio>
         ) : (
-          <span className='flex justify-center items-center my-4 h-12 text-slate-500 dark:text-slate-400'>
+          <span className='flex justify-center items-center mt-6 h-12 text-slate-500 dark:text-slate-400'>
             (Preview Unavailable)
           </span>
         )}

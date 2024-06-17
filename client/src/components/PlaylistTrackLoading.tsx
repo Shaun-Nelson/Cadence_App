@@ -5,7 +5,7 @@ const PlaylistTrackLoading = () => {
         role='status'
         className='md:hidden flex flex-col mb-4 animate-pulse w-full'
       >
-        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+        <div className='mb-4 p-4 border shadow-md rounded-3xl border-opacity-50'>
           <div className='flex justify-start p-2 mb-4'>
             <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
             <div className='flex flex-col ml-6'>
@@ -19,7 +19,7 @@ const PlaylistTrackLoading = () => {
             <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
           </div>
         </div>
-        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+        <div className='mb-4 p-4 border shadow-md rounded-3xl border-opacity-50'>
           <div className='flex justify-start p-2 mt-2'>
             <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
             <div className='flex flex-col ml-6'>
@@ -33,7 +33,7 @@ const PlaylistTrackLoading = () => {
             <div className='h-12 w-full bg-gray-300 rounded-3xl'></div>
           </div>
         </div>
-        <div className='mb-4 p-2 border shadow-md rounded-3xl border-opacity-50'>
+        <div className='mb-4 p-4 border shadow-md rounded-3xl border-opacity-50'>
           <div className='flex justify-start p-2 mt-2'>
             <div className='h-24 w-24 bg-gray-300 rounded-full'></div>
             <div className='flex flex-col ml-6'>

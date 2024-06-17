@@ -93,7 +93,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
       {location !== "/" && (
         <div className='flex justify-center mx-auto items-center my-12 lg:w-1/2'>
           <button
-            className='cursor-pointer rounded-full mr-4 py-2.5 px-4 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
+            className='cursor-pointer rounded-full mr-4 py-2.5 px-5 bg-dark-400 text-slate-300 dark:bg-light-400 dark:text-slate-800 lg:hover:bg-dark-300 lg:hover:text-slate-200 transition active:shadow-inner active:scale-75'
             onClick={() =>
               handleSpotfiySave(
                 playlist.name,
@@ -105,7 +105,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
             Save to Spotify
           </button>
           <button
-            className='cursor-pointer py-2.5 px-4 border border-dark-400 dark:border-light-400 rounded-full p-2.5 dark:transparent text-red-600 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
+            className='cursor-pointer py-2.5 px-5 border border-dark-400 dark:border-light-400 rounded-full p-2.5 dark:transparent text-red-600 lg:hover:text-red-500 lg:hover:border-dark-300 dark:lg:hover:border-light-200 lg:hover:bg-dark-200 lg:hover:bg-opacity-10 transition active:shadow-inner active:scale-75 active:text-red-500'
             onClick={() => handleDelete(playlist.id)}
           >
             Delete Playlist
@@ -121,11 +121,11 @@ const Playlist = ({ playlist }: PlaylistProps) => {
           </div>
         ) : (
           <div className='flex flex-col items-center mb-16'>
-            <span className='text-lg flex justify-center font-semibold mb-4 text-slate-400'>
+            <span className='flex justify-center font-semibold mb-4 text-slate-400'>
               Connect to Spotify to play full songs
             </span>
             <button
-              className='flex justify-center items-center py-3 px-7 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-500 dark:text-slate-300 text-2xl lg:hover:text-slate-600 dark:lg:hover:text-slate-100 dark:active:text-slate-200 active:scale-50'
+              className='flex justify-center items-center py-2 px-6 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-500 dark:text-slate-300 text-xl lg:hover:text-slate-600 dark:lg:hover:text-slate-100 dark:active:text-slate-200 active:scale-50'
               onClick={handleSpotfiyConnect}
             >
               <FontAwesomeIcon
