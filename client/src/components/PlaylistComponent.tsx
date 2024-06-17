@@ -125,7 +125,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
               Connect to Spotify to play full songs
             </span>
             <button
-              className='flex justify-center items-center py-2 px-6 w-fit bg-light-100 dark:bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-500 dark:text-slate-300 text-xl lg:hover:text-slate-700 dark:lg:hover:text-slate-100 dark:active:text-slate-700 active:scale-50'
+              className='flex justify-center items-center py-2 px-6 w-fit bg-dark-400 border shadow-md rounded-full hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition cursor-pointer text-slate-300 dark:text-slate-300 text-xl lg:hover:text-slate-100 dark:lg:hover:text-slate-100 dark:active:text-slate-100 active:scale-50'
               onClick={handleSpotfiyConnect}
             >
               <FontAwesomeIcon
@@ -142,7 +142,7 @@ const Playlist = ({ playlist }: PlaylistProps) => {
             return <PlaylistTrack key={index} track={track} />;
           })
         ) : windowWidth >= 768 ? (
-          <table className='table-auto w-full mb-4 border-collapse text-slate-600 dark:text-slate-400 rounded-3xl shadow-xl dark:shadow-2xl  overflow-hidden bg-light-100 dark:bg-dark-500 active:shadow-inner'>
+          <table className='table-auto w-full border-collapse text-slate-600 dark:text-slate-400 rounded-3xl shadow-xl dark:shadow-2xl  overflow-hidden bg-light-100 dark:bg-dark-500 active:shadow-inner'>
             <thead className='text-slate-800 dark:text-slate-300'>
               <tr>
                 <th className='p-6 text-center'>Album Cover</th>

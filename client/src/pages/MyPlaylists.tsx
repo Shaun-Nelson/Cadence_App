@@ -37,7 +37,7 @@ const MyPlaylists = () => {
           <h1 className='text-3xl font-semibold text-center dark:text-slate-300'>
             Playlists
           </h1>
-          <table className='table-auto w-full lg:w-1/2 mt-12 mb-4 bg-light-100 dark:bg-dark-500 shadow-xl dark:shadow-2xl border-collapse rounded-3xl'>
+          <table className='table-auto w-full lg:w-1/2 mt-12 bg-light-100 dark:bg-dark-500 shadow-xl dark:shadow-2xl border-collapse rounded-3xl'>
             <thead>
               <tr className='border-b-2 border-slate-300 dark:border-slate-500'>
                 <th className='px-6 py-4 text-slate-400 text-left'>Name</th>

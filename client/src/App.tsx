@@ -8,7 +8,10 @@ import NavBar from "./components/NavBar";
 function App() {
   return (
     <>
-      <main id='outer-container' className='bg-light-200 dark:bg-dark-600'>
+      <main
+        id='outer-container'
+        className='bg-light-200 dark:bg-dark-600 pb-16'
+      >
         <NavBar />
         <ToastContainer position='bottom-center' />
         <section

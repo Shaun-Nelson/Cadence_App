@@ -10,19 +10,19 @@
 }
 
 .card {
-  @apply flex flex-col mb-6 p-6 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
+  @apply flex flex-col p-6 mb-6 last:mb-0 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition;
 }
 
 .card-inner {
-  @apply flex flex-col py-2 px-2 border shadow-inner rounded-xl active:shadow-inner active:border-opacity-100 transition;
+  @apply flex flex-col py-2 px-2 bg-light-200 border shadow-inner rounded-xl active:shadow-inner hover:border-opacity-100 transition;
 }
 
 .card-btn {
-  @apply flex flex-col justify-center items-center py-1.5 bg-light-200 dark:bg-dark-400 border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 active:scale-75 transition cursor-pointer;
+  @apply flex flex-col justify-center items-center py-1.5 bg-dark-400 border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 hover:border-opacity-100 active:scale-75 transition cursor-pointer;
 }
 
 .link {
-  @apply text-blue-800 cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
+  @apply text-blue-800 w-fit cursor-pointer hover:text-blue-600 hover:underline font-semibold transition active:scale-90;
 }
 
 .btn-submit {

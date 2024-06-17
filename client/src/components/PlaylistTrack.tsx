@@ -16,7 +16,7 @@ const PlaylistTrack = ({ track }: PlaylistTrackProps) => {
           alt={track.album}
           className='h-24 rounded-full transition hover:scale-125 hover:rounded-xl cursor-pointer'
         />
-        <div className='flex flex-col pl-6'>
+        <div className='flex flex-col pl-6 w-fit'>
           <Link
             to={track.externalUrl}
             rel='noreferrer'

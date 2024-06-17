@@ -40,7 +40,7 @@ const LoginCard = () => {
           Login
         </h3>
         <input
-          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl shadow-inner'
+          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl shadow-inner bg-light-200'
           type='text'
           placeholder='Username'
           value={username}
@@ -48,7 +48,7 @@ const LoginCard = () => {
           required
         />
         <input
-          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl shadow-inner'
+          className='mb-4 w-full p-2 border border-opacity-50 rounded-xl shadow-inner bg-light-200'
           type='password'
           placeholder='Password'
           value={password}

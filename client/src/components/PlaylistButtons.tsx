@@ -77,13 +77,13 @@ const PlaylistButtons = () => {
       {results.length > 0 && (
         <div className='container mx-auto my-16'>
           <div className='flex justify-center'>
-            <div className='flex flex-col p-8 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-full lg:w-1/3'>
+            <div className='flex flex-col p-6 bg-light-100 dark:bg-primaryDark border shadow-md rounded-3xl hover:shadow-lg dark:shadow-xl hover:dark:shadow-2xl active:shadow-inner border-opacity-50 active:border-opacity-100 transition w-full lg:w-1/3'>
               <div className='flex justify-center items-center'>
                 <form
                   className='flex flex-col w-full'
                   onSubmit={(e) => handleSubmit(e)}
                 >
-                  <h3 className='text-lg mb-8 text-slate-500 dark:text-slate-400'>
+                  <h3 className='text-lg mb-6 text-slate-500 dark:text-slate-400'>
                     Save Playlist
                   </h3>
                   <div className='flex flex-col mb-2'>
@@ -113,8 +113,8 @@ const PlaylistButtons = () => {
                       onChange={(e) => setPlaylistDescription(e.target.value)}
                     />
                   </div>
-                  <div className='flex mt-2'>
-                    <div className='card-btn w-1/2 mr-2'>
+                  <div className='flex'>
+                    <div className='card-btn w-1/2 mr-1'>
                       <button
                         name='localSaveBtn'
                         type='submit'
@@ -122,7 +122,7 @@ const PlaylistButtons = () => {
                         className={
                           error
                             ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                            : "text-slate-500 dark:text-slate-300 transition lg:hover:text-slate-600 lg:dark:hover:text-slate-100 active:text-slate-600 dark:active:text-slate-100 cursor-pointer"
+                            : "text-slate-300 dark:text-slate-300 transition lg:hover:text-slate-100 lg:dark:hover:text-slate-100 active:text-slate-100 dark:active:text-slate-100 cursor-pointer"
                         }
                       >
                         <FontAwesomeIcon
@@ -141,7 +141,7 @@ const PlaylistButtons = () => {
                         className={
                           error
                             ? "text-red-600 hover:text-red-800 transition active:scale-50 hover:scale-125 cursor-pointer"
-                            : "text-slate-500 dark:text-slate-300 transition lg:hover:text-slate-600 lg:dark:hover:text-slate-100 active:text-slate-600 dark:active:text-slate-100 cursor-pointer"
+                            : "text-slate-300 dark:text-slate-300 transition lg:hover:text-slate-100 lg:dark:hover:text-slate-100 active:text-slate-100 dark:active:text-slate-100 cursor-pointer"
                         }
                       >
                         <FontAwesomeIcon
